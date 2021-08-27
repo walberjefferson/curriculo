@@ -432,6 +432,7 @@
   <script src="{{ asset('assets/plugins/jquery.flot/jquery.flot.js') }}"></script>
   <script src="{{ asset('assets/plugins/jquery.flot/jquery.flot.resize.js') }}"></script>
   <script src="{{ asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ asset('assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/progressbar-js/progressbar.min.js') }}"></script>
 @endpush

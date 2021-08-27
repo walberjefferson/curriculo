@@ -175,7 +175,8 @@ $(function() {
     $('#dashboardDate').datepicker({
       format: "dd-MM-yyyy",
       todayHighlight: true,
-      autoclose: true
+      autoclose: true,
+        language: 'pt-BR'
     });
     $('#dashboardDate').datepicker('setDate', today);
   }
@@ -218,8 +219,8 @@ $(function() {
       xaxis: {
         show: true,
         color: 'rgba(0,0,0,0.1)',
-        ticks: [[0, 'Jan'], [20, 'Feb'], [40, 'Mar'], [60, 'Apr'], [80, 'May'], [100, 'June'], [120, 'July'], [140, 'Aug']],
-        tickColor: gridLineColor,      
+        ticks: [[0, 'Jan'], [20, 'Fev'], [40, 'Mar'], [60, 'Abr'], [80, 'Mai'], [100, 'Jun'], [120, 'Jul'], [140, 'Ago']],
+        tickColor: gridLineColor,
         font: {
           size: 13,
           color: colors.muted
@@ -386,19 +387,19 @@ $(function() {
       step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color);
         circle.path.setAttribute('stroke-width', state.width);
-    
+
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
           circle.setText('');
         } else {
           circle.setText(value + '%');
         }
-    
+
       }
     });
     bar.text.style.fontFamily = "'Overpass', sans-serif;";
     bar.text.style.fontSize = '3rem';
-    
+
     bar.animate(.78);
   }
   // Progressgar1 start
@@ -409,7 +410,7 @@ $(function() {
       new Chart(monthlySalesChart, {
         type: 'bar',
         data: {
-          labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+          labels: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
           datasets: [{
             label: 'Sales',
             data: [150,110,90,115,125,160,190,140,100,110,120,120],
