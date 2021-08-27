@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+Route::group(['prefix' => 'icons'], function(){
+    Route::get('feather-icons', function () {
+        View::make('pages.icons.feather-icons');
+    });
+    Route::get('flag-icons', function () { return view('pages.icons.flag-icons'); });
+    Route::get('mdi-icons', function () { return view('pages.icons.mdi-icons'); });
+});
+
 Route::group(['prefix' => 'email'], function(){
     Route::get('inbox', function () { return view('pages.email.inbox'); });
     Route::get('read', function () { return view('pages.email.read'); });
@@ -78,12 +86,6 @@ Route::group(['prefix' => 'charts'], function(){
 Route::group(['prefix' => 'tables'], function(){
     Route::get('basic-tables', function () { return view('pages.tables.basic-tables'); });
     Route::get('data-table', function () { return view('pages.tables.data-table'); });
-});
-
-Route::group(['prefix' => 'icons'], function(){
-    Route::get('feather-icons', function () { return view('pages.icons.feather-icons'); });
-    Route::get('flag-icons', function () { return view('pages.icons.flag-icons'); });
-    Route::get('mdi-icons', function () { return view('pages.icons.mdi-icons'); });
 });
 
 Route::group(['prefix' => 'general'], function(){

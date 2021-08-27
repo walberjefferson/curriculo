@@ -22,12 +22,12 @@ class UserRequest extends FormRequest
                 'max:255',
                 Rule::unique('users', 'email')->ignore($id)
             ],
-            'cpf' => [
-                "required",
-                "max:255",
-                "cpf",
-                Rule::unique('users', 'cpf')->ignore($id)
-            ],
+//            'cpf' => [
+//                "required",
+//                "max:255",
+//                "cpf",
+//                Rule::unique('users', 'cpf')->ignore($id)
+//            ],
             'password' => 'nullable|string|min:6|confirmed',
             'roles.*' => 'nullable|exists:roles,id'
         ];
@@ -46,9 +46,9 @@ class UserRequest extends FormRequest
     public function all($keys = null)
     {
         $all = parent::all($keys);
-        if (isset($all['cpf'])) {
-            $all['cpf'] = str_numbers($all['cpf']);
-        }
+//        if (isset($all['cpf'])) {
+//            $all['cpf'] = str_numbers($all['cpf']);
+//        }
         $all['ativo'] = isset($all['ativo']);
         if (isset($all['roles'])) {
             $all['roles'] = array_filter($all['roles']);
