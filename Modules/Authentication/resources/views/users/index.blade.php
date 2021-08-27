@@ -5,15 +5,15 @@
 @section('breadcrumbs')
     @include('layout.breadcrumbs', [
       'breadcrumbs' => [
-        (object) [ 'title' => 'Painel', 'url' => route('home') ],
-        (object) [ 'title' => 'Usuários', 'url' => route('user.index') ],
+        (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
+        (object) [ 'title' => 'Usuários', 'url' => route('admin.user.index') ],
       ]
     ])
 @endsection
 
 @section('breadcrumbs_button')
     @can('admin-users/create')
-        <a href="{{ route('user.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
             <i class="mdi mdi-plus"></i> Novo
         </a>
     @endcan
@@ -52,13 +52,13 @@
                                         <td>
                                             <div class="btn-group btn-group-sm">
                                                 @can('admin-users/edit')
-                                                    <a href="{{ route('user.edit', $d->id) }}" class="btn btn-primary">
+                                                    <a href="{{ route('admin.user.edit', $d->id) }}" class="btn btn-primary">
                                                         <i class="mdi mdi-pencil-outline"></i>
                                                     </a>
                                                 @endcan
                                                 @can('admin-users/delete')
                                                     <?php $deleteForm = "delete-form-{$loop->index}" ?>
-                                                    <a href="{{ route('user.destroy', $d->id) }}"
+                                                    <a href="{{ route('admin.user.destroy', $d->id) }}"
                                                        class="btn btn-danger"
                                                        onclick="if(confirm('Deseja realmente excluir?')) {event.preventDefault(); document.getElementById('{{$deleteForm}}').submit(); }else{ return false; }">
                                                         <i class="mdi mdi-trash-can-outline"></i>
@@ -66,7 +66,7 @@
                                                 @endcan
                                             </div>
                                             @can('admin-users/delete')
-                                                {!! Form::open(['route' => ['user.destroy', $d->id], 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
+                                                {!! Form::open(['route' => ['admin.user.destroy', $d->id], 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
                                                 {!! Form::close() !!}
                                             @endcan
                                         </td>

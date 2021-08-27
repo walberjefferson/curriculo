@@ -5,8 +5,8 @@
 @section('breadcrumbs')
     @include('inspinia::layouts.main-panel.breadcrumbs', [
       'breadcrumbs' => [
-        (object) [ 'title' => 'Painel', 'url' => route('home') ],
-        (object) [ 'title' => 'Perfil', 'url' => route('profile') ],
+        (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
+        (object) [ 'title' => 'Perfil', 'url' => route('admin.profile') ],
         (object) [ 'title' => 'Alterar Senha', 'url' => '' ],
       ]
     ])
@@ -20,7 +20,7 @@
                 <div class="ibox-title bg-primary"><h5>Alterar Senha</h5></div>
 
                 <div class="ibox-content">
-                    {!! Form::open(['url' => route('alterar_senha'), 'method' => 'PUT']) !!}
+                    {!! Form::open(['url' => route('admin.alterar_senha'), 'method' => 'PUT']) !!}
                     @include('authentication::users.profile._form')
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">

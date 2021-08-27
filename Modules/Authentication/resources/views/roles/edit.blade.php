@@ -5,8 +5,8 @@
 @section('breadcrumbs')
     @include('inspinia::layouts.main-panel.breadcrumbs', [
       'breadcrumbs' => [
-        (object) [ 'title' => 'Painel', 'url' => route('home') ],
-        (object) [ 'title' => 'Papel de Usuário', 'url' => route('role.index') ],
+        (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
+        (object) [ 'title' => 'Papel de Usuário', 'url' => route('admin.role.index') ],
         (object) [ 'title' => 'Editar', 'url' => '' ],
       ]
     ])
@@ -21,14 +21,14 @@
 
                 <div class="ibox-content">
 
-                    {!! Form::model($dados, ['route' => ['role.update', $dados->id], 'method' => 'PUT']) !!}
+                    {!! Form::model($dados, ['route' => ['admin.role.update', $dados->id], 'method' => 'PUT']) !!}
                     @include('authentication::roles._form')
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">
                             <i class="fa fa-paper-plane-o"></i> Salvar
                         </button>
-                        <a href="{{ route('role.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i>
+                        <a href="{{ route('admin.role.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i>
                             Voltar</a>
                     </div>
                     {!! Form::close() !!}

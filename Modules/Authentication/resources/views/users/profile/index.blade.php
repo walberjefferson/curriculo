@@ -5,7 +5,7 @@
 @section('breadcrumbs')
     @include('inspinia::layouts.main-panel.breadcrumbs', [
       'breadcrumbs' => [
-        (object) [ 'title' => 'Painel', 'url' => route('home') ],
+        (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
         (object) [ 'title' => 'Perfil', 'url' => '' ],
       ]
     ])
@@ -13,7 +13,7 @@
 @endsection
 
 @section('breadcrumbs_button')
-    <a href="{{ route('alterar_senha') }}" class="btn btn-primary"><i class="fa fa-key"></i> Alterar Senha</a>
+    <a href="{{ route('admin.alterar_senha') }}" class="btn btn-primary"><i class="fa fa-key"></i> Alterar Senha</a>
 @endsection
 
 @section('content')

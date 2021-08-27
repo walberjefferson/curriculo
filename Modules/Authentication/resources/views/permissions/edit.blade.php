@@ -5,8 +5,8 @@
 @section('breadcrumbs')
     @include('inspinia::layouts.main-panel.breadcrumbs', [
       'breadcrumbs' => [
-        (object) [ 'title' => 'Painel', 'url' => route('home') ],
-        (object) [ 'title' => 'Permissões', 'url' => route('role.index') ],
+        (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
+        (object) [ 'title' => 'Permissões', 'url' => route('admin.role.index') ],
         (object) [ 'title' => 'Editar', 'url' => '' ],
       ]
     ])
@@ -21,7 +21,7 @@
 
                 <div class="ibox-content">
 
-                    {!! Form::open(['route' => ['role.permission.update', $role], 'method' => 'PUT']) !!}
+                    {!! Form::open(['route' => ['admin.role.permission.update', $role], 'method' => 'PUT']) !!}
 
                     <ul class="list-group">
                         @foreach($permissionsGroup as $pg)
@@ -58,7 +58,7 @@
                         <button class="btn btn-primary" type="submit">
                             <i class="fa fa-paper-plane-o"></i> Salvar
                         </button>
-                        <a href="{{ route('role.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i>
+                        <a href="{{ route('admin.role.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i>
                             Voltar</a>
                     </div>
                     {!! Form::close() !!}

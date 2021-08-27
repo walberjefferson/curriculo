@@ -5,8 +5,8 @@
 @section('breadcrumbs')
     @include('inspinia::layouts.main-panel.breadcrumbs', [
       'breadcrumbs' => [
-        (object) [ 'title' => 'Painel', 'url' => route('home') ],
-        (object) [ 'title' => 'Papel de Usuário', 'url' => route('role.index') ],
+        (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
+        (object) [ 'title' => 'Papel de Usuário', 'url' => route('admin.role.index') ],
       ]
     ])
 
@@ -14,7 +14,7 @@
 
 @section('breadcrumbs_button')
     @can('admin-roles/create')
-        <a href="{{ route('role.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Novo</a>
+        <a href="{{ route('admin.role.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Novo</a>
     @endcan
 @endsection
 
@@ -48,23 +48,23 @@
                                     <td>
                                         <div class="btn-group btn-group-justified btn-group-xs">
                                             @can('admin-permission/edit')
-                                                <a href="{{ route('role.permission.edit', $d) }}"
+                                                <a href="{{ route('admin.role.permission.edit', $d) }}"
                                                    class="btn btn-warning"
                                                    title="Permissões"><i class="fa fa-lock"></i></a>
                                             @endcan
                                             @can('admin-roles/edit')
-                                                <a href="{{ route('role.edit', $d->id) }}" class="btn btn-primary">
+                                                <a href="{{ route('admin.role.edit', $d->id) }}" class="btn btn-primary">
                                                     <i class="fa fa-pencil-square-o"></i>
                                                 </a>
                                             @endcan
                                             @can('admin-roles/delete')
                                                 <?php $deleteForm = "delete-form-{$loop->index}" ?>
-                                                <a href="{{ route('role.destroy', $d->id) }}"
+                                                <a href="{{ route('admin.role.destroy', $d->id) }}"
                                                    class="btn btn-danger no-margins"
                                                    onclick="if(confirm('Deseja realmente excluir?')) {event.preventDefault(); document.getElementById('{{$deleteForm}}').submit(); }else{ return false; }">
                                                     <i class="fa fa-trash-o"></i>
                                                 </a>
-                                                {!! Form::open(['route' => ['role.destroy', $d->id], 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
+                                                {!! Form::open(['route' => ['admin.role.destroy', $d->id], 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
                                                 {!! Form::close() !!}
                                             @endcan
                                         </div>
