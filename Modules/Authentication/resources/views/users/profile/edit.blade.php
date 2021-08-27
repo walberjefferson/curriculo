@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('content-title', 'Perfil')
+@section('content-title', 'Alterar Senha')
 
 @section('breadcrumbs')
-    @include('inspinia::layouts.main-panel.breadcrumbs', [
+    @include('layout.breadcrumbs', [
       'breadcrumbs' => [
         (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
         (object) [ 'title' => 'Perfil', 'url' => route('admin.profile') ],
@@ -16,19 +16,17 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title bg-primary"><h5>Alterar Senha</h5></div>
-
-                <div class="ibox-content">
+            <div class="card">
+                <div class="card-body">
                     {!! Form::open(['url' => route('admin.alterar_senha'), 'method' => 'PUT']) !!}
                     @include('authentication::users.profile._form')
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">
-                            <i class="fa fa-paper-plane-o"></i> Salvar
+                            <i class="mdi mdi-send"></i> Salvar
                         </button>
-                        <a href="{{ url()->previous() }}" class="btn btn-warning">
-                            <i class="fa fa-undo"></i> Voltar
+                        <a href="{{ url()->previous() }}" class="btn btn-secondary">
+                            <i class="mdi mdi-backup-restore"></i> Voltar
                         </a>
                     </div>
                     {!! Form::close() !!}

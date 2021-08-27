@@ -32,7 +32,7 @@ class ProfileController extends Controller
             \DB::transaction(function () use ($request) {
                 $this->repository->updatePassword($request->only(['password']), auth()->id());
             });
-            return redirect()->route('profile')->with('message', 'Senha alterada com sucesso.');
+            return redirect()->route('admin.profile')->with('message', 'Senha alterada com sucesso.');
         } catch (\Exception $e) {
             return redirect()->back()->with('message-danger', 'Erro ao tentar alterar senha.')->withInput();
         }

@@ -13,8 +13,9 @@
 
 @section('breadcrumbs_button')
     @can('admin-users/create')
-        <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
-            <i class="mdi mdi-plus"></i> Novo
+        <a href="{{ route('admin.user.create') }}" class="btn btn-primary btn-icon-text">
+            <i class="btn-icon-prepend" data-feather="plus"></i>
+            Novo
         </a>
     @endcan
 @endsection
@@ -74,15 +75,10 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="3"><strong>Total de Registros {{ $dados->total() }}</strong></td>
-                                <td colspan="4">{{ $dados }}</td>
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
+                <div class="card-footer">{{ $dados }}</div>
             </div>
         </div>
     </div>

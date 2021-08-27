@@ -56,10 +56,9 @@ class PermissionsController extends Controller
         try {
             $permissions = $request->get('permissions', []);
             $this->roleRepository->update_permissions($permissions, $role->id);
-            return redirect()->route('role.index')->with('message', 'Permissões atribuidas com sucesso.');
+            return redirect()->route('admin.role.index')->with('message', 'Permissões atribuidas com sucesso.');
         } catch (QueryException $e) {
             return redirect()->back()->with('message-danger', 'Não foi possível atribuir permissões')->withInput();
         }
-
     }
 }

@@ -3,7 +3,7 @@
 @section('content-title', "Permissões de {$role->name}")
 
 @section('breadcrumbs')
-    @include('inspinia::layouts.main-panel.breadcrumbs', [
+    @include('layout.breadcrumbs', [
       'breadcrumbs' => [
         (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
         (object) [ 'title' => 'Permissões', 'url' => route('admin.role.index') ],
@@ -16,54 +16,53 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title bg-primary"><h5>Permissões de {{ $role->name }}</h5></div>
-
-                <div class="ibox-content">
-
-                    {!! Form::open(['route' => ['admin.role.permission.update', $role], 'method' => 'PUT']) !!}
-
-                    <ul class="list-group">
+            {!! Form::open(['route' => ['admin.role.permission.update', $role], 'method' => 'PUT']) !!}
+            <div class="card">
+                <div class="card-body">
+                    <div class="list-group">
                         @foreach($permissionsGroup as $pg)
-                            <li class="list-group-item">
-                                <h3 class="list-group-item-heading">{{ $pg->description }}</h3>
-                                <div class="hr-line-dashed m-t-none"></div>
-                                <p class="list-group-item-text">
-                                <ul class="list-inline">
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1 text-gray">{{ $pg->description }}</h5>
+                                    <span class="badge badge-pill badge-secondary">{{ $pg->name }}</span>
+                                </div>
+
+                                <div class="list-group-item-text">
                                     <?php
                                     $permissionSubGroup = $permissions->filter(function ($value) use ($pg) {
                                         return $value->name == $pg->name;
                                     });
                                     ?>
                                     @foreach($permissionSubGroup as $permission)
-                                        <li>
-                                            <div class="checkbox-inline i-checks">
-                                                <label for="checkbox-{{$permission->id}}">
-                                                    <input type="checkbox" name="permissions[]"
-                                                           value="{{$permission->id}}"
-                                                           {{ $role->permissions->contains('id', $permission->id) ? 'checked="checked"' : '' }}
-                                                           id="checkbox-{{$permission->id}}"> {{ $permission->resource_description }}
-                                                </label>
-                                            </div>
-                                        </li>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="checkbox-{{$permission->id}}">
+                                                <input type="checkbox" name="permissions[]"
+                                                       class="form-check-input"
+                                                       value="{{$permission->id}}"
+                                                       {{ $role->permissions->contains('id', $permission->id) ? 'checked="checked"' : '' }}
+                                                       id="checkbox-{{$permission->id}}"> {{ $permission->resource_description }}
+                                            </label>
+                                        </div>
                                     @endforeach
-                                </ul>
-                                </p>
-                            </li>
-                        @endforeach
-                    </ul>
 
-                    <div class="hr-line-dashed"></div>
+                                </div>
+
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="card-footer">
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">
-                            <i class="fa fa-paper-plane-o"></i> Salvar
+                            <i class="mdi mdi-send"></i> Salvar
                         </button>
-                        <a href="{{ route('admin.role.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i>
-                            Voltar</a>
+                        <a href="{{ route('admin.role.index') }}" class="btn btn-secondary">
+                            <i class="mdi mdi-backup-restore"></i> Voltar
+                        </a>
                     </div>
-                    {!! Form::close() !!}
                 </div>
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection
