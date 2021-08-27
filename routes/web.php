@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('dashboard');
 });
@@ -112,3 +114,7 @@ Route::get('/clear-cache', function() {
 Route::any('/{page?}',function(){
     return View::make('pages.error.404');
 })->where('page','.*');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
