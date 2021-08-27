@@ -51,7 +51,7 @@ class RolesController extends Controller
     {
         try {
             $this->repository->create($request->all());
-            return redirect()->route('role.index')->with('message', 'Role cadastrada com sucesso.');
+            return redirect()->route('admin.role.index')->with('message', 'Role cadastrada com sucesso.');
         } catch (\Exception $e) {
             return redirect()->back()->with('message-danger', 'Erro ao tentar cadastrar role' . $e->getMessage())->withInput();
         }
@@ -79,7 +79,7 @@ class RolesController extends Controller
         try {
             $inputs = $request->except('permissions');
             $this->repository->update($inputs, $id);
-            return redirect()->route('role.index')->with('message', 'Role alterada com sucesso.');
+            return redirect()->route('admin.role.index')->with('message', 'Role alterada com sucesso.');
         } catch (\Exception $e) {
             return redirect()->back()->with('message-danger', 'Erro ao tentar alterar role')->withInput();
         }
@@ -94,7 +94,7 @@ class RolesController extends Controller
     {
         try {
             $this->repository->delete($id);
-            return redirect()->route('role.index')->with('message', 'Role excluída com sucesso.');
+            return redirect()->back()->with('message', 'Role excluída com sucesso.');
         } catch (\Exception $e) {
             return redirect()->back()->with('message-danger', 'Erro ao tentar excluir role');
         }

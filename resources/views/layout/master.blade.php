@@ -36,6 +36,9 @@
     <div class="page-wrapper">
         @include('layout.header')
         <div class="page-content">
+
+            @include('alerts.message')
+
             @section('breadcrumbs')
                 <nav class="page-breadcrumb">
                     <ol class="breadcrumb">

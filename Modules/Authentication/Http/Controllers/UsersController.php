@@ -52,7 +52,7 @@ class UsersController extends Controller
             \DB::transaction(function () use ($request) {
                 $this->repository->create($request->all());
             });
-            return redirect()->route('user.index')->with('message', 'Usuário cadastrado com sucesso.');
+            return redirect()->route('admin.user.index')->with('message', 'Usuário cadastrado com sucesso.');
         } catch (\Exception $e) {
             return redirect()->back()->with('message-danger', 'Erro ao tentar cadastrar usuário' . $e->getMessage())->withInput();
         }
@@ -77,7 +77,7 @@ class UsersController extends Controller
             \DB::transaction(function () use ($request, $id) {
                 $this->repository->update($request->all(), $id);
             });
-            return redirect()->route('user.index')->with('message', 'Usuário alterado com sucesso.');
+            return redirect()->route('admin.user.index')->with('message', 'Usuário alterado com sucesso.');
         } catch (\Exception $e) {
             return redirect()->back()->with('message-danger', 'Erro ao tentar alterar usuário')->withInput();
         }
@@ -92,7 +92,7 @@ class UsersController extends Controller
             \DB::transaction(function () use ($id) {
                 $this->repository->delete($id);
             });
-            return redirect()->route('user.index')->with('message', 'Usuário excluído com sucesso.');
+            return redirect()->back()->with('message', 'Usuário excluído com sucesso.');
         } catch (\Exception $e) {
             return redirect()->back()->with('message-danger', 'Erro ao tentar excluir usuário');
         }

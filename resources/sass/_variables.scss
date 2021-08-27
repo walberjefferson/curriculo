@@ -66,8 +66,8 @@ $theme-gradient-colors: (
 // Color system
 
 // Color variables
-$content-bg: #f9fafb;
-$border-color: #e8ebf1;
+$content-bg: #F3F4F6;
+$border-color: #E5E7EB;
 // Color variables
 
 // Social colors
@@ -87,7 +87,8 @@ $social-colors: (
 // Social colors
 
 // Font
-$type1: 'Overpass', sans-serif;
+//$type1: 'Overpass', sans-serif;
+$type1: 'Lato', 'Open Sans', 'Roboto', sans-serif;
 
 $default-font-size: .875rem; // 14px as base font size
 $default-font-weight: 400;

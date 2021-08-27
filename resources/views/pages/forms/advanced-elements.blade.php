@@ -312,6 +312,7 @@
   <script src="{{ asset('assets/plugins/dropify/js/dropify.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ asset('assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.js') }}"></script>
 @endpush

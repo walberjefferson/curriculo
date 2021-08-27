@@ -1,12 +1,12 @@
 @extends('layout.master')
 
-@section('content-title', 'Papeis de Usuário')
+@section('content-title', 'Editar papel de usuário')
 
 @section('breadcrumbs')
-    @include('inspinia::layouts.main-panel.breadcrumbs', [
+    @include('layout.breadcrumbs', [
       'breadcrumbs' => [
-        (object) [ 'title' => 'Painel', 'url' => route('home') ],
-        (object) [ 'title' => 'Papel de Usuário', 'url' => route('role.index') ],
+        (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
+        (object) [ 'title' => 'Papel de Usuário', 'url' => route('admin.role.index') ],
         (object) [ 'title' => 'Editar', 'url' => '' ],
       ]
     ])
@@ -16,20 +16,19 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title bg-primary"><h5>Editar papel de usuário</h5></div>
+            <div class="card">
+                <div class="card-body">
 
-                <div class="ibox-content">
-
-                    {!! Form::model($dados, ['route' => ['role.update', $dados->id], 'method' => 'PUT']) !!}
+                    {!! Form::model($dados, ['route' => ['admin.role.update', $dados->id], 'method' => 'PUT']) !!}
                     @include('authentication::roles._form')
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">
-                            <i class="fa fa-paper-plane-o"></i> Salvar
+                            <i class="mdi mdi-send"></i> Salvar
                         </button>
-                        <a href="{{ route('role.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i>
-                            Voltar</a>
+                        <a href="{{ route('admin.role.index') }}" class="btn btn-secondary">
+                            <i class="mdi mdi-backup-restore"></i> Voltar
+                        </a>
                     </div>
                     {!! Form::close() !!}
 
