@@ -11,8 +11,18 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('dashboard');
+});
+
+Route::group(['prefix' => 'icons'], function(){
+    Route::get('feather-icons', function () {
+        View::make('pages.icons.feather-icons');
+    });
+    Route::get('flag-icons', function () { return view('pages.icons.flag-icons'); });
+    Route::get('mdi-icons', function () { return view('pages.icons.mdi-icons'); });
 });
 
 Route::group(['prefix' => 'email'], function(){
@@ -78,12 +88,6 @@ Route::group(['prefix' => 'tables'], function(){
     Route::get('data-table', function () { return view('pages.tables.data-table'); });
 });
 
-Route::group(['prefix' => 'icons'], function(){
-    Route::get('feather-icons', function () { return view('pages.icons.feather-icons'); });
-    Route::get('flag-icons', function () { return view('pages.icons.flag-icons'); });
-    Route::get('mdi-icons', function () { return view('pages.icons.mdi-icons'); });
-});
-
 Route::group(['prefix' => 'general'], function(){
     Route::get('blank-page', function () { return view('pages.general.blank-page'); });
     Route::get('faq', function () { return view('pages.general.faq'); });
@@ -112,3 +116,7 @@ Route::get('/clear-cache', function() {
 Route::any('/{page?}',function(){
     return View::make('pages.error.404');
 })->where('page','.*');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
