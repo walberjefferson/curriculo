@@ -1,7 +1,7 @@
 <nav class="sidebar">
   <div class="sidebar-header">
     <a href="#" class="sidebar-brand">
-      Noble<span>UI</span>
+      Currículo <span>SIS</span>
     </a>
     <div class="sidebar-toggler not-active">
       <span></span>
@@ -15,7 +15,7 @@
       <li class="nav-item {{ active_class(['/']) }}">
         <a href="{{ url('/') }}" class="nav-link">
           <i class="link-icon" data-feather="box"></i>
-          <span class="link-title">Dashboard</span>
+          <span class="link-title">Painel</span>
         </a>
       </li>
       <li class="nav-item nav-category">web apps</li>
@@ -302,17 +302,10 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item nav-category">Docs</li>
-      <li class="nav-item">
-        <a href="https://www.nobleui.com/laravel/documentation/docs.html" target="_blank" class="nav-link">
-          <i class="link-icon" data-feather="hash"></i>
-          <span class="link-title">Documentation</span>
-        </a>
-      </li>
     </ul>
   </div>
 </nav>
-<nav class="settings-sidebar">
+<nav class="d-none settings-sidebar">
   <div class="sidebar-body">
     <a href="#" class="settings-sidebar-toggler">
       <i data-feather="settings"></i>

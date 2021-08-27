@@ -12,10 +12,10 @@ License: You must have a valid license purchased only from https://themeforest.n
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- CSRF Token -->
   <meta name="_token" content="{{ csrf_token() }}">
-  
+
   <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
   <!-- plugin css -->
@@ -32,7 +32,7 @@ License: You must have a valid license purchased only from https://themeforest.n
 
   @stack('style')
 </head>
-<body data-base-url="{{url('/')}}">
+<body data-base-url="{{url('/')}}" class="sidebar-dark">
 
   <script src="{{ asset('assets/js/spinner.js') }}"></script>
 
