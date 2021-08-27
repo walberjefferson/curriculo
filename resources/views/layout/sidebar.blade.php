@@ -302,6 +302,24 @@
           </ul>
         </div>
       </li>
+        <li class="nav-item nav-category">Configurações</li>
+        <li class="nav-item {{ active_class(['admin/user/*', 'admin/role/*']) }}">
+            <a class="nav-link" data-toggle="collapse" href="#configuracoes" role="button" aria-expanded="{{ is_active_route(['admin/user/*', 'admin/role/*']) }}" aria-controls="general">
+                <i class="link-icon" data-feather="book"></i>
+                <span class="link-title">Configurações</span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse {{ show_class(['admin/user/*', 'admin/role/*']) }}" id="configuracoes">
+                <ul class="nav sub-menu">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.user.index') }}" class="nav-link {{ active_class(['admin/user/*']) }}">Usuários</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.role.index') }}" class="nav-link {{ active_class(['admin/role/*']) }}">Perfis</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
     </ul>
   </div>
 </nav>
