@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
          $this->call(AuthenticationDatabaseSeeder::class);
          $this->call(SexoTableSeeder::class);
          $this->call(EstadoCivilTableSeeder::class);
-         $this->call(EstadoTableSeeder::class);
-         $this->call(CidadeTableSeeder::class);
+        $this->call(EscolaridadeTableSeeder::class);
+        $this->call(HabilidadeTableSeeder::class);
+        $this->call(EstadoTableSeeder::class);
+        $this->call(CidadeTableSeeder::class);
     }
 }
