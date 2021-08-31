@@ -358,6 +358,47 @@
 {{--                    </ul>--}}
 {{--                </div>--}}
 {{--            </li>--}}
+            <li class="nav-item nav-category">Geral</li>
+            <li class="nav-item {{ active_class(['admin.user.*', 'admin.role.*']) }}">
+                <a class="nav-link" data-toggle="collapse" href="#cadastros" role="button"
+                   aria-expanded="{{ is_active_route(['admin.user.*', 'admin.role.*']) }}" aria-controls="cadastros">
+                    <i class="link-icon mdi mdi-cog" ></i>
+                    <span class="link-title">Cadastros</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['admin.sexo.*', 'admin.escolaridade.*']) }}" id="cadastros">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.sexo.index') }}"
+                               class="nav-link {{ active_class(['admin.sexo.*']) }}">Sexo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.escolaridade.index') }}"
+                               class="nav-link {{ active_class(['admin.escolaridade.*']) }}">Escolaridade</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.role.index') }}"
+                               class="nav-link {{ active_class(['admin.role.*']) }}">Habilidades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.role.index') }}"
+                               class="nav-link {{ active_class(['admin.role.*']) }}">Experiências</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.role.index') }}"
+                               class="nav-link {{ active_class(['admin.role.*']) }}">Estado Civil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.role.index') }}"
+                               class="nav-link {{ active_class(['admin.role.*']) }}">Estados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.role.index') }}"
+                               class="nav-link {{ active_class(['admin.role.*']) }}">Cidades</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             <li class="nav-item nav-category">Configurações</li>
             <li class="nav-item {{ active_class(['admin.user.*', 'admin.role.*']) }}">
                 <a class="nav-link" data-toggle="collapse" href="#configuracoes" role="button"
