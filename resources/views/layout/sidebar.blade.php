@@ -359,14 +359,14 @@
 {{--                </div>--}}
 {{--            </li>--}}
             <li class="nav-item nav-category">Geral</li>
-            <li class="nav-item {{ active_class(['admin.user.*', 'admin.role.*']) }}">
+            <li class="nav-item {{ active_class(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*']) }}">
                 <a class="nav-link" data-toggle="collapse" href="#cadastros" role="button"
-                   aria-expanded="{{ is_active_route(['admin.user.*', 'admin.role.*', 'admin.habilidade.*']) }}" aria-controls="cadastros">
+                   aria-expanded="{{ is_active_route(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*']) }}" aria-controls="cadastros">
                     <i class="link-icon mdi mdi-cog" ></i>
                     <span class="link-title">Cadastros</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse {{ show_class(['admin.sexo.*', 'admin.escolaridade.*']) }}" id="cadastros">
+                <div class="collapse {{ show_class(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*']) }}" id="cadastros">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ route('admin.sexo.index') }}"
