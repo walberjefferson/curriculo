@@ -8,7 +8,7 @@ use App\Contracts\Repositories\SexoRepository;
 
 class SexoController extends Controller
 {
-    private SexoRepository $repository;
+    private $repository;
 
     public function __construct(SexoRepository $repository)
     {

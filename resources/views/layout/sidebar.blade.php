@@ -361,7 +361,7 @@
             <li class="nav-item nav-category">Geral</li>
             <li class="nav-item {{ active_class(['admin.user.*', 'admin.role.*']) }}">
                 <a class="nav-link" data-toggle="collapse" href="#cadastros" role="button"
-                   aria-expanded="{{ is_active_route(['admin.user.*', 'admin.role.*']) }}" aria-controls="cadastros">
+                   aria-expanded="{{ is_active_route(['admin.user.*', 'admin.role.*', 'admin.habilidade.*']) }}" aria-controls="cadastros">
                     <i class="link-icon mdi mdi-cog" ></i>
                     <span class="link-title">Cadastros</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -377,8 +377,8 @@
                                class="nav-link {{ active_class(['admin.escolaridade.*']) }}">Escolaridade</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.role.index') }}"
-                               class="nav-link {{ active_class(['admin.role.*']) }}">Habilidades</a>
+                            <a href="{{ route('admin.habilidade.index') }}"
+                               class="nav-link {{ active_class(['admin.habilidade.*']) }}">Habilidades</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.role.index') }}"

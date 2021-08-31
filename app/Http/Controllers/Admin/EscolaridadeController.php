@@ -8,7 +8,7 @@ use App\Contracts\Repositories\EscolaridadeRepository;
 
 class EscolaridadeController extends Controller
 {
-    private EscolaridadeRepository $repository;
+    private $repository;
 
     public function __construct(EscolaridadeRepository $repository)
     {
