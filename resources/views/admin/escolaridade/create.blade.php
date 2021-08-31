@@ -1,12 +1,12 @@
 @extends('layout.master')
 
-@section('content-title', 'Adicionar novo usuário')
+@section('content-title', 'Adicionar Escolaridade')
 
 @section('breadcrumbs')
     @include('layout.breadcrumbs', [
       'breadcrumbs' => [
         (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
-        (object) [ 'title' => 'Usuários', 'url' => route('admin.user.index') ],
+        (object) [ 'title' => 'Escolaridade', 'url' => route('admin.escolaridade.index') ],
         (object) [ 'title' => 'Novo', 'url' => '' ],
       ]
     ])

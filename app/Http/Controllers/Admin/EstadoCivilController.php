@@ -1,42 +1,61 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Contracts\Repositories\EstadoCivilRepository;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\EstadoCivilRequest;
 
 class EstadoCivilController extends Controller
 {
+    private $repository;
+
+    public function __construct(EstadoCivilRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function index()
     {
-        return view('');
+        $dados = $this->repository->orderBy('codigo')->paginate();
+        return view('admin.estado_civil.index', compact('dados'));
     }
 
     public function create()
     {
-        return view('');
+        return view('admin.estado_civil.create');
     }
 
-    public function store(Request $request)
+    public function store(EstadoCivilRequest $request)
     {
         try {
             \DB::beginTransaction();
+            $this->repository->create($request->validated());
             \DB::commit();
-            return $request->all();
+            return redirect()->route('admin.estado_civil.index')->with('message', 'Sexo adicionado com sucesso.');
         } catch (\Exception $e) {
             \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', '');
+            return redirect()->back()->withInput()->with('message-danger', 'Erro ao tentar cadastrar sexo.');
         }
     }
 
-    public function update(Request $request, $id)
+    public function edit($uuid)
+    {
+        $dados = $this->repository->findByField('uuid', $uuid)->first();
+        return view('admin.estado_civil.edit', compact('dados'));
+    }
+
+    public function update(EstadoCivilRequest $request, $uuid)
     {
         try {
             \DB::beginTransaction();
+            $info = $this->repository->findByField('uuid', $uuid)->first();
+            $this->repository->update($request->validated(), $info->id);
             \DB::commit();
-            return $request->all();
+            return redirect()->route('admin.estado_civil.index')->with('message', 'Sexo atualizado com sucesso.');
         } catch (\Exception $e) {
             \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', '');
+            return redirect()->back()->withInput()->with('message-danger', 'Erro ao tentar atualizar sexo.');
         }
     }
 
@@ -44,11 +63,13 @@ class EstadoCivilController extends Controller
     {
         try {
             \DB::beginTransaction();
+            $info = $this->repository->findByField('uuid', $uuid)->first();
+            $this->repository->delete($info->id);
             \DB::commit();
-            return $uuid;
+            return redirect()->back()->with('message-warning', 'Sexo removido com sucesso.');
         } catch (\Exception $e) {
             \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', '');
+            return redirect()->back()->with('message-danger', 'Erro ao tentar excluir sexo.');
         }
     }
 }

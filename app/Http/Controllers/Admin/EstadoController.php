@@ -1,54 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Contracts\Repositories\EstadoRepository;
+use App\Http\Controllers\Controller;
 
 class EstadoController extends Controller
 {
+    private $repository;
+
+    public function __construct(EstadoRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function index()
     {
-        return view('');
-    }
-
-    public function create()
-    {
-        return view('');
-    }
-
-    public function store(Request $request)
-    {
-        try {
-            \DB::beginTransaction();
-            \DB::commit();
-            return $request->all();
-        } catch (\Exception $e) {
-            \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', '');
-        }
-    }
-
-    public function update(Request $request, $id)
-    {
-        try {
-            \DB::beginTransaction();
-            \DB::commit();
-            return $request->all();
-        } catch (\Exception $e) {
-            \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', '');
-        }
-    }
-
-    public function destroy($uuid)
-    {
-        try {
-            \DB::beginTransaction();
-            \DB::commit();
-            return $uuid;
-        } catch (\Exception $e) {
-            \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', '');
-        }
+        $dados = $this->repository->withCount('cidades')->orderBy('nome')->paginate();
+        return view('admin.estado.index', compact('dados'));
     }
 }

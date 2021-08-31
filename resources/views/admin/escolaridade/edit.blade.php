@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('content-title', 'Editar usuário')
+@section('content-title', 'Editar Escolaridade')
 
 @section('breadcrumbs')
     @include('layout.breadcrumbs', [
