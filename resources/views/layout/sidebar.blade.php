@@ -358,6 +358,14 @@
 {{--                    </ul>--}}
 {{--                </div>--}}
 {{--            </li>--}}
+            <li class="nav-item nav-category">Currículos</li>
+            <li class="nav-item {{ active_class(['admin.curriculo.*']) }}">
+                <a href="{{ route('admin.curriculo.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="users"></i>
+                    <span class="link-title">Pessoas</span>
+                </a>
+            </li>
+
             <li class="nav-item nav-category">Geral</li>
             <li class="nav-item {{ active_class(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*', 'admin.estado_civil.*', 'admin.estado.*', 'admin.cidade.*']) }}">
                 <a class="nav-link" data-toggle="collapse" href="#cadastros" role="button"

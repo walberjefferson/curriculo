@@ -18,7 +18,7 @@ class Pessoa extends Model implements Transformable
 {
     use TransformableTrait, SoftDeletes, Uuid, SaveToUpper;
 
-    protected $table = 'cidade';
+    protected $table = 'pessoa';
     protected $no_upper = ['uuid'];
     protected $fillable = [
         'nome', 'data_nascimento', 'sexo_id', 'cpf', 'cnh', 'categoria_cnh', 'pcd', 'telefone', 'whatsapp', 'endereco',

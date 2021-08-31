@@ -6,7 +6,6 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Contracts\Repositories\PessoaRepository;
 use App\Models\Pessoa;
-use App\Validators\PessoaValidator;
 
 /**
  * Class PessoaRepositoryEloquent.
@@ -25,7 +24,7 @@ class PessoaRepositoryEloquent extends BaseRepository implements PessoaRepositor
         return Pessoa::class;
     }
 
-    
+
 
     /**
      * Boot up the repository, pushing criteria
@@ -34,5 +33,5 @@ class PessoaRepositoryEloquent extends BaseRepository implements PessoaRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }
