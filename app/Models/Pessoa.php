@@ -23,7 +23,7 @@ class Pessoa extends Model implements Transformable
     protected $fillable = [
         'nome', 'data_nascimento', 'sexo_id', 'cpf', 'cnh', 'categoria_cnh', 'pcd', 'telefone', 'whatsapp', 'endereco',
         'endereco_numero', 'complemento', 'ponto_referencia', 'instagram', 'outras_informacoes', 'foto', 'ativo',
-        'outra_habilidade', 'escolaridade_id', 'estado_id', 'cidade_id', 'estado_civil_id'
+        'outra_habilidade', 'filhos', 'filhos_quantidade', 'escolaridade_id', 'estado_id', 'cidade_id', 'estado_civil_id'
     ];
     protected $dates = ['deleted_at'];
 

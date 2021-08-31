@@ -40,6 +40,8 @@ class CreatePessoasTable extends Migration
             $table->foreignId('escolaridade_id')->constrained('escolaridade');
             $table->foreignId('estado_civil_id')->constrained('estado_civil');
             $table->boolean('ativo')->default(true);
+            $table->boolean('filhos')->default(false);
+            $table->integer('filhos_quantidade')->nullable();
             $table->timestamps();
             $table->softDeletes();
 		});
