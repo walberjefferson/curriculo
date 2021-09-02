@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CurriculoRequest;
 use App\Http\Requests\EscolaridadeRequest;
 use App\Contracts\Repositories\PessoaRepository;
+use App\Models\Escolaridade;
+use App\Models\Estado;
+use App\Models\EstadoCivil;
+use App\Models\Sexo;
 
 class CurriculoController extends Controller
 {
@@ -23,10 +28,14 @@ class CurriculoController extends Controller
 
     public function create()
     {
-        return view('admin.pessoa.create');
+        $sexo = Sexo::query()->orderBy('nome')->pluck('nome', 'id');
+        $estado = Estado::query()->orderBy('nome')->pluck('nome', 'id');
+        $escolaridade = Escolaridade::query()->orderBy('codigo')->pluck('nome', 'id');
+        $estadoCivil = EstadoCivil::query()->orderBy('codigo')->pluck('nome', 'id');
+        return view('admin.pessoa.create', compact('sexo', 'estado', 'escolaridade', 'estadoCivil'));
     }
 
-    public function store(EscolaridadeRequest $request)
+    public function store(CurriculoRequest $request)
     {
         try {
             \DB::beginTransaction();
@@ -45,7 +54,7 @@ class CurriculoController extends Controller
         return view('admin.pessoa.edit', compact('dados'));
     }
 
-    public function update(EscolaridadeRequest $request, $uuid)
+    public function update(CurriculoRequest $request, $uuid)
     {
         try {
             \DB::beginTransaction();

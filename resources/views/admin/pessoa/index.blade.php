@@ -30,8 +30,10 @@
                             <thead>
                             <tr>
                                 <th width="3%" class="text-center">#</th>
-                                <th width="5%" class="text-center">Código</th>
                                 <th>Nome</th>
+                                <th width="5%" class="text-center">Sexo</th>
+                                <th width="5%" class="text-center">Escolaridade</th>
+                                <th width="5%" class="text-center">Estado Cívil</th>
                                 @canany(['admin-escolaridade/edit', 'admin-escolaridade/delete'])
                                     <th width="8%" nowrap>Ações</th>
                                 @endcanany
@@ -41,9 +43,11 @@
                             @foreach($dados as $d)
                                 <tr>
                                     <td nowrap class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center" nowrap>{{ $d->codigo }}</td>
                                     <td nowrap>{{ $d->nome }}</td>
-                                    @canany(['admin-escolaridade/edit', 'admin-escolaridade/delete'])
+                                    <td class="text-center" nowrap>{{ $d->sexo ? $d->sexo['nome'] : '---' }}</td>
+                                    <td>{{ $d->escolaridade ? $d->escolaridade['nome'] : '---' }}</td>
+                                    <td>{{ $d->estado_civil ? $d->estado_civil['nome'] : '---' }}</td>
+                                @canany(['admin-escolaridade/edit', 'admin-escolaridade/delete'])
                                         <td>
                                             <div class="btn-group btn-group-sm">
                                                 @can('admin-escolaridade/edit')

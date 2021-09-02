@@ -1,12 +1,12 @@
 @extends('layout.master')
 
-@section('content-title', 'Adicionar Escolaridade')
+@section('content-title', 'Adicionar Currículo')
 
 @section('breadcrumbs')
     @include('layout.breadcrumbs', [
       'breadcrumbs' => [
         (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
-        (object) [ 'title' => 'Escolaridade', 'url' => route('admin.escolaridade.index') ],
+        (object) [ 'title' => 'Currículo', 'url' => route('admin.curriculo.index') ],
         (object) [ 'title' => 'Novo', 'url' => '' ],
       ]
     ])
@@ -18,14 +18,14 @@
             <div class="card">
                 <div class="card-body">
 
-                    {!! Form::open(['url' => route('admin.escolaridade.store')]) !!}
-                    @include('admin.escolaridade._form')
+                    {!! Form::open(['url' => route('admin.curriculo.store')]) !!}
+                    @include('admin.pessoa._form')
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">
                             <i class="mdi mdi-send"></i> Salvar
                         </button>
-                        <a href="{{ route('admin.escolaridade.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('admin.curriculo.index') }}" class="btn btn-secondary">
                             <i class="mdi mdi-backup-restore"></i> Voltar</a>
                     </div>
                     {!! Form::close() !!}
