@@ -278,12 +278,8 @@
 
 <script>
 import axios from 'axios';
-import Inputmask from "inputmask";
 import { Cropper } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
-
-const cpf = new Inputmask("000.000.000-00");
-const telefone = new Inputmask("(99) 9999[9]-9999");
 
 export default {
     name: "PessoaForm",
@@ -359,7 +355,7 @@ export default {
             });
         },
         getCidades() {
-            axios.post('/api/cidade', {estado_ids: this.form.estado_id}).then(({data}) => {
+            axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
                 this.form.cidade_id = null;
                 this.cidades = data;
             }).catch(({response}) => {
