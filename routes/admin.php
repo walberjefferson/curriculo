@@ -13,3 +13,11 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
     Route::resource('cidade', \App\Http\Controllers\Admin\CidadeController::class)->only('index');
     Route::resource('curriculo', \App\Http\Controllers\Admin\CurriculoController::class);
 });
+
+Route::prefix('api')->as('api.')->middleware('auth')->group(function () {
+    Route::get('sexo', [\App\Http\Controllers\Api\SexoController::class, 'index']);
+    Route::get('estado', [\App\Http\Controllers\Api\EstadoController::class, 'index']);
+    Route::get('estado_civil', [\App\Http\Controllers\Api\EstadoCivilController::class, 'index']);
+    Route::get('escolaridade', [\App\Http\Controllers\Api\EscolaridadeController::class, 'index']);
+    Route::post('cidade', [\App\Http\Controllers\Api\CidadeController::class, 'index']);
+});

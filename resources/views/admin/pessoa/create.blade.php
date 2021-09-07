@@ -19,7 +19,11 @@
                 <div class="card-body">
 
                     {!! Form::open(['url' => route('admin.curriculo.store')]) !!}
-                    @include('admin.pessoa._form')
+
+                    <div id="form_pessoa">
+                        <pessoa-form></pessoa-form>
+                    </div>
+{{--                    @include('admin.pessoa._form')--}}
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">
@@ -35,3 +39,7 @@
         </div>
     </div>
 @endsection
+
+@push('custom-scripts')
+    <script src="{{ asset('js/pessoa.js') }}"></script>
+@endpush
