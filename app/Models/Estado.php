@@ -20,6 +20,6 @@ class Estado extends Model implements Transformable
 
     public function cidades()
     {
-        return $this->belongsTo(Cidade::class, 'estado_id');
+        return $this->hasMany(Cidade::class, 'estado_id');
     }
 }

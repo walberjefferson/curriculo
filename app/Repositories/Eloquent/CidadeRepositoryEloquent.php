@@ -9,6 +9,11 @@ use App\Models\Cidade;
 
 class CidadeRepositoryEloquent extends BaseRepository implements CidadeRepository
 {
+    protected $fieldSearchable = [
+        'nome' => 'like',
+        'estado.nome' => 'like',
+        'estado.uf'
+    ];
     /**
      * Specify Model class name
      *

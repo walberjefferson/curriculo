@@ -13,18 +13,17 @@ class EstadoCivilTableSeeder extends Seeder
     public function run()
     {
         $dados = [
-            'Solteiro(a)',
-            'Casado(a)',
-            'Divorciado(a)',
-            'Viúvo(a)',
-            'Separado(a)',
-            'Companheiro(a)',
+            ['codigo' => '001', 'nome' => 'Solteiro(a)'],
+            ['codigo' => '002', 'nome' => 'Casado(a)'],
+            ['codigo' => '003', 'nome' => 'Divorciado(a)'],
+            ['codigo' => '004', 'nome' => 'Viúvo(a)'],
+            ['codigo' => '005', 'nome' => 'Separado(a)'],
+            ['codigo' => '006', 'nome' => 'Companheiro(a)'],
         ];
 
         $rows = 0;
         foreach ($dados as $d) {
-            $d = trim(mb_strtoupper($d));
-            EstadoCivil::query()->updateOrCreate(['nome' => mb_strtoupper($d)], ['nome' => $d]);
+            EstadoCivil::query()->updateOrCreate(['codigo' => $d['codigo']], $d);
             $rows++;
         }
 

@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center flex-row">
-    <div><strong>Total de Registros {{ $paginator->total() }}</strong></div>
+    <div><strong>Total de Registros: {{ $paginator->total() }}</strong></div>
     @if ($paginator->hasPages())
         <nav>
             <ul class="pagination mb-0">

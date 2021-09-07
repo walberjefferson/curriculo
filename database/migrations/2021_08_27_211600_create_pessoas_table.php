@@ -33,11 +33,15 @@ class CreatePessoasTable extends Migration
             $table->string('ponto_referencia', 80)->nullable();
             $table->string('instagram', 90)->nullable();
             $table->text('outras_informacoes')->nullable();
+            $table->string('outra_habilidade', 90)->nullable();
             $table->string('foto', 100)->nullable();
             $table->foreignId('estado_id')->constrained('estado');
             $table->foreignId('cidade_id')->constrained('cidade');
             $table->foreignId('escolaridade_id')->constrained('escolaridade');
             $table->foreignId('estado_civil_id')->constrained('estado_civil');
+            $table->boolean('ativo')->default(true);
+            $table->boolean('filhos')->default(false);
+            $table->integer('filhos_quantidade')->nullable();
             $table->timestamps();
             $table->softDeletes();
 		});
