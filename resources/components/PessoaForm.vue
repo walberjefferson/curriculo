@@ -2,26 +2,29 @@
     <div>
         <div class="row">
             <div class="col-md-2">
-
+                <b-img :blank="true" fluid width="300" height="400" blank-color="#CCC" alt="HEX shorthand color image (#777)"></b-img>
             </div>
             <div class="col-md-10">
 
                 <h6 class="card-title text-primary">Dados Pessoais</h6>
 
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <b-form-group label="Nome" label-for="nome" label-class="text-muted">
                             <b-form-input id="nome" v-model="form.nome" type="text" required/>
                         </b-form-group>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <b-form-group label="Data Nascimento" label-for="data_nascimento" label-class="text-muted">
-                            <b-form-input id="data_nascimento" v-model="form.data_nascimento" type="date" required/>
+                            <b-form-datepicker
+                                :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+                                placeholder="Data Nascimento" id="data_nascimento" v-model="form.data_nascimento"
+                                locale="pt-br"></b-form-datepicker>
                         </b-form-group>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <b-form-group label="Sexo" label-for="sexo" label-class="text-muted">
                             <b-form-select
                                 id="sexo"
@@ -36,28 +39,6 @@
                                 </template>
                             </b-form-select>
                         </b-form-group>
-                    </div>
-
-
-                    <div class="col-md-3 form-group">
-                        <label class="text-muted">
-                            <abbr title="Portador de Deficiência Física" class="initialism">PCD</abbr>
-                            - (Portador de Deficiência Física)
-                        </label>
-                        <div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" v-model="form.pcd" type="radio" value="1">
-                                    Sim
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" v-model="form.pcd" type="radio" value="0">
-                                    Não
-                                </label>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
@@ -161,7 +142,28 @@
 
 
         <div class="row mt-2">
-            <div class="col-md-3 form-group">
+            <div class="col-md-4 form-group">
+                <label class="text-muted">
+                    <abbr title="Portador de Deficiência Física" class="initialism">PCD</abbr>
+                    - (Portador de Deficiência Física)
+                </label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" v-model="form.pcd" type="radio" value="1">
+                            Sim
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" v-model="form.pcd" type="radio" value="0">
+                            Não
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 form-group">
                 <label class="text-muted"><abbr title="Carrteira Nacional de Habilitação" class="initialism">CNH</abbr>
                     - (Carrteira Nacional de
                     Habilitação)</label>
@@ -181,13 +183,7 @@
                 </div>
             </div>
 
-            <div v-if="form.cnh" class="col-md-3">
-                <b-form-group label="Categoria CNH" label-for="categoria_cnh" label-class="text-muted">
-                    <b-form-input id="categoria_cnh" v-model="form.categoria_cnh" type="text"/>
-                </b-form-group>
-            </div>
-
-            <div class="col-md-3 form-group">
+            <div class="col-md-4 form-group">
                 <label class="text-muted">Tem filhos?</label>
                 <div>
                     <div class="form-check form-check-inline">
@@ -205,10 +201,36 @@
                 </div>
             </div>
 
-            <div v-if="form.filhos" class="col-md-3">
-                <b-form-group label="Quantidade de Filhos" label-for="filhos_quantidade" label-class="text-muted">
-                    <b-form-input id="filhos_quantidade" v-model="form.filhos_quantidade" type="text"/>
-                </b-form-group>
+        </div>
+
+        <div v-if="form.cnh || form.filhos" class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div v-if="form.cnh">
+                    <b-form-group label="Categoria CNH" label-for="categoria_cnh" label-class="text-muted">
+                        <b-form-input id="categoria_cnh" v-model="form.categoria_cnh" type="text"/>
+                    </b-form-group>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div v-if="form.filhos">
+                    <b-form-group label="Quantidade de Filhos" label-for="filhos_quantidade" label-class="text-muted">
+                        <b-form-input id="filhos_quantidade" v-model="form.filhos_quantidade" type="text"/>
+                    </b-form-group>
+                </div>
+            </div>
+        </div>
+
+        <h6 class="card-title text-primary mt-3">Habilidades</h6>
+
+        <div class="row">
+            <div class="col-md-4" v-for="habilidade in habilidades" :key="habilidade.id">
+                <b-form-checkbox
+                    v-model="form.habilidades"
+                    :value="habilidade.id"
+                >
+                    {{ habilidade.nome }}
+                </b-form-checkbox>
             </div>
         </div>
 
@@ -293,6 +315,7 @@ export default {
         estados_civis: [],
         escolaidades: [],
         cidades: [],
+        habilidades: [],
         default: {
             id: undefined,
             nome: null,
@@ -316,9 +339,10 @@ export default {
             ponto_referrencia: null,
             complemento: null,
             outras_informacoes: null,
+            habilidades: [],
             experiencias: [
-                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null},
-                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null}
+                { cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null },
+                { cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null }
             ]
         }
     }),
@@ -327,38 +351,45 @@ export default {
             this.form = Object.assign({}, this.default);
         },
         getEstados() {
-            axios.get('/api/estado').then(({data}) => {
+            axios.get('/api/estado').then(({ data }) => {
                 this.estados = data;
-            }).catch(({response}) => {
+            }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
             })
         },
+        getHabilidades() {
+            axios.get('/api/habilidade').then(({ data }) => {
+                this.habilidades = data;
+            }).catch(({ response }) => {
+                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
+            })
+        },
         getSexo() {
-            axios.get('/api/sexo').then(({data}) => {
+            axios.get('/api/sexo').then(({ data }) => {
                 this.sexos = data;
-            }).catch(({response}) => {
+            }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
             })
         },
         getEscolaridades() {
-            axios.get('/api/escolaridade').then(({data}) => {
+            axios.get('/api/escolaridade').then(({ data }) => {
                 this.escolaidades = data;
-            }).catch(({response}) => {
+            }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
             });
         },
         getEstadoCivil() {
-            axios.get('/api/estado_civil').then(({data}) => {
+            axios.get('/api/estado_civil').then(({ data }) => {
                 this.estados_civis = data;
-            }).catch(({response}) => {
+            }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
             });
         },
         getCidades() {
-            axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
+            axios.post('/api/cidade', { estado_id: this.form.estado_id }).then(({ data }) => {
                 this.form.cidade_id = null;
                 this.cidades = data;
-            }).catch(({response}) => {
+            }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
             });
         }
@@ -370,6 +401,7 @@ export default {
         this.getSexo();
         this.getEscolaridades();
         this.getEstadoCivil();
+        this.getHabilidades();
     }
 }
 </script>

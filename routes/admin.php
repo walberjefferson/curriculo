@@ -19,5 +19,6 @@ Route::prefix('api')->as('api.')->middleware('auth')->group(function () {
     Route::get('estado', [\App\Http\Controllers\Api\EstadoController::class, 'index']);
     Route::get('estado_civil', [\App\Http\Controllers\Api\EstadoCivilController::class, 'index']);
     Route::get('escolaridade', [\App\Http\Controllers\Api\EscolaridadeController::class, 'index']);
+    Route::get('habilidade', [\App\Http\Controllers\Api\HabilidadesController::class, 'index']);
     Route::post('cidade', [\App\Http\Controllers\Api\CidadeController::class, 'index']);
 });
