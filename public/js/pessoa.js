@@ -2149,6 +2149,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2159,6 +2172,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      imagem: null,
+      imagem_cropper: null,
       form: {},
       sexos: [],
       estados: [],
@@ -2169,6 +2184,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": {
         id: undefined,
         nome: null,
+        foto: null,
         data_nascimento: null,
         sexo_id: null,
         pcd: null,
@@ -2207,12 +2223,17 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getFoto: function getFoto(event) {
+      console.log(event);
+      console.log(this.imagem);
+    },
     reset: function reset() {
       this.form = Object.assign({}, this["default"]);
     },
     getEstados: function getEstados() {
       var _this = this;
 
+      document.body.classList.remove('loaded');
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/estado').then(function (_ref) {
         var data = _ref.data;
         _this.estados = data;
@@ -2220,11 +2241,14 @@ __webpack_require__.r(__webpack_exports__);
         var response = _ref2.response;
 
         _this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
       });
     },
     getHabilidades: function getHabilidades() {
       var _this2 = this;
 
+      document.body.classList.remove('loaded');
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/habilidade').then(function (_ref3) {
         var data = _ref3.data;
         _this2.habilidades = data;
@@ -2232,11 +2256,14 @@ __webpack_require__.r(__webpack_exports__);
         var response = _ref4.response;
 
         _this2.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
       });
     },
     getSexo: function getSexo() {
       var _this3 = this;
 
+      document.body.classList.remove('loaded');
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/sexo').then(function (_ref5) {
         var data = _ref5.data;
         _this3.sexos = data;
@@ -2244,11 +2271,14 @@ __webpack_require__.r(__webpack_exports__);
         var response = _ref6.response;
 
         _this3.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
       });
     },
     getEscolaridades: function getEscolaridades() {
       var _this4 = this;
 
+      document.body.classList.remove('loaded');
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/escolaridade').then(function (_ref7) {
         var data = _ref7.data;
         _this4.escolaidades = data;
@@ -2256,11 +2286,14 @@ __webpack_require__.r(__webpack_exports__);
         var response = _ref8.response;
 
         _this4.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
       });
     },
     getEstadoCivil: function getEstadoCivil() {
       var _this5 = this;
 
+      document.body.classList.remove('loaded');
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/estado_civil').then(function (_ref9) {
         var data = _ref9.data;
         _this5.estados_civis = data;
@@ -2268,11 +2301,14 @@ __webpack_require__.r(__webpack_exports__);
         var response = _ref10.response;
 
         _this5.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
       });
     },
     getCidades: function getCidades() {
       var _this6 = this;
 
+      document.body.classList.remove('loaded');
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/cidade', {
         estado_id: this.form.estado_id
       }).then(function (_ref11) {
@@ -2283,16 +2319,31 @@ __webpack_require__.r(__webpack_exports__);
         var response = _ref12.response;
 
         _this6.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
       });
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     this.reset();
     this.getEstados();
     this.getSexo();
     this.getEscolaridades();
     this.getEstadoCivil();
     this.getHabilidades();
+  },
+  watch: {// imagem: (file) => {
+    //     if(file) {
+    //         console.log(file);
+    //
+    //         let reader  = new FileReader();
+    //
+    //         reader.onloadend = function () {
+    //             console.log(reader.result); //this is an ArrayBuffer
+    //         }
+    //         this.imagem_cropper = reader.readAsArrayBuffer(file);
+    //     }
+    // }
   }
 });
 
@@ -44682,6 +44733,33 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".vue-advanced-cropper {\n  text-align:
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n", "",{"version":3,"sources":["webpack://./resources/components/PessoaForm.vue"],"names":[],"mappings":";AA4cA;IACA,+BAAA;AACA","sourcesContent":["<template>\n    <div>\n        <b-modal id=\"modal-1\" title=\"Adicionar Foto\" size=\"lg\">\n            <cropper\n                class=\"cropper\"\n                :src=\"imagem_cropper\"\n                :stencil-props=\"{\n\t\t            aspectRatio: 3/4\n\t            }\"\n            />\n\n            <b-form-file @change=\"getFoto\" v-model=\"imagem\" placeholder=\"Adicionar foto\" accept=\".jpg, .jpeg, .png\"></b-form-file>\n        </b-modal>\n\n        <div class=\"row\">\n            <div class=\"col-md-2\">\n                <b-img :blank=\"true\" fluid width=\"300\" height=\"400\" blank-color=\"#CCC\" alt=\"HEX shorthand color image (#777)\"></b-img>\n                <b-button size=\"sm\" v-b-modal.modal-1 for=\"foto\" block>Adicionar</b-button>\n            </div>\n            <div class=\"col-md-10\">\n\n                <h6 class=\"card-title text-primary\">Dados Pessoais</h6>\n\n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <b-form-group label=\"Nome\" label-for=\"nome\" label-class=\"text-muted\">\n                            <b-form-input id=\"nome\" v-model=\"form.nome\" type=\"text\" required/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Data Nascimento\" label-for=\"data_nascimento\" label-class=\"text-muted\">\n                            <b-form-datepicker\n                                :date-format-options=\"{ year: 'numeric', month: 'numeric', day: 'numeric' }\"\n                                placeholder=\"Data Nascimento\" id=\"data_nascimento\" v-model=\"form.data_nascimento\"\n                                locale=\"pt-br\"></b-form-datepicker>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Sexo\" label-for=\"sexo\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"sexo\"\n                                v-model=\"form.sexo_id\"\n                                :options=\"sexos\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione o sexo</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"CPF\" label-for=\"cpf\" label-class=\"text-muted\">\n                            <b-form-input id=\"cpf\" v-model=\"form.cpf\" type=\"text\" ref=\"cpf\" required/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Perfil do Instagam (@)\" label-for=\"instagram\" label-class=\"text-muted\">\n                            <b-form-input id=\"instagram\" v-model=\"form.instagram\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Telefone\" label-for=\"telefone\" label-class=\"text-muted\">\n                            <b-form-input id=\"telefone\" v-model=\"form.telefone\" class=\"telefone\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"WhatsApp\" label-for=\"whatsapp\" label-class=\"text-muted\">\n                            <b-form-input id=\"whatsapp\" v-model=\"form.whatsapp\" class=\"telefone\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Escolaridade\" label-for=\"escolaridade\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"escolaridade\"\n                                v-model=\"form.escolaridade_id\"\n                                :options=\"escolaidades\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione a escolaridade</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Estado Cívil\" label-for=\"estado_civil_id\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"estado_civil_id\"\n                                v-model=\"form.estado_civil_id\"\n                                :options=\"estados_civis\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione o estado cívil</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-2\">\n                        <b-form-group label=\"Estado\" label-for=\"estado_id\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"estado_id\"\n                                v-model=\"form.estado_id\"\n                                :options=\"estados\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                                @change=\"getCidades\"\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione o estado</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-4\">\n                        <b-form-group label=\"Cidade\" label-for=\"cidade_id\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"cidade_id\"\n                                v-model=\"form.cidade_id\"\n                                :options=\"cidades\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione a cidade</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row mt-2\">\n            <div class=\"col-md-4 form-group\">\n                <label class=\"text-muted\">\n                    <abbr title=\"Portador de Deficiência Física\" class=\"initialism\">PCD</abbr>\n                    - (Portador de Deficiência Física)\n                </label>\n                <div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" value=\"1\">\n                            Sim\n                        </label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" value=\"0\">\n                            Não\n                        </label>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-md-4 form-group\">\n                <label class=\"text-muted\"><abbr title=\"Carrteira Nacional de Habilitação\" class=\"initialism\">CNH</abbr>\n                    - (Carrteira Nacional de\n                    Habilitação)</label>\n                <div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"true\">\n                            Sim\n                        </label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"false\">\n                            Não\n                        </label>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-md-4 form-group\">\n                <label class=\"text-muted\">Tem filhos?</label>\n                <div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"true\">\n                            Sim\n                        </label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"false\">\n                            Não\n                        </label>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n\n        <div v-if=\"form.cnh || form.filhos\" class=\"row\">\n            <div class=\"col-md-4\"></div>\n            <div class=\"col-md-4\">\n                <div v-if=\"form.cnh\">\n                    <b-form-group label=\"Categoria CNH\" label-for=\"categoria_cnh\" label-class=\"text-muted\">\n                        <b-form-input id=\"categoria_cnh\" v-model=\"form.categoria_cnh\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n            <div class=\"col-md-4\">\n                <div v-if=\"form.filhos\">\n                    <b-form-group label=\"Quantidade de Filhos\" label-for=\"filhos_quantidade\" label-class=\"text-muted\">\n                        <b-form-input id=\"filhos_quantidade\" v-model=\"form.filhos_quantidade\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Habilidades</h6>\n\n        <div class=\"row\">\n            <div class=\"col-md-4\" v-for=\"habilidade in habilidades\" :key=\"habilidade.id\">\n                <b-form-checkbox\n                    v-model=\"form.habilidades\"\n                    :value=\"habilidade.id\"\n                >\n                    {{ habilidade.nome }}\n                </b-form-checkbox>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Experiências</h6>\n\n        <div v-for=\"(experiencia, index) in form.experiencias\" :key=\"index\" class=\"row\">\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Cargo\" label-for=\"cargo\" label-class=\"text-muted\">\n                    <b-form-input id=\"cargo\" v-model=\"form.experiencias[index].cargo\" type=\"text\"/>\n                </b-form-group>\n            </div>\n            <div class=\"col-md-4\">\n                <b-form-group label=\"Empresa\" label-for=\"empresa\" label-class=\"text-muted\">\n                    <b-form-input id=\"empresa\" v-model=\"form.experiencias[index].empresa\" type=\"text\"/>\n                </b-form-group>\n            </div>\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Tempo de Seviço\" label-for=\"tempo_servico\" label-class=\"text-muted\">\n                    <b-form-input id=\"tempo_servico\" v-model=\"form.experiencias[index].tempo_servico\" type=\"text\"/>\n                </b-form-group>\n            </div>\n            <div class=\"col-md-2\">\n                <b-form-group label=\"Saída\" label-for=\"saida\" label-class=\"text-muted\">\n                    <b-form-input id=\"saida\" v-model=\"form.experiencias[index].saida\" type=\"text\"/>\n                </b-form-group>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Dados Postais</h6>\n\n        <div class=\"row\">\n            <div class=\"col-md-5\">\n                <b-form-group label=\"Endereço\" label-for=\"endereco\" label-class=\"text-muted\">\n                    <b-form-input id=\"endereco\" v-model=\"form.endereco\" type=\"text\"/>\n                </b-form-group>\n            </div>\n\n            <div class=\"col-md-1\">\n                <b-form-group label=\"Nº\" label-for=\"endereco_numero\" label-class=\"text-muted\">\n                    <b-form-input id=\"endereco_numero\" v-model=\"form.endereco_numero\" type=\"text\"/>\n                </b-form-group>\n            </div>\n\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Ponto de Referência\" label-for=\"ponto_referrencia\" label-class=\"text-muted\">\n                    <b-form-input id=\"ponto_referrencia\" v-model=\"form.ponto_referrencia\" type=\"text\"/>\n                </b-form-group>\n            </div>\n\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Complemento\" label-for=\"complemento\" label-class=\"text-muted\">\n                    <b-form-input id=\"complemento\" v-model=\"form.complemento\" type=\"text\"/>\n                </b-form-group>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Outras Informações</h6>\n\n        <b-form-group label=\"Outras Informações\" label-for=\"outras_informacoes\" label-class=\"text-muted\">\n            <b-form-textarea id=\"outras_informacoes\" v-model=\"form.outras_informacoes\" rows=\"4\"></b-form-textarea>\n        </b-form-group>\n\n        <pre>{{ imagem_cropper }}</pre>\n        <pre>{{ form }}</pre>\n    </div>\n\n</template>\n\n<script>\nimport axios from 'axios';\nimport { Cropper } from 'vue-advanced-cropper';\nimport 'vue-advanced-cropper/dist/style.css';\n\nexport default {\n    name: \"PessoaForm\",\n    components: {\n        Cropper,\n    },\n    data: () => ({\n        imagem: null,\n        imagem_cropper: null,\n        form: {},\n        sexos: [],\n        estados: [],\n        estados_civis: [],\n        escolaidades: [],\n        cidades: [],\n        habilidades: [],\n        default: {\n            id: undefined,\n            nome: null,\n            foto: null,\n            data_nascimento: null,\n            sexo_id: null,\n            pcd: null,\n            cpf: null,\n            instagram: null,\n            telefone: null,\n            whatsapp: null,\n            escolaridade_id: null,\n            estado_civil_id: null,\n            estado_id: null,\n            cidade_id: null,\n            cnh: null,\n            categoria_cnh: null,\n            filhos: null,\n            filhos_quantidade: null,\n            endereco: null,\n            endereco_numero: null,\n            ponto_referrencia: null,\n            complemento: null,\n            outras_informacoes: null,\n            habilidades: [],\n            experiencias: [\n                { cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null },\n                { cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null }\n            ]\n        }\n    }),\n    methods: {\n        getFoto(event) {\n            console.log(event);\n            console.log(this.imagem);\n        },\n        reset() {\n            this.form = Object.assign({}, this.default);\n        },\n        getEstados() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado').then(({ data }) => {\n                this.estados = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getHabilidades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/habilidade').then(({ data }) => {\n                this.habilidades = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getSexo() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/sexo').then(({ data }) => {\n                this.sexos = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getEscolaridades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/escolaridade').then(({ data }) => {\n                this.escolaidades = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getEstadoCivil() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado_civil').then(({ data }) => {\n                this.estados_civis = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getCidades() {\n            document.body.classList.remove('loaded');\n            axios.post('/api/cidade', { estado_id: this.form.estado_id }).then(({ data }) => {\n                this.form.cidade_id = null;\n                this.cidades = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        }\n    },\n    created() {\n        this.reset();\n        this.getEstados();\n        this.getSexo();\n        this.getEscolaridades();\n        this.getEstadoCivil();\n        this.getHabilidades();\n    },\n    watch: {\n        // imagem: (file) => {\n        //     if(file) {\n        //         console.log(file);\n        //\n        //         let reader  = new FileReader();\n        //\n        //         reader.onloadend = function () {\n        //             console.log(reader.result); //this is an ArrayBuffer\n        //         }\n        //         this.imagem_cropper = reader.readAsArrayBuffer(file);\n        //     }\n        // }\n    }\n}\n</script>\n\n<style>\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n</style>\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
@@ -48359,6 +48437,36 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaForm.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -48720,15 +48828,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _PessoaForm_vue_vue_type_template_id_76aac33c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PessoaForm.vue?vue&type=template&id=76aac33c& */ "./resources/components/PessoaForm.vue?vue&type=template&id=76aac33c&");
 /* harmony import */ var _PessoaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PessoaForm.vue?vue&type=script&lang=js& */ "./resources/components/PessoaForm.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _PessoaForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PessoaForm.vue?vue&type=style&index=0&lang=css& */ "./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _PessoaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _PessoaForm_vue_vue_type_template_id_76aac33c___WEBPACK_IMPORTED_MODULE_0__.render,
   _PessoaForm_vue_vue_type_template_id_76aac33c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -48759,6 +48869,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************!*\
+  !*** ./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaForm.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&");
+
 
 /***/ }),
 
@@ -48798,6 +48921,38 @@ var render = function() {
   return _c(
     "div",
     [
+      _c(
+        "b-modal",
+        { attrs: { id: "modal-1", title: "Adicionar Foto", size: "lg" } },
+        [
+          _c("cropper", {
+            staticClass: "cropper",
+            attrs: {
+              src: _vm.imagem_cropper,
+              "stencil-props": {
+                aspectRatio: 3 / 4
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("b-form-file", {
+            attrs: {
+              placeholder: "Adicionar foto",
+              accept: ".jpg, .jpeg, .png"
+            },
+            on: { change: _vm.getFoto },
+            model: {
+              value: _vm.imagem,
+              callback: function($$v) {
+                _vm.imagem = $$v
+              },
+              expression: "imagem"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c(
           "div",
@@ -48812,7 +48967,22 @@ var render = function() {
                 "blank-color": "#CCC",
                 alt: "HEX shorthand color image (#777)"
               }
-            })
+            }),
+            _vm._v(" "),
+            _c(
+              "b-button",
+              {
+                directives: [
+                  {
+                    name: "b-modal",
+                    rawName: "v-b-modal.modal-1",
+                    modifiers: { "modal-1": true }
+                  }
+                ],
+                attrs: { size: "sm", for: "foto", block: "" }
+              },
+              [_vm._v("Adicionar")]
+            )
           ],
           1
         ),
@@ -49314,7 +49484,9 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v("\n                        Sim\n                    ")
+                _vm._v(
+                  "\n                            Sim\n                        "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -49338,7 +49510,9 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v("\n                        Não\n                    ")
+                _vm._v(
+                  "\n                            Não\n                        "
+                )
               ])
             ])
           ])
@@ -49371,7 +49545,9 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v("\n                        Sim\n                    ")
+                _vm._v(
+                  "\n                            Sim\n                        "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -49398,7 +49574,9 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v("\n                        Não\n                    ")
+                _vm._v(
+                  "\n                            Não\n                        "
+                )
               ])
             ])
           ])
@@ -49431,7 +49609,9 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v("\n                        Sim\n                    ")
+                _vm._v(
+                  "\n                            Sim\n                        "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -49458,7 +49638,9 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v("\n                        Não\n                    ")
+                _vm._v(
+                  "\n                            Não\n                        "
+                )
               ])
             ])
           ])
@@ -49565,9 +49747,9 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                " +
+                    "\n                    " +
                       _vm._s(habilidade.nome) +
-                      "\n            "
+                      "\n                "
                   )
                 ]
               )
@@ -49872,6 +50054,8 @@ var render = function() {
         1
       ),
       _vm._v(" "),
+      _c("pre", [_vm._v(_vm._s(_vm.imagem_cropper))]),
+      _vm._v(" "),
       _c("pre", [_vm._v(_vm._s(_vm.form))])
     ],
     2
@@ -49892,7 +50076,7 @@ var staticRenderFns = [
         [_vm._v("PCD")]
       ),
       _vm._v(
-        "\n                - (Portador de Deficiência Física)\n            "
+        "\n                    - (Portador de Deficiência Física)\n                "
       )
     ])
   },
@@ -49910,7 +50094,7 @@ var staticRenderFns = [
         [_vm._v("CNH")]
       ),
       _vm._v(
-        "\n                - (Carrteira Nacional de\n                Habilitação)"
+        "\n                    - (Carrteira Nacional de\n                    Habilitação)"
       )
     ])
   }

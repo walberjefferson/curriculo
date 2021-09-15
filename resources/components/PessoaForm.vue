@@ -1,8 +1,21 @@
 <template>
     <div>
+        <b-modal id="modal-1" title="Adicionar Foto" size="lg">
+            <cropper
+                class="cropper"
+                :src="imagem_cropper"
+                :stencil-props="{
+		            aspectRatio: 3/4
+	            }"
+            />
+
+            <b-form-file @change="getFoto" v-model="imagem" placeholder="Adicionar foto" accept=".jpg, .jpeg, .png"></b-form-file>
+        </b-modal>
+
         <div class="row">
             <div class="col-md-2">
                 <b-img :blank="true" fluid width="300" height="400" blank-color="#CCC" alt="HEX shorthand color image (#777)"></b-img>
+                <b-button size="sm" v-b-modal.modal-1 for="foto" block>Adicionar</b-button>
             </div>
             <div class="col-md-10">
 
@@ -139,7 +152,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="row mt-2">
             <div class="col-md-4 form-group">
@@ -293,6 +305,7 @@
             <b-form-textarea id="outras_informacoes" v-model="form.outras_informacoes" rows="4"></b-form-textarea>
         </b-form-group>
 
+        <pre>{{ imagem_cropper }}</pre>
         <pre>{{ form }}</pre>
     </div>
 
@@ -309,6 +322,8 @@ export default {
         Cropper,
     },
     data: () => ({
+        imagem: null,
+        imagem_cropper: null,
         form: {},
         sexos: [],
         estados: [],
@@ -319,6 +334,7 @@ export default {
         default: {
             id: undefined,
             nome: null,
+            foto: null,
             data_nascimento: null,
             sexo_id: null,
             pcd: null,
@@ -347,61 +363,102 @@ export default {
         }
     }),
     methods: {
+        getFoto(event) {
+            console.log(event);
+            console.log(this.imagem);
+        },
         reset() {
             this.form = Object.assign({}, this.default);
         },
         getEstados() {
+            document.body.classList.remove('loaded');
             axios.get('/api/estado').then(({ data }) => {
                 this.estados = data;
             }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
+            }).finally(() => {
+                document.body.classList.add('loaded');
             })
         },
         getHabilidades() {
+            document.body.classList.remove('loaded');
             axios.get('/api/habilidade').then(({ data }) => {
                 this.habilidades = data;
             }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
+            }).finally(() => {
+                document.body.classList.add('loaded');
             })
         },
         getSexo() {
+            document.body.classList.remove('loaded');
             axios.get('/api/sexo').then(({ data }) => {
                 this.sexos = data;
             }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
+            }).finally(() => {
+                document.body.classList.add('loaded');
             })
         },
         getEscolaridades() {
+            document.body.classList.remove('loaded');
             axios.get('/api/escolaridade').then(({ data }) => {
                 this.escolaidades = data;
             }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
+            }).finally(() => {
+                document.body.classList.add('loaded');
             });
         },
         getEstadoCivil() {
+            document.body.classList.remove('loaded');
             axios.get('/api/estado_civil').then(({ data }) => {
                 this.estados_civis = data;
             }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
+            }).finally(() => {
+                document.body.classList.add('loaded');
             });
         },
         getCidades() {
+            document.body.classList.remove('loaded');
             axios.post('/api/cidade', { estado_id: this.form.estado_id }).then(({ data }) => {
                 this.form.cidade_id = null;
                 this.cidades = data;
             }).catch(({ response }) => {
                 this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+            }).finally(() => {
+                document.body.classList.add('loaded');
             });
         }
     },
-
-    mounted() {
+    created() {
         this.reset();
         this.getEstados();
         this.getSexo();
         this.getEscolaridades();
         this.getEstadoCivil();
         this.getHabilidades();
+    },
+    watch: {
+        // imagem: (file) => {
+        //     if(file) {
+        //         console.log(file);
+        //
+        //         let reader  = new FileReader();
+        //
+        //         reader.onloadend = function () {
+        //             console.log(reader.result); //this is an ArrayBuffer
+        //         }
+        //         this.imagem_cropper = reader.readAsArrayBuffer(file);
+        //     }
+        // }
     }
 }
 </script>
+
+<style>
+.custom-file-label::after {
+    content: 'Adicionar' !important;
+}
+</style>
