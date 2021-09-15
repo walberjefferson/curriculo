@@ -1,12 +1,12 @@
 @extends('layout.master')
 
-@section('content-title', 'Editar Escolaridade')
+@section('content-title', 'Editar Currículo')
 
 @section('breadcrumbs')
     @include('layout.breadcrumbs', [
       'breadcrumbs' => [
         (object) [ 'title' => 'Painel', 'url' => route('admin.dashboard') ],
-        (object) [ 'title' => 'Escolaridade', 'url' => route('admin.escolaridade.index') ],
+        (object) [ 'title' => 'Currículo', 'url' => route('admin.curriculo.index') ],
         (object) [ 'title' => 'Editar', 'url' => '' ],
       ]
     ])
