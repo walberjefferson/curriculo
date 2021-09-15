@@ -1,6 +1,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1845,10 +1856,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_advanced_cropper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-advanced-cropper */ "./node_modules/vue-advanced-cropper/dist/index.es.js");
-/* harmony import */ var vue_advanced_cropper_dist_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-advanced-cropper/dist/style.css */ "./node_modules/vue-advanced-cropper/dist/style.css");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_advanced_cropper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-advanced-cropper */ "./node_modules/vue-advanced-cropper/dist/index.es.js");
+/* harmony import */ var vue_advanced_cropper_dist_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-advanced-cropper/dist/style.css */ "./node_modules/vue-advanced-cropper/dist/style.css");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2168,7 +2210,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PessoaForm",
   components: {
-    Cropper: vue_advanced_cropper__WEBPACK_IMPORTED_MODULE_1__.Cropper
+    Cropper: vue_advanced_cropper__WEBPACK_IMPORTED_MODULE_2__.Cropper
+  },
+  props: {
+    uuid: {
+      required: false,
+      type: String
+    }
   },
   data: function data() {
     return {
@@ -2234,7 +2282,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       document.body.classList.remove('loaded');
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/estado').then(function (_ref) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/estado').then(function (_ref) {
         var data = _ref.data;
         _this.estados = data;
       })["catch"](function (_ref2) {
@@ -2249,7 +2297,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       document.body.classList.remove('loaded');
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/habilidade').then(function (_ref3) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/habilidade').then(function (_ref3) {
         var data = _ref3.data;
         _this2.habilidades = data;
       })["catch"](function (_ref4) {
@@ -2264,7 +2312,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       document.body.classList.remove('loaded');
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/sexo').then(function (_ref5) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/sexo').then(function (_ref5) {
         var data = _ref5.data;
         _this3.sexos = data;
       })["catch"](function (_ref6) {
@@ -2279,7 +2327,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       document.body.classList.remove('loaded');
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/escolaridade').then(function (_ref7) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/escolaridade').then(function (_ref7) {
         var data = _ref7.data;
         _this4.escolaidades = data;
       })["catch"](function (_ref8) {
@@ -2294,7 +2342,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       document.body.classList.remove('loaded');
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/estado_civil').then(function (_ref9) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/estado_civil').then(function (_ref9) {
         var data = _ref9.data;
         _this5.estados_civis = data;
       })["catch"](function (_ref10) {
@@ -2308,19 +2356,80 @@ __webpack_require__.r(__webpack_exports__);
     getCidades: function getCidades() {
       var _this6 = this;
 
-      document.body.classList.remove('loaded');
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/cidade', {
-        estado_id: this.form.estado_id
-      }).then(function (_ref11) {
-        var data = _ref11.data;
-        _this6.form.cidade_id = null;
-        _this6.cidades = data;
-      })["catch"](function (_ref12) {
-        var response = _ref12.response;
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                document.body.classList.remove('loaded');
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/cidade', {
+                  estado_id: _this6.form.estado_id
+                }).then(function (_ref11) {
+                  var data = _ref11.data;
+                  _this6.form.cidade_id = null;
+                  _this6.cidades = data;
+                })["catch"](function (_ref12) {
+                  var response = _ref12.response;
 
-        _this6.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
-      })["finally"](function () {
-        document.body.classList.add('loaded');
+                  _this6.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+                })["finally"](function () {
+                  document.body.classList.add('loaded');
+                });
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    send: function send() {
+      if (this.uuid) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/curriculo/".concat(this.uuid), this.form).then(function (_ref13) {
+          var data = _ref13.data;
+          console.log(data);
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/curriculo', this.form).then(function (_ref14) {
+          var data = _ref14.data;
+          console.log(data);
+        });
+      }
+    },
+    getCurriculo: function getCurriculo() {
+      var _this7 = this;
+
+      if (this.uuid) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/curriculo/".concat(this.uuid)).then(function (_ref15) {
+          var data = _ref15.data;
+
+          _this7.changeData(data);
+        });
+      }
+    },
+    changeData: function changeData(data) {
+      var _this8 = this;
+
+      Object.entries(data).forEach(function (_ref16) {
+        var _ref17 = _slicedToArray(_ref16, 2),
+            key = _ref17[0],
+            value = _ref17[1];
+
+        if (key === 'habilidades') {
+          _this8.form[key] = value.map(function (p) {
+            return p.id;
+          });
+        } else if (key === 'estado_id') {
+          _this8.form[key] = value;
+
+          _this8.getCidades()["finally"](function () {
+            _this8.form['cidade_id'] = data.cidade_id;
+          });
+        } else {
+          _this8.form[key] = value;
+        }
       });
     }
   },
@@ -2331,7 +2440,9 @@ __webpack_require__.r(__webpack_exports__);
     this.getEscolaridades();
     this.getEstadoCivil();
     this.getHabilidades();
+    this.getCurriculo();
   },
+  mounted: function mounted() {},
   watch: {// imagem: (file) => {
     //     if(file) {
     //         console.log(file);
@@ -44753,7 +44864,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n", "",{"version":3,"sources":["webpack://./resources/components/PessoaForm.vue"],"names":[],"mappings":";AA4cA;IACA,+BAAA;AACA","sourcesContent":["<template>\n    <div>\n        <b-modal id=\"modal-1\" title=\"Adicionar Foto\" size=\"lg\">\n            <cropper\n                class=\"cropper\"\n                :src=\"imagem_cropper\"\n                :stencil-props=\"{\n\t\t            aspectRatio: 3/4\n\t            }\"\n            />\n\n            <b-form-file @change=\"getFoto\" v-model=\"imagem\" placeholder=\"Adicionar foto\" accept=\".jpg, .jpeg, .png\"></b-form-file>\n        </b-modal>\n\n        <div class=\"row\">\n            <div class=\"col-md-2\">\n                <b-img :blank=\"true\" fluid width=\"300\" height=\"400\" blank-color=\"#CCC\" alt=\"HEX shorthand color image (#777)\"></b-img>\n                <b-button size=\"sm\" v-b-modal.modal-1 for=\"foto\" block>Adicionar</b-button>\n            </div>\n            <div class=\"col-md-10\">\n\n                <h6 class=\"card-title text-primary\">Dados Pessoais</h6>\n\n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <b-form-group label=\"Nome\" label-for=\"nome\" label-class=\"text-muted\">\n                            <b-form-input id=\"nome\" v-model=\"form.nome\" type=\"text\" required/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Data Nascimento\" label-for=\"data_nascimento\" label-class=\"text-muted\">\n                            <b-form-datepicker\n                                :date-format-options=\"{ year: 'numeric', month: 'numeric', day: 'numeric' }\"\n                                placeholder=\"Data Nascimento\" id=\"data_nascimento\" v-model=\"form.data_nascimento\"\n                                locale=\"pt-br\"></b-form-datepicker>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Sexo\" label-for=\"sexo\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"sexo\"\n                                v-model=\"form.sexo_id\"\n                                :options=\"sexos\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione o sexo</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"CPF\" label-for=\"cpf\" label-class=\"text-muted\">\n                            <b-form-input id=\"cpf\" v-model=\"form.cpf\" type=\"text\" ref=\"cpf\" required/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Perfil do Instagam (@)\" label-for=\"instagram\" label-class=\"text-muted\">\n                            <b-form-input id=\"instagram\" v-model=\"form.instagram\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Telefone\" label-for=\"telefone\" label-class=\"text-muted\">\n                            <b-form-input id=\"telefone\" v-model=\"form.telefone\" class=\"telefone\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"WhatsApp\" label-for=\"whatsapp\" label-class=\"text-muted\">\n                            <b-form-input id=\"whatsapp\" v-model=\"form.whatsapp\" class=\"telefone\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Escolaridade\" label-for=\"escolaridade\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"escolaridade\"\n                                v-model=\"form.escolaridade_id\"\n                                :options=\"escolaidades\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione a escolaridade</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-3\">\n                        <b-form-group label=\"Estado Cívil\" label-for=\"estado_civil_id\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"estado_civil_id\"\n                                v-model=\"form.estado_civil_id\"\n                                :options=\"estados_civis\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione o estado cívil</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-2\">\n                        <b-form-group label=\"Estado\" label-for=\"estado_id\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"estado_id\"\n                                v-model=\"form.estado_id\"\n                                :options=\"estados\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                                @change=\"getCidades\"\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione o estado</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n\n                    <div class=\"col-md-4\">\n                        <b-form-group label=\"Cidade\" label-for=\"cidade_id\" label-class=\"text-muted\">\n                            <b-form-select\n                                id=\"cidade_id\"\n                                v-model=\"form.cidade_id\"\n                                :options=\"cidades\"\n                                value-field=\"id\"\n                                text-field=\"nome\"\n                                required\n                            >\n                                <template #first>\n                                    <b-form-select-option :value=\"null\">Selecione a cidade</b-form-select-option>\n                                </template>\n                            </b-form-select>\n                        </b-form-group>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row mt-2\">\n            <div class=\"col-md-4 form-group\">\n                <label class=\"text-muted\">\n                    <abbr title=\"Portador de Deficiência Física\" class=\"initialism\">PCD</abbr>\n                    - (Portador de Deficiência Física)\n                </label>\n                <div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" value=\"1\">\n                            Sim\n                        </label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" value=\"0\">\n                            Não\n                        </label>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-md-4 form-group\">\n                <label class=\"text-muted\"><abbr title=\"Carrteira Nacional de Habilitação\" class=\"initialism\">CNH</abbr>\n                    - (Carrteira Nacional de\n                    Habilitação)</label>\n                <div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"true\">\n                            Sim\n                        </label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"false\">\n                            Não\n                        </label>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-md-4 form-group\">\n                <label class=\"text-muted\">Tem filhos?</label>\n                <div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"true\">\n                            Sim\n                        </label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <label class=\"form-check-label\">\n                            <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"false\">\n                            Não\n                        </label>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n\n        <div v-if=\"form.cnh || form.filhos\" class=\"row\">\n            <div class=\"col-md-4\"></div>\n            <div class=\"col-md-4\">\n                <div v-if=\"form.cnh\">\n                    <b-form-group label=\"Categoria CNH\" label-for=\"categoria_cnh\" label-class=\"text-muted\">\n                        <b-form-input id=\"categoria_cnh\" v-model=\"form.categoria_cnh\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n            <div class=\"col-md-4\">\n                <div v-if=\"form.filhos\">\n                    <b-form-group label=\"Quantidade de Filhos\" label-for=\"filhos_quantidade\" label-class=\"text-muted\">\n                        <b-form-input id=\"filhos_quantidade\" v-model=\"form.filhos_quantidade\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Habilidades</h6>\n\n        <div class=\"row\">\n            <div class=\"col-md-4\" v-for=\"habilidade in habilidades\" :key=\"habilidade.id\">\n                <b-form-checkbox\n                    v-model=\"form.habilidades\"\n                    :value=\"habilidade.id\"\n                >\n                    {{ habilidade.nome }}\n                </b-form-checkbox>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Experiências</h6>\n\n        <div v-for=\"(experiencia, index) in form.experiencias\" :key=\"index\" class=\"row\">\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Cargo\" label-for=\"cargo\" label-class=\"text-muted\">\n                    <b-form-input id=\"cargo\" v-model=\"form.experiencias[index].cargo\" type=\"text\"/>\n                </b-form-group>\n            </div>\n            <div class=\"col-md-4\">\n                <b-form-group label=\"Empresa\" label-for=\"empresa\" label-class=\"text-muted\">\n                    <b-form-input id=\"empresa\" v-model=\"form.experiencias[index].empresa\" type=\"text\"/>\n                </b-form-group>\n            </div>\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Tempo de Seviço\" label-for=\"tempo_servico\" label-class=\"text-muted\">\n                    <b-form-input id=\"tempo_servico\" v-model=\"form.experiencias[index].tempo_servico\" type=\"text\"/>\n                </b-form-group>\n            </div>\n            <div class=\"col-md-2\">\n                <b-form-group label=\"Saída\" label-for=\"saida\" label-class=\"text-muted\">\n                    <b-form-input id=\"saida\" v-model=\"form.experiencias[index].saida\" type=\"text\"/>\n                </b-form-group>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Dados Postais</h6>\n\n        <div class=\"row\">\n            <div class=\"col-md-5\">\n                <b-form-group label=\"Endereço\" label-for=\"endereco\" label-class=\"text-muted\">\n                    <b-form-input id=\"endereco\" v-model=\"form.endereco\" type=\"text\"/>\n                </b-form-group>\n            </div>\n\n            <div class=\"col-md-1\">\n                <b-form-group label=\"Nº\" label-for=\"endereco_numero\" label-class=\"text-muted\">\n                    <b-form-input id=\"endereco_numero\" v-model=\"form.endereco_numero\" type=\"text\"/>\n                </b-form-group>\n            </div>\n\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Ponto de Referência\" label-for=\"ponto_referrencia\" label-class=\"text-muted\">\n                    <b-form-input id=\"ponto_referrencia\" v-model=\"form.ponto_referrencia\" type=\"text\"/>\n                </b-form-group>\n            </div>\n\n            <div class=\"col-md-3\">\n                <b-form-group label=\"Complemento\" label-for=\"complemento\" label-class=\"text-muted\">\n                    <b-form-input id=\"complemento\" v-model=\"form.complemento\" type=\"text\"/>\n                </b-form-group>\n            </div>\n        </div>\n\n        <h6 class=\"card-title text-primary mt-3\">Outras Informações</h6>\n\n        <b-form-group label=\"Outras Informações\" label-for=\"outras_informacoes\" label-class=\"text-muted\">\n            <b-form-textarea id=\"outras_informacoes\" v-model=\"form.outras_informacoes\" rows=\"4\"></b-form-textarea>\n        </b-form-group>\n\n        <pre>{{ imagem_cropper }}</pre>\n        <pre>{{ form }}</pre>\n    </div>\n\n</template>\n\n<script>\nimport axios from 'axios';\nimport { Cropper } from 'vue-advanced-cropper';\nimport 'vue-advanced-cropper/dist/style.css';\n\nexport default {\n    name: \"PessoaForm\",\n    components: {\n        Cropper,\n    },\n    data: () => ({\n        imagem: null,\n        imagem_cropper: null,\n        form: {},\n        sexos: [],\n        estados: [],\n        estados_civis: [],\n        escolaidades: [],\n        cidades: [],\n        habilidades: [],\n        default: {\n            id: undefined,\n            nome: null,\n            foto: null,\n            data_nascimento: null,\n            sexo_id: null,\n            pcd: null,\n            cpf: null,\n            instagram: null,\n            telefone: null,\n            whatsapp: null,\n            escolaridade_id: null,\n            estado_civil_id: null,\n            estado_id: null,\n            cidade_id: null,\n            cnh: null,\n            categoria_cnh: null,\n            filhos: null,\n            filhos_quantidade: null,\n            endereco: null,\n            endereco_numero: null,\n            ponto_referrencia: null,\n            complemento: null,\n            outras_informacoes: null,\n            habilidades: [],\n            experiencias: [\n                { cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null },\n                { cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null }\n            ]\n        }\n    }),\n    methods: {\n        getFoto(event) {\n            console.log(event);\n            console.log(this.imagem);\n        },\n        reset() {\n            this.form = Object.assign({}, this.default);\n        },\n        getEstados() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado').then(({ data }) => {\n                this.estados = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getHabilidades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/habilidade').then(({ data }) => {\n                this.habilidades = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getSexo() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/sexo').then(({ data }) => {\n                this.sexos = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getEscolaridades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/escolaridade').then(({ data }) => {\n                this.escolaidades = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getEstadoCivil() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado_civil').then(({ data }) => {\n                this.estados_civis = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getCidades() {\n            document.body.classList.remove('loaded');\n            axios.post('/api/cidade', { estado_id: this.form.estado_id }).then(({ data }) => {\n                this.form.cidade_id = null;\n                this.cidades = data;\n            }).catch(({ response }) => {\n                this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        }\n    },\n    created() {\n        this.reset();\n        this.getEstados();\n        this.getSexo();\n        this.getEscolaridades();\n        this.getEstadoCivil();\n        this.getHabilidades();\n    },\n    watch: {\n        // imagem: (file) => {\n        //     if(file) {\n        //         console.log(file);\n        //\n        //         let reader  = new FileReader();\n        //\n        //         reader.onloadend = function () {\n        //             console.log(reader.result); //this is an ArrayBuffer\n        //         }\n        //         this.imagem_cropper = reader.readAsArrayBuffer(file);\n        //     }\n        // }\n    }\n}\n</script>\n\n<style>\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n</style>\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n", "",{"version":3,"sources":["webpack://./resources/components/PessoaForm.vue"],"names":[],"mappings":";AAggBA;IACA,+BAAA;AACA","sourcesContent":["<template>\n    <div>\n        <b-modal id=\"modal-1\" title=\"Adicionar Foto\" size=\"lg\">\n            <cropper\n                class=\"cropper\"\n                :src=\"imagem_cropper\"\n                :stencil-props=\"{\n\t\t            aspectRatio: 3/4\n\t            }\"\n            />\n\n            <b-form-file @change=\"getFoto\" v-model=\"imagem\" placeholder=\"Adicionar foto\"\n                         accept=\".jpg, .jpeg, .png\"></b-form-file>\n        </b-modal>\n\n        <form @submit.prevent=\"send\">\n            <div class=\"row\">\n                <div class=\"col-md-2\">\n                    <b-img :blank=\"true\" fluid width=\"300\" height=\"400\" blank-color=\"#CCC\"\n                           alt=\"HEX shorthand color image (#777)\"></b-img>\n                    <b-button size=\"sm\" v-b-modal.modal-1 for=\"foto\" block>Adicionar</b-button>\n                </div>\n                <div class=\"col-md-10\">\n\n                    <h6 class=\"card-title text-primary\">Dados Pessoais</h6>\n\n                    <div class=\"row\">\n                        <div class=\"col-md-6\">\n                            <b-form-group label=\"Nome\" label-for=\"nome\" label-class=\"text-muted\">\n                                <b-form-input id=\"nome\" v-model=\"form.nome\" type=\"text\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Data Nascimento\" label-for=\"data_nascimento\" label-class=\"text-muted\">\n                                <b-form-datepicker\n                                    :date-format-options=\"{ year: 'numeric', month: 'numeric', day: 'numeric' }\"\n                                    placeholder=\"Data Nascimento\" id=\"data_nascimento\" v-model=\"form.data_nascimento\"\n                                    locale=\"pt-br\"></b-form-datepicker>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Sexo\" label-for=\"sexo\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"sexo\"\n                                    v-model=\"form.sexo_id\"\n                                    :options=\"sexos\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o sexo</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"CPF\" label-for=\"cpf\" label-class=\"text-muted\">\n                                <b-form-input id=\"cpf\" v-model=\"form.cpf\" type=\"text\" ref=\"cpf\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Perfil do Instagam (@)\" label-for=\"instagram\" label-class=\"text-muted\">\n                                <b-form-input id=\"instagram\" v-model=\"form.instagram\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Telefone\" label-for=\"telefone\" label-class=\"text-muted\">\n                                <b-form-input id=\"telefone\" v-model=\"form.telefone\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"WhatsApp\" label-for=\"whatsapp\" label-class=\"text-muted\">\n                                <b-form-input id=\"whatsapp\" v-model=\"form.whatsapp\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Escolaridade\" label-for=\"escolaridade\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"escolaridade\"\n                                    v-model=\"form.escolaridade_id\"\n                                    :options=\"escolaidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a escolaridade\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Estado Cívil\" label-for=\"estado_civil_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_civil_id\"\n                                    v-model=\"form.estado_civil_id\"\n                                    :options=\"estados_civis\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado cívil\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-2\">\n                            <b-form-group label=\"Estado\" label-for=\"estado_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_id\"\n                                    v-model=\"form.estado_id\"\n                                    :options=\"estados\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                    @change=\"getCidades\"\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-4\">\n                            <b-form-group label=\"Cidade\" label-for=\"cidade_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"cidade_id\"\n                                    v-model=\"form.cidade_id\"\n                                    :options=\"cidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a cidade</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row mt-2\">\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">\n                        <abbr title=\"Portador de Deficiência Física\" class=\"initialism\">PCD</abbr>\n                        - (Portador de Deficiência Física)\n                    </label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\"><abbr title=\"Carrteira Nacional de Habilitação\"\n                                                    class=\"initialism\">CNH</abbr>\n                        - (Carrteira Nacional de\n                        Habilitação)</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">Tem filhos?</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n\n            <div v-if=\"form.cnh || form.filhos\" class=\"row\">\n                <div class=\"col-md-4\"></div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.cnh\">\n                        <b-form-group label=\"Categoria CNH\" label-for=\"categoria_cnh\" label-class=\"text-muted\">\n                            <b-form-input id=\"categoria_cnh\" v-model=\"form.categoria_cnh\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.filhos\">\n                        <b-form-group label=\"Quantidade de Filhos\" label-for=\"filhos_quantidade\"\n                                      label-class=\"text-muted\">\n                            <b-form-input id=\"filhos_quantidade\" v-model=\"form.filhos_quantidade\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Habilidades</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-4\" v-for=\"habilidade in habilidades\" :key=\"habilidade.id\">\n                    <b-form-checkbox\n                        v-model=\"form.habilidades\"\n                        :value=\"habilidade.id\"\n                    >\n                        {{ habilidade.nome }}\n                    </b-form-checkbox>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Experiências</h6>\n\n            <div v-for=\"(experiencia, index) in form.experiencias\" :key=\"index\" class=\"row\">\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Cargo\" label-for=\"cargo\" label-class=\"text-muted\">\n                        <b-form-input id=\"cargo\" v-model=\"form.experiencias[index].cargo\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-4\">\n                    <b-form-group label=\"Empresa\" label-for=\"empresa\" label-class=\"text-muted\">\n                        <b-form-input id=\"empresa\" v-model=\"form.experiencias[index].empresa\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Tempo de Seviço\" label-for=\"tempo_servico\" label-class=\"text-muted\">\n                        <b-form-input id=\"tempo_servico\" v-model=\"form.experiencias[index].tempo_servico\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-2\">\n                    <b-form-group label=\"Saída\" label-for=\"saida\" label-class=\"text-muted\">\n                        <b-form-input id=\"saida\" v-model=\"form.experiencias[index].saida\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Dados Postais</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-5\">\n                    <b-form-group label=\"Endereço\" label-for=\"endereco\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco\" v-model=\"form.endereco\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-1\">\n                    <b-form-group label=\"Nº\" label-for=\"endereco_numero\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco_numero\" v-model=\"form.endereco_numero\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Ponto de Referência\" label-for=\"ponto_referrencia\" label-class=\"text-muted\">\n                        <b-form-input id=\"ponto_referrencia\" v-model=\"form.ponto_referrencia\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Complemento\" label-for=\"complemento\" label-class=\"text-muted\">\n                        <b-form-input id=\"complemento\" v-model=\"form.complemento\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Outras Informações</h6>\n\n            <b-form-group label=\"Outras Informações\" label-for=\"outras_informacoes\" label-class=\"text-muted\">\n                <b-form-textarea id=\"outras_informacoes\" v-model=\"form.outras_informacoes\" rows=\"4\"></b-form-textarea>\n            </b-form-group>\n\n            <div class=\"hr-line-dashed\"></div>\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary\" type=\"submit\"><i class=\"mdi mdi-send\"></i> Salvar</button>\n                <a href=\"#\" class=\"btn btn-secondary\"><i class=\"mdi mdi-backup-restore\"></i> Voltar</a>\n            </div>\n        </form>\n    </div>\n\n</template>\n\n<script>\nimport axios from 'axios';\nimport {Cropper} from 'vue-advanced-cropper';\nimport 'vue-advanced-cropper/dist/style.css';\n\nexport default {\n    name: \"PessoaForm\",\n    components: {\n        Cropper,\n    },\n    props: {\n        uuid: {\n            required: false,\n            type: String,\n        }\n    },\n    data: () => ({\n        imagem: null,\n        imagem_cropper: null,\n        form: {},\n        sexos: [],\n        estados: [],\n        estados_civis: [],\n        escolaidades: [],\n        cidades: [],\n        habilidades: [],\n        default: {\n            id: undefined,\n            nome: null,\n            foto: null,\n            data_nascimento: null,\n            sexo_id: null,\n            pcd: null,\n            cpf: null,\n            instagram: null,\n            telefone: null,\n            whatsapp: null,\n            escolaridade_id: null,\n            estado_civil_id: null,\n            estado_id: null,\n            cidade_id: null,\n            cnh: null,\n            categoria_cnh: null,\n            filhos: null,\n            filhos_quantidade: null,\n            endereco: null,\n            endereco_numero: null,\n            ponto_referrencia: null,\n            complemento: null,\n            outras_informacoes: null,\n            habilidades: [],\n            experiencias: [\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null},\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null}\n            ]\n        }\n    }),\n    methods: {\n        getFoto(event) {\n            console.log(event);\n            console.log(this.imagem);\n        },\n        reset() {\n            this.form = Object.assign({}, this.default);\n        },\n        getEstados() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado').then(({data}) => {\n                this.estados = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getHabilidades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/habilidade').then(({data}) => {\n                this.habilidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getSexo() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/sexo').then(({data}) => {\n                this.sexos = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getEscolaridades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/escolaridade').then(({data}) => {\n                this.escolaidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getEstadoCivil() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado_civil').then(({data}) => {\n                this.estados_civis = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        async getCidades() {\n            document.body.classList.remove('loaded');\n            await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {\n                this.form.cidade_id = null;\n                this.cidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        send() {\n            if (this.uuid) {\n                axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {\n                    console.log(data);\n                });\n            } else {\n                axios.post('/api/curriculo', this.form).then(({data}) => {\n                    console.log(data);\n                });\n            }\n        },\n        getCurriculo() {\n            if (this.uuid) {\n                axios.get(`/api/curriculo/${this.uuid}`).then(({data}) => {\n                    this.changeData(data);\n                })\n            }\n        },\n        changeData(data) {\n            Object.entries(data).forEach(([key, value]) => {\n                if(key === 'habilidades') {\n                    this.form[key] = value.map((p) => p.id);\n                } else if (key === 'estado_id') {\n                    this.form[key] = value;\n                    this.getCidades().finally(() => {\n                        this.form['cidade_id'] = data.cidade_id;\n                    });\n                } else {\n                    this.form[key] = value;\n                }\n            });\n        }\n    },\n    created() {\n        this.reset();\n        this.getEstados();\n        this.getSexo();\n        this.getEscolaridades();\n        this.getEstadoCivil();\n        this.getHabilidades();\n        this.getCurriculo();\n    },\n    mounted() {\n    },\n    watch: {\n        // imagem: (file) => {\n        //     if(file) {\n        //         console.log(file);\n        //\n        //         let reader  = new FileReader();\n        //\n        //         reader.onloadend = function () {\n        //             console.log(reader.result); //this is an ArrayBuffer\n        //         }\n        //         this.imagem_cropper = reader.readAsArrayBuffer(file);\n        //     }\n        // }\n    }\n}\n</script>\n\n<style>\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n</style>\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48347,6 +48458,770 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = GeneratorFunctionPrototype;
+  define(Gp, "constructor", GeneratorFunctionPrototype);
+  define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  });
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  define(Gp, iteratorSymbol, function() {
+    return this;
+  });
+
+  define(Gp, "toString", function() {
+    return "[object Generator]";
+  });
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : 0
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, in modern engines
+  // we can explicitly access globalThis. In older engines we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css":
 /*!***********************************************************!*\
   !*** ./node_modules/bootstrap-vue/dist/bootstrap-vue.css ***!
@@ -48953,448 +49828,1010 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-md-2" },
-          [
-            _c("b-img", {
-              attrs: {
-                blank: true,
-                fluid: "",
-                width: "300",
-                height: "400",
-                "blank-color": "#CCC",
-                alt: "HEX shorthand color image (#777)"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "b-button",
-              {
-                directives: [
-                  {
-                    name: "b-modal",
-                    rawName: "v-b-modal.modal-1",
-                    modifiers: { "modal-1": true }
-                  }
-                ],
-                attrs: { size: "sm", for: "foto", block: "" }
-              },
-              [_vm._v("Adicionar")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-10" }, [
-          _c("h6", { staticClass: "card-title text-primary" }, [
-            _vm._v("Dados Pessoais")
-          ]),
-          _vm._v(" "),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.send.apply(null, arguments)
+            }
+          }
+        },
+        [
           _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-6" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "Nome",
-                      "label-for": "nome",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-input", {
-                      attrs: { id: "nome", type: "text", required: "" },
-                      model: {
-                        value: _vm.form.nome,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "nome", $$v)
-                        },
-                        expression: "form.nome"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "Data Nascimento",
-                      "label-for": "data_nascimento",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-datepicker", {
-                      attrs: {
-                        "date-format-options": {
-                          year: "numeric",
-                          month: "numeric",
-                          day: "numeric"
-                        },
-                        placeholder: "Data Nascimento",
-                        id: "data_nascimento",
-                        locale: "pt-br"
-                      },
-                      model: {
-                        value: _vm.form.data_nascimento,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "data_nascimento", $$v)
-                        },
-                        expression: "form.data_nascimento"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "Sexo",
-                      "label-for": "sexo",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-select", {
-                      attrs: {
-                        id: "sexo",
-                        options: _vm.sexos,
-                        "value-field": "id",
-                        "text-field": "nome",
-                        required: ""
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "first",
-                          fn: function() {
-                            return [
-                              _c(
-                                "b-form-select-option",
-                                { attrs: { value: null } },
-                                [_vm._v("Selecione o sexo")]
-                              )
-                            ]
-                          },
-                          proxy: true
-                        }
-                      ]),
-                      model: {
-                        value: _vm.form.sexo_id,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "sexo_id", $$v)
-                        },
-                        expression: "form.sexo_id"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "CPF",
-                      "label-for": "cpf",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-input", {
-                      ref: "cpf",
-                      attrs: { id: "cpf", type: "text", required: "" },
-                      model: {
-                        value: _vm.form.cpf,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "cpf", $$v)
-                        },
-                        expression: "form.cpf"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "Perfil do Instagam (@)",
-                      "label-for": "instagram",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-input", {
-                      attrs: { id: "instagram", type: "text" },
-                      model: {
-                        value: _vm.form.instagram,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "instagram", $$v)
-                        },
-                        expression: "form.instagram"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "Telefone",
-                      "label-for": "telefone",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-input", {
-                      staticClass: "telefone",
-                      attrs: { id: "telefone", type: "text" },
-                      model: {
-                        value: _vm.form.telefone,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "telefone", $$v)
-                        },
-                        expression: "form.telefone"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "WhatsApp",
-                      "label-for": "whatsapp",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-input", {
-                      staticClass: "telefone",
-                      attrs: { id: "whatsapp", type: "text" },
-                      model: {
-                        value: _vm.form.whatsapp,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "whatsapp", $$v)
-                        },
-                        expression: "form.whatsapp"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "Escolaridade",
-                      "label-for": "escolaridade",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-select", {
-                      attrs: {
-                        id: "escolaridade",
-                        options: _vm.escolaidades,
-                        "value-field": "id",
-                        "text-field": "nome",
-                        required: ""
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "first",
-                          fn: function() {
-                            return [
-                              _c(
-                                "b-form-select-option",
-                                { attrs: { value: null } },
-                                [_vm._v("Selecione a escolaridade")]
-                              )
-                            ]
-                          },
-                          proxy: true
-                        }
-                      ]),
-                      model: {
-                        value: _vm.form.escolaridade_id,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "escolaridade_id", $$v)
-                        },
-                        expression: "form.escolaridade_id"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      label: "Estado Cívil",
-                      "label-for": "estado_civil_id",
-                      "label-class": "text-muted"
-                    }
-                  },
-                  [
-                    _c("b-form-select", {
-                      attrs: {
-                        id: "estado_civil_id",
-                        options: _vm.estados_civis,
-                        "value-field": "id",
-                        "text-field": "nome",
-                        required: ""
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "first",
-                          fn: function() {
-                            return [
-                              _c(
-                                "b-form-select-option",
-                                { attrs: { value: null } },
-                                [_vm._v("Selecione o estado cívil")]
-                              )
-                            ]
-                          },
-                          proxy: true
-                        }
-                      ]),
-                      model: {
-                        value: _vm.form.estado_civil_id,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "estado_civil_id", $$v)
-                        },
-                        expression: "form.estado_civil_id"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
             _c(
               "div",
               { staticClass: "col-md-2" },
               [
+                _c("b-img", {
+                  attrs: {
+                    blank: true,
+                    fluid: "",
+                    width: "300",
+                    height: "400",
+                    "blank-color": "#CCC",
+                    alt: "HEX shorthand color image (#777)"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    directives: [
+                      {
+                        name: "b-modal",
+                        rawName: "v-b-modal.modal-1",
+                        modifiers: { "modal-1": true }
+                      }
+                    ],
+                    attrs: { size: "sm", for: "foto", block: "" }
+                  },
+                  [_vm._v("Adicionar")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-10" }, [
+              _c("h6", { staticClass: "card-title text-primary" }, [
+                _vm._v("Dados Pessoais")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-6" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Nome",
+                          "label-for": "nome",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          attrs: { id: "nome", type: "text", required: "" },
+                          model: {
+                            value: _vm.form.nome,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "nome", $$v)
+                            },
+                            expression: "form.nome"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Data Nascimento",
+                          "label-for": "data_nascimento",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-datepicker", {
+                          attrs: {
+                            "date-format-options": {
+                              year: "numeric",
+                              month: "numeric",
+                              day: "numeric"
+                            },
+                            placeholder: "Data Nascimento",
+                            id: "data_nascimento",
+                            locale: "pt-br"
+                          },
+                          model: {
+                            value: _vm.form.data_nascimento,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "data_nascimento", $$v)
+                            },
+                            expression: "form.data_nascimento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Sexo",
+                          "label-for": "sexo",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "sexo",
+                            options: _vm.sexos,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [_vm._v("Selecione o sexo")]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.sexo_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "sexo_id", $$v)
+                            },
+                            expression: "form.sexo_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "CPF",
+                          "label-for": "cpf",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          ref: "cpf",
+                          attrs: { id: "cpf", type: "text", required: "" },
+                          model: {
+                            value: _vm.form.cpf,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "cpf", $$v)
+                            },
+                            expression: "form.cpf"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Perfil do Instagam (@)",
+                          "label-for": "instagram",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          attrs: { id: "instagram", type: "text" },
+                          model: {
+                            value: _vm.form.instagram,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "instagram", $$v)
+                            },
+                            expression: "form.instagram"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Telefone",
+                          "label-for": "telefone",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          staticClass: "telefone",
+                          attrs: { id: "telefone", type: "text" },
+                          model: {
+                            value: _vm.form.telefone,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "telefone", $$v)
+                            },
+                            expression: "form.telefone"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "WhatsApp",
+                          "label-for": "whatsapp",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          staticClass: "telefone",
+                          attrs: { id: "whatsapp", type: "text" },
+                          model: {
+                            value: _vm.form.whatsapp,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "whatsapp", $$v)
+                            },
+                            expression: "form.whatsapp"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Escolaridade",
+                          "label-for": "escolaridade",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "escolaridade",
+                            options: _vm.escolaidades,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [
+                                      _vm._v(
+                                        "Selecione a escolaridade\n                                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.escolaridade_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "escolaridade_id", $$v)
+                            },
+                            expression: "form.escolaridade_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Estado Cívil",
+                          "label-for": "estado_civil_id",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "estado_civil_id",
+                            options: _vm.estados_civis,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [
+                                      _vm._v(
+                                        "Selecione o estado cívil\n                                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.estado_civil_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "estado_civil_id", $$v)
+                            },
+                            expression: "form.estado_civil_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-2" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Estado",
+                          "label-for": "estado_id",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "estado_id",
+                            options: _vm.estados,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          on: { change: _vm.getCidades },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [_vm._v("Selecione o estado")]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.estado_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "estado_id", $$v)
+                            },
+                            expression: "form.estado_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Cidade",
+                          "label-for": "cidade_id",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "cidade_id",
+                            options: _vm.cidades,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [_vm._v("Selecione a cidade")]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.cidade_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "cidade_id", $$v)
+                            },
+                            expression: "form.cidade_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mt-2" }, [
+            _c("div", { staticClass: "col-md-4 form-group" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", [
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.pcd,
+                          expression: "form.pcd"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: true,
+                        checked: _vm._q(_vm.form.pcd, true)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "pcd", true)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                                Sim\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.pcd,
+                          expression: "form.pcd"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: false,
+                        checked: _vm._q(_vm.form.pcd, false)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "pcd", false)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                                Não\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 form-group" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", [
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.cnh,
+                          expression: "form.cnh"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: true,
+                        checked: _vm._q(_vm.form.cnh, true)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "cnh", true)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                                Sim\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.cnh,
+                          expression: "form.cnh"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: false,
+                        checked: _vm._q(_vm.form.cnh, false)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "cnh", false)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                                Não\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 form-group" }, [
+              _c("label", { staticClass: "text-muted" }, [
+                _vm._v("Tem filhos?")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.filhos,
+                          expression: "form.filhos"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: true,
+                        checked: _vm._q(_vm.form.filhos, true)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "filhos", true)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                                Sim\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.filhos,
+                          expression: "form.filhos"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: false,
+                        checked: _vm._q(_vm.form.filhos, false)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "filhos", false)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                                Não\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.form.cnh || _vm.form.filhos
+            ? _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-4" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _vm.form.cnh
+                    ? _c(
+                        "div",
+                        [
+                          _c(
+                            "b-form-group",
+                            {
+                              attrs: {
+                                label: "Categoria CNH",
+                                "label-for": "categoria_cnh",
+                                "label-class": "text-muted"
+                              }
+                            },
+                            [
+                              _c("b-form-input", {
+                                attrs: { id: "categoria_cnh", type: "text" },
+                                model: {
+                                  value: _vm.form.categoria_cnh,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "categoria_cnh", $$v)
+                                  },
+                                  expression: "form.categoria_cnh"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _vm.form.filhos
+                    ? _c(
+                        "div",
+                        [
+                          _c(
+                            "b-form-group",
+                            {
+                              attrs: {
+                                label: "Quantidade de Filhos",
+                                "label-for": "filhos_quantidade",
+                                "label-class": "text-muted"
+                              }
+                            },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "filhos_quantidade",
+                                  type: "text"
+                                },
+                                model: {
+                                  value: _vm.form.filhos_quantidade,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "filhos_quantidade", $$v)
+                                  },
+                                  expression: "form.filhos_quantidade"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Habilidades")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.habilidades, function(habilidade) {
+              return _c(
+                "div",
+                { key: habilidade.id, staticClass: "col-md-4" },
+                [
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      attrs: { value: habilidade.id },
+                      model: {
+                        value: _vm.form.habilidades,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "habilidades", $$v)
+                        },
+                        expression: "form.habilidades"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(habilidade.nome) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Experiências")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.form.experiencias, function(experiencia, index) {
+            return _c("div", { key: index, staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Cargo",
+                        "label-for": "cargo",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "cargo", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].cargo,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form.experiencias[index], "cargo", $$v)
+                          },
+                          expression: "form.experiencias[index].cargo"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-4" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Empresa",
+                        "label-for": "empresa",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "empresa", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].empresa,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.form.experiencias[index],
+                              "empresa",
+                              $$v
+                            )
+                          },
+                          expression: "form.experiencias[index].empresa"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Tempo de Seviço",
+                        "label-for": "tempo_servico",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "tempo_servico", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].tempo_servico,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.form.experiencias[index],
+                              "tempo_servico",
+                              $$v
+                            )
+                          },
+                          expression: "form.experiencias[index].tempo_servico"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-2" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Saída",
+                        "label-for": "saida",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "saida", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].saida,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form.experiencias[index], "saida", $$v)
+                          },
+                          expression: "form.experiencias[index].saida"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          }),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Dados Postais")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-5" },
+              [
                 _c(
                   "b-form-group",
                   {
                     attrs: {
-                      label: "Estado",
-                      "label-for": "estado_id",
+                      label: "Endereço",
+                      "label-for": "endereco",
                       "label-class": "text-muted"
                     }
                   },
                   [
-                    _c("b-form-select", {
-                      attrs: {
-                        id: "estado_id",
-                        options: _vm.estados,
-                        "value-field": "id",
-                        "text-field": "nome",
-                        required: ""
-                      },
-                      on: { change: _vm.getCidades },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "first",
-                          fn: function() {
-                            return [
-                              _c(
-                                "b-form-select-option",
-                                { attrs: { value: null } },
-                                [_vm._v("Selecione o estado")]
-                              )
-                            ]
-                          },
-                          proxy: true
-                        }
-                      ]),
+                    _c("b-form-input", {
+                      attrs: { id: "endereco", type: "text" },
                       model: {
-                        value: _vm.form.estado_id,
+                        value: _vm.form.endereco,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "estado_id", $$v)
+                          _vm.$set(_vm.form, "endereco", $$v)
                         },
-                        expression: "form.estado_id"
+                        expression: "form.endereco"
                       }
                     })
                   ],
@@ -49406,47 +50843,88 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "col-md-4" },
+              { staticClass: "col-md-1" },
               [
                 _c(
                   "b-form-group",
                   {
                     attrs: {
-                      label: "Cidade",
-                      "label-for": "cidade_id",
+                      label: "Nº",
+                      "label-for": "endereco_numero",
                       "label-class": "text-muted"
                     }
                   },
                   [
-                    _c("b-form-select", {
-                      attrs: {
-                        id: "cidade_id",
-                        options: _vm.cidades,
-                        "value-field": "id",
-                        "text-field": "nome",
-                        required: ""
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "first",
-                          fn: function() {
-                            return [
-                              _c(
-                                "b-form-select-option",
-                                { attrs: { value: null } },
-                                [_vm._v("Selecione a cidade")]
-                              )
-                            ]
-                          },
-                          proxy: true
-                        }
-                      ]),
+                    _c("b-form-input", {
+                      attrs: { id: "endereco_numero", type: "text" },
                       model: {
-                        value: _vm.form.cidade_id,
+                        value: _vm.form.endereco_numero,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "cidade_id", $$v)
+                          _vm.$set(_vm.form, "endereco_numero", $$v)
                         },
-                        expression: "form.cidade_id"
+                        expression: "form.endereco_numero"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: "Ponto de Referência",
+                      "label-for": "ponto_referrencia",
+                      "label-class": "text-muted"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "ponto_referrencia", type: "text" },
+                      model: {
+                        value: _vm.form.ponto_referrencia,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "ponto_referrencia", $$v)
+                        },
+                        expression: "form.ponto_referrencia"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: "Complemento",
+                      "label-for": "complemento",
+                      "label-class": "text-muted"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "complemento", type: "text" },
+                      model: {
+                        value: _vm.form.complemento,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "complemento", $$v)
+                        },
+                        expression: "form.complemento"
                       }
                     })
                   ],
@@ -49455,610 +50933,44 @@ var render = function() {
               ],
               1
             )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-2" }, [
-        _c("div", { staticClass: "col-md-4 form-group" }, [
-          _vm._m(0),
+          ]),
           _vm._v(" "),
-          _c("div", [
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("label", { staticClass: "form-check-label" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.pcd,
-                      expression: "form.pcd"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "radio", value: "1" },
-                  domProps: { checked: _vm._q(_vm.form.pcd, "1") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.form, "pcd", "1")
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                            Sim\n                        "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("label", { staticClass: "form-check-label" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.pcd,
-                      expression: "form.pcd"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "radio", value: "0" },
-                  domProps: { checked: _vm._q(_vm.form.pcd, "0") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.form, "pcd", "0")
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                            Não\n                        "
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 form-group" }, [
-          _vm._m(1),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Outras Informações")
+          ]),
           _vm._v(" "),
-          _c("div", [
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("label", { staticClass: "form-check-label" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.cnh,
-                      expression: "form.cnh"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "radio" },
-                  domProps: {
-                    value: true,
-                    checked: _vm._q(_vm.form.cnh, true)
-                  },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.form, "cnh", true)
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                            Sim\n                        "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("label", { staticClass: "form-check-label" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.cnh,
-                      expression: "form.cnh"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "radio" },
-                  domProps: {
-                    value: false,
-                    checked: _vm._q(_vm.form.cnh, false)
-                  },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.form, "cnh", false)
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                            Não\n                        "
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 form-group" }, [
-          _c("label", { staticClass: "text-muted" }, [_vm._v("Tem filhos?")]),
-          _vm._v(" "),
-          _c("div", [
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("label", { staticClass: "form-check-label" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.filhos,
-                      expression: "form.filhos"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "radio" },
-                  domProps: {
-                    value: true,
-                    checked: _vm._q(_vm.form.filhos, true)
-                  },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.form, "filhos", true)
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                            Sim\n                        "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("label", { staticClass: "form-check-label" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.filhos,
-                      expression: "form.filhos"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "radio" },
-                  domProps: {
-                    value: false,
-                    checked: _vm._q(_vm.form.filhos, false)
-                  },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.form, "filhos", false)
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                            Não\n                        "
-                )
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.form.cnh || _vm.form.filhos
-        ? _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _vm.form.cnh
-                ? _c(
-                    "div",
-                    [
-                      _c(
-                        "b-form-group",
-                        {
-                          attrs: {
-                            label: "Categoria CNH",
-                            "label-for": "categoria_cnh",
-                            "label-class": "text-muted"
-                          }
-                        },
-                        [
-                          _c("b-form-input", {
-                            attrs: { id: "categoria_cnh", type: "text" },
-                            model: {
-                              value: _vm.form.categoria_cnh,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "categoria_cnh", $$v)
-                              },
-                              expression: "form.categoria_cnh"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _vm.form.filhos
-                ? _c(
-                    "div",
-                    [
-                      _c(
-                        "b-form-group",
-                        {
-                          attrs: {
-                            label: "Quantidade de Filhos",
-                            "label-for": "filhos_quantidade",
-                            "label-class": "text-muted"
-                          }
-                        },
-                        [
-                          _c("b-form-input", {
-                            attrs: { id: "filhos_quantidade", type: "text" },
-                            model: {
-                              value: _vm.form.filhos_quantidade,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "filhos_quantidade", $$v)
-                              },
-                              expression: "form.filhos_quantidade"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e()
-            ])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("h6", { staticClass: "card-title text-primary mt-3" }, [
-        _vm._v("Habilidades")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row" },
-        _vm._l(_vm.habilidades, function(habilidade) {
-          return _c(
-            "div",
-            { key: habilidade.id, staticClass: "col-md-4" },
-            [
-              _c(
-                "b-form-checkbox",
-                {
-                  attrs: { value: habilidade.id },
-                  model: {
-                    value: _vm.form.habilidades,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "habilidades", $$v)
-                    },
-                    expression: "form.habilidades"
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(habilidade.nome) +
-                      "\n                "
-                  )
-                ]
-              )
-            ],
-            1
-          )
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c("h6", { staticClass: "card-title text-primary mt-3" }, [
-        _vm._v("Experiências")
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.form.experiencias, function(experiencia, index) {
-        return _c("div", { key: index, staticClass: "row" }, [
           _c(
-            "div",
-            { staticClass: "col-md-3" },
+            "b-form-group",
+            {
+              attrs: {
+                label: "Outras Informações",
+                "label-for": "outras_informacoes",
+                "label-class": "text-muted"
+              }
+            },
             [
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    label: "Cargo",
-                    "label-for": "cargo",
-                    "label-class": "text-muted"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: { id: "cargo", type: "text" },
-                    model: {
-                      value: _vm.form.experiencias[index].cargo,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form.experiencias[index], "cargo", $$v)
-                      },
-                      expression: "form.experiencias[index].cargo"
-                    }
-                  })
-                ],
-                1
-              )
+              _c("b-form-textarea", {
+                attrs: { id: "outras_informacoes", rows: "4" },
+                model: {
+                  value: _vm.form.outras_informacoes,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "outras_informacoes", $$v)
+                  },
+                  expression: "form.outras_informacoes"
+                }
+              })
             ],
             1
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-4" },
-            [
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    label: "Empresa",
-                    "label-for": "empresa",
-                    "label-class": "text-muted"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: { id: "empresa", type: "text" },
-                    model: {
-                      value: _vm.form.experiencias[index].empresa,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form.experiencias[index], "empresa", $$v)
-                      },
-                      expression: "form.experiencias[index].empresa"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
+          _c("div", { staticClass: "hr-line-dashed" }),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-3" },
-            [
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    label: "Tempo de Seviço",
-                    "label-for": "tempo_servico",
-                    "label-class": "text-muted"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: { id: "tempo_servico", type: "text" },
-                    model: {
-                      value: _vm.form.experiencias[index].tempo_servico,
-                      callback: function($$v) {
-                        _vm.$set(
-                          _vm.form.experiencias[index],
-                          "tempo_servico",
-                          $$v
-                        )
-                      },
-                      expression: "form.experiencias[index].tempo_servico"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-2" },
-            [
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    label: "Saída",
-                    "label-for": "saida",
-                    "label-class": "text-muted"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: { id: "saida", type: "text" },
-                    model: {
-                      value: _vm.form.experiencias[index].saida,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form.experiencias[index], "saida", $$v)
-                      },
-                      expression: "form.experiencias[index].saida"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ])
-      }),
-      _vm._v(" "),
-      _c("h6", { staticClass: "card-title text-primary mt-3" }, [
-        _vm._v("Dados Postais")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-md-5" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  label: "Endereço",
-                  "label-for": "endereco",
-                  "label-class": "text-muted"
-                }
-              },
-              [
-                _c("b-form-input", {
-                  attrs: { id: "endereco", type: "text" },
-                  model: {
-                    value: _vm.form.endereco,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "endereco", $$v)
-                    },
-                    expression: "form.endereco"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-md-1" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  label: "Nº",
-                  "label-for": "endereco_numero",
-                  "label-class": "text-muted"
-                }
-              },
-              [
-                _c("b-form-input", {
-                  attrs: { id: "endereco_numero", type: "text" },
-                  model: {
-                    value: _vm.form.endereco_numero,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "endereco_numero", $$v)
-                    },
-                    expression: "form.endereco_numero"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-md-3" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  label: "Ponto de Referência",
-                  "label-for": "ponto_referrencia",
-                  "label-class": "text-muted"
-                }
-              },
-              [
-                _c("b-form-input", {
-                  attrs: { id: "ponto_referrencia", type: "text" },
-                  model: {
-                    value: _vm.form.ponto_referrencia,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "ponto_referrencia", $$v)
-                    },
-                    expression: "form.ponto_referrencia"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-md-3" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  label: "Complemento",
-                  "label-for": "complemento",
-                  "label-class": "text-muted"
-                }
-              },
-              [
-                _c("b-form-input", {
-                  attrs: { id: "complemento", type: "text" },
-                  model: {
-                    value: _vm.form.complemento,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "complemento", $$v)
-                    },
-                    expression: "form.complemento"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("h6", { staticClass: "card-title text-primary mt-3" }, [
-        _vm._v("Outras Informações")
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-form-group",
-        {
-          attrs: {
-            label: "Outras Informações",
-            "label-for": "outras_informacoes",
-            "label-class": "text-muted"
-          }
-        },
-        [
-          _c("b-form-textarea", {
-            attrs: { id: "outras_informacoes", rows: "4" },
-            model: {
-              value: _vm.form.outras_informacoes,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "outras_informacoes", $$v)
-              },
-              expression: "form.outras_informacoes"
-            }
-          })
+          _vm._m(2)
         ],
-        1
-      ),
-      _vm._v(" "),
-      _c("pre", [_vm._v(_vm._s(_vm.imagem_cropper))]),
-      _vm._v(" "),
-      _c("pre", [_vm._v(_vm._s(_vm.form))])
+        2
+      )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = [
@@ -50076,7 +50988,7 @@ var staticRenderFns = [
         [_vm._v("PCD")]
       ),
       _vm._v(
-        "\n                    - (Portador de Deficiência Física)\n                "
+        "\n                        - (Portador de Deficiência Física)\n                    "
       )
     ])
   },
@@ -50094,8 +51006,25 @@ var staticRenderFns = [
         [_vm._v("CNH")]
       ),
       _vm._v(
-        "\n                    - (Carrteira Nacional de\n                    Habilitação)"
+        "\n                        - (Carrteira Nacional de\n                        Habilitação)"
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_c("i", { staticClass: "mdi mdi-send" }), _vm._v(" Salvar")]
+      ),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-secondary", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "mdi mdi-backup-restore" }),
+        _vm._v(" Voltar")
+      ])
     ])
   }
 ]

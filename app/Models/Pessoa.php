@@ -26,6 +26,12 @@ class Pessoa extends Model implements Transformable
         'outra_habilidade', 'filhos', 'filhos_quantidade', 'escolaridade_id', 'estado_id', 'cidade_id', 'estado_civil_id'
     ];
     protected $dates = ['deleted_at'];
+    protected $casts = [
+        'cnh' => 'boolean',
+        'pcd' => 'boolean',
+        'ativo' => 'boolean',
+        'filhos' => 'boolean',
+    ];
 
     public function sexo()
     {
@@ -52,7 +58,7 @@ class Pessoa extends Model implements Transformable
         return $this->belongsTo(EstadoCivil::class, 'estado_civil_id');
     }
 
-    public function esperiencias()
+    public function experiencias()
     {
         return $this->hasMany(Experiencia::class, 'pessoa_id');
     }

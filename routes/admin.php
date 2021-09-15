@@ -11,7 +11,7 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
     Route::resource('estado_civil', \App\Http\Controllers\Admin\EstadoCivilController::class)->except('show');
     Route::resource('estado', \App\Http\Controllers\Admin\EstadoController::class)->only('index');
     Route::resource('cidade', \App\Http\Controllers\Admin\CidadeController::class)->only('index');
-    Route::resource('curriculo', \App\Http\Controllers\Admin\CurriculoController::class);
+    Route::resource('curriculo', \App\Http\Controllers\Admin\CurriculoController::class)->only('index', 'create', 'edit', 'destroy');
 });
 
 Route::prefix('api')->as('api.')->middleware('auth')->group(function () {
@@ -21,4 +21,6 @@ Route::prefix('api')->as('api.')->middleware('auth')->group(function () {
     Route::get('escolaridade', [\App\Http\Controllers\Api\EscolaridadeController::class, 'index']);
     Route::get('habilidade', [\App\Http\Controllers\Api\HabilidadesController::class, 'index']);
     Route::post('cidade', [\App\Http\Controllers\Api\CidadeController::class, 'index']);
+
+    Route::apiResource('curriculo', \App\Http\Controllers\Api\CurriculoController::class)->only('store', 'show', 'update');
 });
