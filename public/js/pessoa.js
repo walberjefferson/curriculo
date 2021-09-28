@@ -2212,6 +2212,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2228,6 +2238,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      modalShow: false,
       imagem: null,
       imagem_cropper: null,
       form: {},
@@ -2280,8 +2291,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     getFoto: function getFoto(event) {
-      console.log(event);
-      console.log(this.imagem);
+      var _self = this;
+
+      var files = event.target.files;
+
+      var done = function done(url) {
+        _self.modalShow = true;
+        _self.imagem_cropper = url;
+      };
+
+      if (files && files.length > 0) {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          done(reader.result);
+        };
+
+        reader.readAsDataURL(files[0]);
+      }
     },
     reset: function reset() {
       this.form = Object.assign({}, this["default"]);
@@ -44872,7 +44899,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n.overlay {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background-color: rgba(255, 255, 255, 0.5);\n    overflow: hidden;\n    height: 0;\n    transition: .5s ease;\n    width: 100%;\n}\n.image_area:hover .overlay {\n    height: 50%;\n    cursor: pointer;\n}\n", "",{"version":3,"sources":["webpack://./resources/components/PessoaForm.vue"],"names":[],"mappings":";AAwgBA;IACA,+BAAA;AACA;AAEA;IACA,kBAAA;IACA,SAAA;IACA,OAAA;IACA,QAAA;IACA,0CAAA;IACA,gBAAA;IACA,SAAA;IACA,oBAAA;IACA,WAAA;AACA;AAEA;IACA,WAAA;IACA,eAAA;AACA","sourcesContent":["<template>\n    <div>\n        <b-modal id=\"modal-1\" title=\"Adicionar Foto\" size=\"lg\">\n            <cropper\n                class=\"cropper\"\n                :src=\"imagem_cropper\"\n                :stencil-props=\"{\n\t\t            aspectRatio: 3/4\n\t            }\"\n            />\n\n            <b-form-file @change=\"getFoto\" v-model=\"imagem\" placeholder=\"Adicionar foto\"\n                         accept=\".jpg, .jpeg, .png\"></b-form-file>\n        </b-modal>\n\n        <form @submit.prevent=\"send\">\n            <div class=\"row\">\n                <div class=\"col-md-2\">\n                    <label for=\"upload_image\">\n                        <div class=\"image_area\">\n                            <b-img :blank=\"true\" fluid width=\"300\" height=\"400\" blank-color=\"#CCC\"\n                                   alt=\"HEX shorthand color image (#777)\">\n                            </b-img>\n                            <div class=\"overlay\">\n                                <div class=\"text\">Click to Change Profile Image</div>\n                            </div>\n                        </div>\n                        <input type=\"file\" name=\"image\" class=\"image\" id=\"upload_image\" style=\"display:none\"/>\n                    </label>\n                </div>\n                <div class=\"col-md-10\">\n\n                    <h6 class=\"card-title text-primary\">Dados Pessoais</h6>\n\n                    <div class=\"row\">\n                        <div class=\"col-md-6\">\n                            <b-form-group label=\"Nome\" label-for=\"nome\" label-class=\"text-muted\">\n                                <b-form-input id=\"nome\" v-model=\"form.nome\" type=\"text\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Data Nascimento\" label-for=\"data_nascimento\" label-class=\"text-muted\">\n                                <b-form-datepicker\n                                    :date-format-options=\"{ year: 'numeric', month: 'numeric', day: 'numeric' }\"\n                                    placeholder=\"Data Nascimento\" id=\"data_nascimento\" v-model=\"form.data_nascimento\"\n                                    locale=\"pt-br\"></b-form-datepicker>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Sexo\" label-for=\"sexo\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"sexo\"\n                                    v-model=\"form.sexo_id\"\n                                    :options=\"sexos\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o sexo</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"CPF\" label-for=\"cpf\" label-class=\"text-muted\">\n                                <b-form-input id=\"cpf\" v-model=\"form.cpf\" type=\"text\" ref=\"cpf\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Perfil do Instagam (@)\" label-for=\"instagram\" label-class=\"text-muted\">\n                                <b-form-input id=\"instagram\" v-model=\"form.instagram\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Telefone\" label-for=\"telefone\" label-class=\"text-muted\">\n                                <b-form-input id=\"telefone\" v-model=\"form.telefone\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"WhatsApp\" label-for=\"whatsapp\" label-class=\"text-muted\">\n                                <b-form-input id=\"whatsapp\" v-model=\"form.whatsapp\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Escolaridade\" label-for=\"escolaridade\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"escolaridade\"\n                                    v-model=\"form.escolaridade_id\"\n                                    :options=\"escolaidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a escolaridade\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Estado Cívil\" label-for=\"estado_civil_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_civil_id\"\n                                    v-model=\"form.estado_civil_id\"\n                                    :options=\"estados_civis\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado cívil\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-2\">\n                            <b-form-group label=\"Estado\" label-for=\"estado_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_id\"\n                                    v-model=\"form.estado_id\"\n                                    :options=\"estados\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                    @change=\"getCidades\"\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-4\">\n                            <b-form-group label=\"Cidade\" label-for=\"cidade_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"cidade_id\"\n                                    v-model=\"form.cidade_id\"\n                                    :options=\"cidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a cidade</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row mt-2\">\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">\n                        <abbr title=\"Portador de Deficiência Física\" class=\"initialism\">PCD</abbr>\n                        - (Portador de Deficiência Física)\n                    </label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\"><abbr title=\"Carrteira Nacional de Habilitação\"\n                                                    class=\"initialism\">CNH</abbr>\n                        - (Carrteira Nacional de\n                        Habilitação)</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">Tem filhos?</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n\n            <div v-if=\"form.cnh || form.filhos\" class=\"row\">\n                <div class=\"col-md-4\"></div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.cnh\">\n                        <b-form-group label=\"Categoria CNH\" label-for=\"categoria_cnh\" label-class=\"text-muted\">\n                            <b-form-input id=\"categoria_cnh\" v-model=\"form.categoria_cnh\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.filhos\">\n                        <b-form-group label=\"Quantidade de Filhos\" label-for=\"filhos_quantidade\"\n                                      label-class=\"text-muted\">\n                            <b-form-input id=\"filhos_quantidade\" v-model=\"form.filhos_quantidade\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Habilidades</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-4\" v-for=\"habilidade in habilidades\" :key=\"habilidade.id\">\n                    <b-form-checkbox\n                        v-model=\"form.habilidades\"\n                        :value=\"habilidade.id\"\n                    >\n                        {{ habilidade.nome }}\n                    </b-form-checkbox>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Experiências</h6>\n\n            <div v-for=\"(experiencia, index) in form.experiencias\" :key=\"index\" class=\"row\">\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Cargo\" label-for=\"cargo\" label-class=\"text-muted\">\n                        <b-form-input id=\"cargo\" v-model=\"form.experiencias[index].cargo\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-4\">\n                    <b-form-group label=\"Empresa\" label-for=\"empresa\" label-class=\"text-muted\">\n                        <b-form-input id=\"empresa\" v-model=\"form.experiencias[index].empresa\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Tempo de Seviço\" label-for=\"tempo_servico\" label-class=\"text-muted\">\n                        <b-form-input id=\"tempo_servico\" v-model=\"form.experiencias[index].tempo_servico\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-2\">\n                    <b-form-group label=\"Saída\" label-for=\"saida\" label-class=\"text-muted\">\n                        <b-form-input id=\"saida\" v-model=\"form.experiencias[index].saida\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Dados Postais</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-5\">\n                    <b-form-group label=\"Endereço\" label-for=\"endereco\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco\" v-model=\"form.endereco\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-1\">\n                    <b-form-group label=\"Nº\" label-for=\"endereco_numero\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco_numero\" v-model=\"form.endereco_numero\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Ponto de Referência\" label-for=\"ponto_referrencia\" label-class=\"text-muted\">\n                        <b-form-input id=\"ponto_referrencia\" v-model=\"form.ponto_referrencia\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Complemento\" label-for=\"complemento\" label-class=\"text-muted\">\n                        <b-form-input id=\"complemento\" v-model=\"form.complemento\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Outras Informações</h6>\n\n            <b-form-group label=\"Outras Informações\" label-for=\"outras_informacoes\" label-class=\"text-muted\">\n                <b-form-textarea id=\"outras_informacoes\" v-model=\"form.outras_informacoes\" rows=\"4\"></b-form-textarea>\n            </b-form-group>\n\n            <div class=\"hr-line-dashed\"></div>\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary\" type=\"submit\"><i class=\"mdi mdi-send\"></i> Salvar</button>\n                <a href=\"#\" class=\"btn btn-secondary\"><i class=\"mdi mdi-backup-restore\"></i> Voltar</a>\n            </div>\n        </form>\n    </div>\n\n</template>\n\n<script>\nimport axios from 'axios';\nimport {Cropper} from 'vue-advanced-cropper';\nimport 'vue-advanced-cropper/dist/style.css';\n\nexport default {\n    name: \"PessoaForm\",\n    components: {\n        Cropper,\n    },\n    props: {\n        uuid: {\n            required: false,\n            type: String,\n        }\n    },\n    data: () => ({\n        imagem: null,\n        imagem_cropper: null,\n        form: {},\n        sexos: [],\n        estados: [],\n        estados_civis: [],\n        escolaidades: [],\n        cidades: [],\n        habilidades: [],\n        default: {\n            id: undefined,\n            nome: null,\n            foto: null,\n            data_nascimento: null,\n            sexo_id: null,\n            pcd: null,\n            cpf: null,\n            instagram: null,\n            telefone: null,\n            whatsapp: null,\n            escolaridade_id: null,\n            estado_civil_id: null,\n            estado_id: null,\n            cidade_id: null,\n            cnh: null,\n            categoria_cnh: null,\n            filhos: null,\n            filhos_quantidade: null,\n            endereco: null,\n            endereco_numero: null,\n            ponto_referrencia: null,\n            complemento: null,\n            outras_informacoes: null,\n            habilidades: [],\n            experiencias: [\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null},\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null}\n            ]\n        }\n    }),\n    methods: {\n        getFoto(event) {\n            console.log(event);\n            console.log(this.imagem);\n        },\n        reset() {\n            this.form = Object.assign({}, this.default);\n        },\n        getEstados() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado').then(({data}) => {\n                this.estados = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getHabilidades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/habilidade').then(({data}) => {\n                this.habilidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getSexo() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/sexo').then(({data}) => {\n                this.sexos = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getEscolaridades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/escolaridade').then(({data}) => {\n                this.escolaidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getEstadoCivil() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado_civil').then(({data}) => {\n                this.estados_civis = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        async getCidades() {\n            document.body.classList.remove('loaded');\n            await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {\n                this.form.cidade_id = null;\n                this.cidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        send() {\n            if (this.uuid) {\n                axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {\n                    console.log(data);\n                });\n            } else {\n                axios.post('/api/curriculo', this.form).then(({data}) => {\n                    console.log(data);\n                });\n            }\n        },\n        getCurriculo() {\n            if (this.uuid) {\n                axios.get(`/api/curriculo/${this.uuid}`).then(({data}) => {\n                    this.changeData(data);\n                })\n            }\n        },\n        changeData(data) {\n            Object.entries(data).forEach(([key, value]) => {\n                if (key === 'habilidades') {\n                    this.form[key] = value.map((p) => p.id);\n                } else if (key === 'estado_id') {\n                    this.form[key] = value;\n                    this.getCidades().finally(() => {\n                        this.form['cidade_id'] = data.cidade_id;\n                    });\n                } else {\n                    this.form[key] = value;\n                }\n            });\n        }\n    },\n    created() {\n        this.reset();\n        this.getEstados();\n        this.getSexo();\n        this.getEscolaridades();\n        this.getEstadoCivil();\n        this.getHabilidades();\n        this.getCurriculo();\n    },\n    mounted() {\n    },\n    watch: {\n        // imagem: (file) => {\n        //     if(file) {\n        //         console.log(file);\n        //\n        //         let reader  = new FileReader();\n        //\n        //         reader.onloadend = function () {\n        //             console.log(reader.result); //this is an ArrayBuffer\n        //         }\n        //         this.imagem_cropper = reader.readAsArrayBuffer(file);\n        //     }\n        // }\n    }\n}\n</script>\n\n<style>\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n\n.overlay {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background-color: rgba(255, 255, 255, 0.5);\n    overflow: hidden;\n    height: 0;\n    transition: .5s ease;\n    width: 100%;\n}\n\n.image_area:hover .overlay {\n    height: 50%;\n    cursor: pointer;\n}\n</style>\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n.overlay {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background-color: rgba(255, 255, 255, 0.5);\n    overflow: hidden;\n    height: 0;\n    transition: .5s ease;\n    width: 100%;\n    padding: 5px 10px 0;\n}\n.image_area {\n    position: relative;\n}\n.image_area:hover .overlay {\n    height: 30%;\n    cursor: pointer;\n}\n", "",{"version":3,"sources":["webpack://./resources/components/PessoaForm.vue"],"names":[],"mappings":";AAgiBA;IACA,+BAAA;AACA;AAEA;IACA,kBAAA;IACA,SAAA;IACA,OAAA;IACA,QAAA;IACA,0CAAA;IACA,gBAAA;IACA,SAAA;IACA,oBAAA;IACA,WAAA;IACA,mBAAA;AACA;AAEA;IACA,kBAAA;AACA;AAEA;IACA,WAAA;IACA,eAAA;AACA","sourcesContent":["<template>\n    <div>\n        <b-modal v-model=\"modalShow\" id=\"modal-1\" title=\"Cortar Foto\" size=\"lg\">\n            <Cropper\n                ref=\"cropper\"\n                class=\"cropper\"\n                :src=\"imagem_cropper\"\n                :stencil-props=\"{\n                    aspectRatio: 3/4\n                }\"\n            />\n\n            <template #modal-footer>\n                <div class=\"w-100\">\n                    <b-button variant=\"primary\" class=\"float-right\" @click=\"modalShow=false\">\n                        Cortar\n                    </b-button>\n                    <b-button variant=\"secondary\" class=\"mr-2 float-right\" @click=\"modalShow=false\">\n                        Fechar\n                    </b-button>\n                </div>\n            </template>\n        </b-modal>\n\n        <form @submit.prevent=\"send\">\n            <div class=\"row\">\n                <div class=\"col-md-2\">\n                    <label for=\"upload_image\">\n                        <div class=\"image_area\">\n                            <b-img :blank=\"true\" fluid width=\"300\" height=\"400\" blank-color=\"#CCC\"\n                                   alt=\"HEX shorthand color image (#777)\" ref=\"image_avatar\">\n                            </b-img>\n                            <div class=\"overlay\">\n                                <div class=\"text\">Clique para carregar a foto</div>\n                            </div>\n                        </div>\n                        <b-form-file @change=\"getFoto\" v-model=\"imagem\" id=\"upload_image\" style=\"display: none\"\n                                     accept=\".jpg, .jpeg, .png\"></b-form-file>\n                    </label>\n                </div>\n                <div class=\"col-md-10\">\n\n                    <h6 class=\"card-title text-primary\">Dados Pessoais</h6>\n\n                    <div class=\"row\">\n                        <div class=\"col-md-6\">\n                            <b-form-group label=\"Nome\" label-for=\"nome\" label-class=\"text-muted\">\n                                <b-form-input id=\"nome\" v-model=\"form.nome\" type=\"text\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Data Nascimento\" label-for=\"data_nascimento\" label-class=\"text-muted\">\n                                <b-form-datepicker\n                                    :date-format-options=\"{ year: 'numeric', month: 'numeric', day: 'numeric' }\"\n                                    placeholder=\"Data Nascimento\" id=\"data_nascimento\" v-model=\"form.data_nascimento\"\n                                    locale=\"pt-br\"></b-form-datepicker>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Sexo\" label-for=\"sexo\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"sexo\"\n                                    v-model=\"form.sexo_id\"\n                                    :options=\"sexos\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o sexo</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"CPF\" label-for=\"cpf\" label-class=\"text-muted\">\n                                <b-form-input id=\"cpf\" v-model=\"form.cpf\" type=\"text\" ref=\"cpf\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Perfil do Instagam (@)\" label-for=\"instagram\" label-class=\"text-muted\">\n                                <b-form-input id=\"instagram\" v-model=\"form.instagram\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Telefone\" label-for=\"telefone\" label-class=\"text-muted\">\n                                <b-form-input id=\"telefone\" v-model=\"form.telefone\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"WhatsApp\" label-for=\"whatsapp\" label-class=\"text-muted\">\n                                <b-form-input id=\"whatsapp\" v-model=\"form.whatsapp\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Escolaridade\" label-for=\"escolaridade\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"escolaridade\"\n                                    v-model=\"form.escolaridade_id\"\n                                    :options=\"escolaidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a escolaridade\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Estado Cívil\" label-for=\"estado_civil_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_civil_id\"\n                                    v-model=\"form.estado_civil_id\"\n                                    :options=\"estados_civis\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado cívil\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-2\">\n                            <b-form-group label=\"Estado\" label-for=\"estado_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_id\"\n                                    v-model=\"form.estado_id\"\n                                    :options=\"estados\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                    @change=\"getCidades\"\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-4\">\n                            <b-form-group label=\"Cidade\" label-for=\"cidade_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"cidade_id\"\n                                    v-model=\"form.cidade_id\"\n                                    :options=\"cidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a cidade</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row mt-2\">\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">\n                        <abbr title=\"Portador de Deficiência Física\" class=\"initialism\">PCD</abbr>\n                        - (Portador de Deficiência Física)\n                    </label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\"><abbr title=\"Carrteira Nacional de Habilitação\"\n                                                    class=\"initialism\">CNH</abbr>\n                        - (Carrteira Nacional de\n                        Habilitação)</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">Tem filhos?</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n\n            <div v-if=\"form.cnh || form.filhos\" class=\"row\">\n                <div class=\"col-md-4\"></div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.cnh\">\n                        <b-form-group label=\"Categoria CNH\" label-for=\"categoria_cnh\" label-class=\"text-muted\">\n                            <b-form-input id=\"categoria_cnh\" v-model=\"form.categoria_cnh\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.filhos\">\n                        <b-form-group label=\"Quantidade de Filhos\" label-for=\"filhos_quantidade\"\n                                      label-class=\"text-muted\">\n                            <b-form-input id=\"filhos_quantidade\" v-model=\"form.filhos_quantidade\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Habilidades</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-4\" v-for=\"habilidade in habilidades\" :key=\"habilidade.id\">\n                    <b-form-checkbox\n                        v-model=\"form.habilidades\"\n                        :value=\"habilidade.id\"\n                    >\n                        {{ habilidade.nome }}\n                    </b-form-checkbox>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Experiências</h6>\n\n            <div v-for=\"(experiencia, index) in form.experiencias\" :key=\"index\" class=\"row\">\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Cargo\" label-for=\"cargo\" label-class=\"text-muted\">\n                        <b-form-input id=\"cargo\" v-model=\"form.experiencias[index].cargo\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-4\">\n                    <b-form-group label=\"Empresa\" label-for=\"empresa\" label-class=\"text-muted\">\n                        <b-form-input id=\"empresa\" v-model=\"form.experiencias[index].empresa\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Tempo de Seviço\" label-for=\"tempo_servico\" label-class=\"text-muted\">\n                        <b-form-input id=\"tempo_servico\" v-model=\"form.experiencias[index].tempo_servico\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-2\">\n                    <b-form-group label=\"Saída\" label-for=\"saida\" label-class=\"text-muted\">\n                        <b-form-input id=\"saida\" v-model=\"form.experiencias[index].saida\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Dados Postais</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-5\">\n                    <b-form-group label=\"Endereço\" label-for=\"endereco\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco\" v-model=\"form.endereco\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-1\">\n                    <b-form-group label=\"Nº\" label-for=\"endereco_numero\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco_numero\" v-model=\"form.endereco_numero\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Ponto de Referência\" label-for=\"ponto_referrencia\" label-class=\"text-muted\">\n                        <b-form-input id=\"ponto_referrencia\" v-model=\"form.ponto_referrencia\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Complemento\" label-for=\"complemento\" label-class=\"text-muted\">\n                        <b-form-input id=\"complemento\" v-model=\"form.complemento\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Outras Informações</h6>\n\n            <b-form-group label=\"Outras Informações\" label-for=\"outras_informacoes\" label-class=\"text-muted\">\n                <b-form-textarea id=\"outras_informacoes\" v-model=\"form.outras_informacoes\" rows=\"4\"></b-form-textarea>\n            </b-form-group>\n\n            <div class=\"hr-line-dashed\"></div>\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary\" type=\"submit\"><i class=\"mdi mdi-send\"></i> Salvar</button>\n                <a href=\"#\" class=\"btn btn-secondary\"><i class=\"mdi mdi-backup-restore\"></i> Voltar</a>\n            </div>\n        </form>\n    </div>\n\n</template>\n\n<script>\nimport axios from 'axios';\nimport {Cropper} from 'vue-advanced-cropper';\nimport 'vue-advanced-cropper/dist/style.css';\n\nexport default {\n    name: \"PessoaForm\",\n    components: {\n        Cropper,\n    },\n    props: {\n        uuid: {\n            required: false,\n            type: String,\n        }\n    },\n    data: () => ({\n        modalShow: false,\n        imagem: null,\n        imagem_cropper: null,\n        form: {},\n        sexos: [],\n        estados: [],\n        estados_civis: [],\n        escolaidades: [],\n        cidades: [],\n        habilidades: [],\n        default: {\n            id: undefined,\n            nome: null,\n            foto: null,\n            data_nascimento: null,\n            sexo_id: null,\n            pcd: null,\n            cpf: null,\n            instagram: null,\n            telefone: null,\n            whatsapp: null,\n            escolaridade_id: null,\n            estado_civil_id: null,\n            estado_id: null,\n            cidade_id: null,\n            cnh: null,\n            categoria_cnh: null,\n            filhos: null,\n            filhos_quantidade: null,\n            endereco: null,\n            endereco_numero: null,\n            ponto_referrencia: null,\n            complemento: null,\n            outras_informacoes: null,\n            habilidades: [],\n            experiencias: [\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null},\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null}\n            ]\n        }\n    }),\n    methods: {\n        getFoto(event) {\n            const _self = this;\n            let files = event.target.files;\n\n            let done = (url) => {\n                _self.modalShow = true;\n                _self.imagem_cropper = url;\n            };\n\n            if (files && files.length > 0) {\n                let reader = new FileReader();\n                reader.onload = function (event) {\n                    done(reader.result);\n                };\n                reader.readAsDataURL(files[0]);\n            }\n        },\n        reset() {\n            this.form = Object.assign({}, this.default);\n        },\n        getEstados() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado').then(({data}) => {\n                this.estados = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getHabilidades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/habilidade').then(({data}) => {\n                this.habilidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getSexo() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/sexo').then(({data}) => {\n                this.sexos = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getEscolaridades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/escolaridade').then(({data}) => {\n                this.escolaidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getEstadoCivil() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado_civil').then(({data}) => {\n                this.estados_civis = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        async getCidades() {\n            document.body.classList.remove('loaded');\n            await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {\n                this.form.cidade_id = null;\n                this.cidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        send() {\n            if (this.uuid) {\n                axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {\n                    console.log(data);\n                });\n            } else {\n                axios.post('/api/curriculo', this.form).then(({data}) => {\n                    console.log(data);\n                });\n            }\n        },\n        getCurriculo() {\n            if (this.uuid) {\n                axios.get(`/api/curriculo/${this.uuid}`).then(({data}) => {\n                    this.changeData(data);\n                })\n            }\n        },\n        changeData(data) {\n            Object.entries(data).forEach(([key, value]) => {\n                if (key === 'habilidades') {\n                    this.form[key] = value.map((p) => p.id);\n                } else if (key === 'estado_id') {\n                    this.form[key] = value;\n                    this.getCidades().finally(() => {\n                        this.form['cidade_id'] = data.cidade_id;\n                    });\n                } else {\n                    this.form[key] = value;\n                }\n            });\n        }\n    },\n    created() {\n        this.reset();\n        this.getEstados();\n        this.getSexo();\n        this.getEscolaridades();\n        this.getEstadoCivil();\n        this.getHabilidades();\n        this.getCurriculo();\n    },\n    mounted() {\n    },\n    watch: {\n        // imagem: (file) => {\n        //     if(file) {\n        //         console.log(file);\n        //\n        //         let reader  = new FileReader();\n        //\n        //         reader.onloadend = function () {\n        //             console.log(reader.result); //this is an ArrayBuffer\n        //         }\n        //         this.imagem_cropper = reader.readAsArrayBuffer(file);\n        //     }\n        // }\n    }\n}\n</script>\n\n<style>\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n\n.overlay {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background-color: rgba(255, 255, 255, 0.5);\n    overflow: hidden;\n    height: 0;\n    transition: .5s ease;\n    width: 100%;\n    padding: 5px 10px 0;\n}\n\n.image_area {\n    position: relative;\n}\n\n.image_area:hover .overlay {\n    height: 30%;\n    cursor: pointer;\n}\n</style>\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49806,30 +49833,77 @@ var render = function() {
     [
       _c(
         "b-modal",
-        { attrs: { id: "modal-1", title: "Adicionar Foto", size: "lg" } },
+        {
+          attrs: { id: "modal-1", title: "Cortar Foto", size: "lg" },
+          scopedSlots: _vm._u([
+            {
+              key: "modal-footer",
+              fn: function() {
+                return [
+                  _c(
+                    "div",
+                    { staticClass: "w-100" },
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "float-right",
+                          attrs: { variant: "primary" },
+                          on: {
+                            click: function($event) {
+                              _vm.modalShow = false
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Cortar\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "mr-2 float-right",
+                          attrs: { variant: "secondary" },
+                          on: {
+                            click: function($event) {
+                              _vm.modalShow = false
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Fechar\n                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ]
+              },
+              proxy: true
+            }
+          ]),
+          model: {
+            value: _vm.modalShow,
+            callback: function($$v) {
+              _vm.modalShow = $$v
+            },
+            expression: "modalShow"
+          }
+        },
         [
-          _c("cropper", {
+          _c("Cropper", {
+            ref: "cropper",
             staticClass: "cropper",
             attrs: {
               src: _vm.imagem_cropper,
               "stencil-props": {
                 aspectRatio: 3 / 4
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("b-form-file", {
-            attrs: {
-              placeholder: "Adicionar foto",
-              accept: ".jpg, .jpeg, .png"
-            },
-            on: { change: _vm.getFoto },
-            model: {
-              value: _vm.imagem,
-              callback: function($$v) {
-                _vm.imagem = $$v
-              },
-              expression: "imagem"
             }
           })
         ],
@@ -49849,33 +49923,46 @@ var render = function() {
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-2" }, [
-              _c("label", { attrs: { for: "upload_image" } }, [
-                _c(
-                  "div",
-                  { staticClass: "image_area" },
-                  [
-                    _c("b-img", {
-                      attrs: {
-                        blank: true,
-                        fluid: "",
-                        width: "300",
-                        height: "400",
-                        "blank-color": "#CCC",
-                        alt: "HEX shorthand color image (#777)"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "image",
-                  staticStyle: { display: "none" },
-                  attrs: { type: "file", name: "image", id: "upload_image" }
-                })
-              ])
+              _c(
+                "label",
+                { attrs: { for: "upload_image" } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "image_area" },
+                    [
+                      _c("b-img", {
+                        ref: "image_avatar",
+                        attrs: {
+                          blank: true,
+                          fluid: "",
+                          width: "300",
+                          height: "400",
+                          "blank-color": "#CCC",
+                          alt: "HEX shorthand color image (#777)"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("b-form-file", {
+                    staticStyle: { display: "none" },
+                    attrs: { id: "upload_image", accept: ".jpg, .jpeg, .png" },
+                    on: { change: _vm.getFoto },
+                    model: {
+                      value: _vm.imagem,
+                      callback: function($$v) {
+                        _vm.imagem = $$v
+                      },
+                      expression: "imagem"
+                    }
+                  })
+                ],
+                1
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-10" }, [
@@ -50170,7 +50257,7 @@ var render = function() {
                                     { attrs: { value: null } },
                                     [
                                       _vm._v(
-                                        "Selecione a escolaridade\n                                        "
+                                        "Selecione a escolaridade\n                                    "
                                       )
                                     ]
                                   )
@@ -50226,7 +50313,7 @@ var render = function() {
                                     { attrs: { value: null } },
                                     [
                                       _vm._v(
-                                        "Selecione o estado cívil\n                                        "
+                                        "Selecione o estado cívil\n                                    "
                                       )
                                     ]
                                   )
@@ -50387,7 +50474,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(
-                      "\n                                Sim\n                            "
+                      "\n                            Sim\n                        "
                     )
                   ])
                 ]),
@@ -50416,7 +50503,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(
-                      "\n                                Não\n                            "
+                      "\n                            Não\n                        "
                     )
                   ])
                 ])
@@ -50451,7 +50538,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(
-                      "\n                                Sim\n                            "
+                      "\n                            Sim\n                        "
                     )
                   ])
                 ]),
@@ -50480,7 +50567,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(
-                      "\n                                Não\n                            "
+                      "\n                            Não\n                        "
                     )
                   ])
                 ])
@@ -50517,7 +50604,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(
-                      "\n                                Sim\n                            "
+                      "\n                            Sim\n                        "
                     )
                   ])
                 ]),
@@ -50546,7 +50633,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(
-                      "\n                                Não\n                            "
+                      "\n                            Não\n                        "
                     )
                   ])
                 ])
@@ -50657,9 +50744,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                        " +
+                        "\n                    " +
                           _vm._s(habilidade.nome) +
-                          "\n                    "
+                          "\n                "
                       )
                     ]
                   )
@@ -50985,7 +51072,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "overlay" }, [
       _c("div", { staticClass: "text" }, [
-        _vm._v("Click to Change Profile Image")
+        _vm._v("Clique para carregar a foto")
       ])
     ])
   },
@@ -51003,7 +51090,7 @@ var staticRenderFns = [
         [_vm._v("PCD")]
       ),
       _vm._v(
-        "\n                        - (Portador de Deficiência Física)\n                    "
+        "\n                    - (Portador de Deficiência Física)\n                "
       )
     ])
   },
@@ -51021,7 +51108,7 @@ var staticRenderFns = [
         [_vm._v("CNH")]
       ),
       _vm._v(
-        "\n                        - (Carrteira Nacional de\n                        Habilitação)"
+        "\n                    - (Carrteira Nacional de\n                    Habilitação)"
       )
     ])
   },

@@ -1,16 +1,25 @@
 <template>
     <div>
-        <b-modal id="modal-1" title="Adicionar Foto" size="lg">
-            <cropper
+        <b-modal v-model="modalShow" id="modal-1" title="Cortar Foto" size="lg">
+            <Cropper
+                ref="cropper"
                 class="cropper"
                 :src="imagem_cropper"
                 :stencil-props="{
-		            aspectRatio: 3/4
-	            }"
+                    aspectRatio: 3/4
+                }"
             />
 
-            <b-form-file @change="getFoto" v-model="imagem" placeholder="Adicionar foto"
-                         accept=".jpg, .jpeg, .png"></b-form-file>
+            <template #modal-footer>
+                <div class="w-100">
+                    <b-button variant="primary" class="float-right" @click="modalShow=false">
+                        Cortar
+                    </b-button>
+                    <b-button variant="secondary" class="mr-2 float-right" @click="modalShow=false">
+                        Fechar
+                    </b-button>
+                </div>
+            </template>
         </b-modal>
 
         <form @submit.prevent="send">
@@ -19,13 +28,14 @@
                     <label for="upload_image">
                         <div class="image_area">
                             <b-img :blank="true" fluid width="300" height="400" blank-color="#CCC"
-                                   alt="HEX shorthand color image (#777)">
+                                   alt="HEX shorthand color image (#777)" ref="image_avatar">
                             </b-img>
                             <div class="overlay">
-                                <div class="text">Click to Change Profile Image</div>
+                                <div class="text">Clique para carregar a foto</div>
                             </div>
                         </div>
-                        <input type="file" name="image" class="image" id="upload_image" style="display:none"/>
+                        <b-form-file @change="getFoto" v-model="imagem" id="upload_image" style="display: none"
+                                     accept=".jpg, .jpeg, .png"></b-form-file>
                     </label>
                 </div>
                 <div class="col-md-10">
@@ -347,6 +357,7 @@ export default {
         }
     },
     data: () => ({
+        modalShow: false,
         imagem: null,
         imagem_cropper: null,
         form: {},
@@ -389,8 +400,21 @@ export default {
     }),
     methods: {
         getFoto(event) {
-            console.log(event);
-            console.log(this.imagem);
+            const _self = this;
+            let files = event.target.files;
+
+            let done = (url) => {
+                _self.modalShow = true;
+                _self.imagem_cropper = url;
+            };
+
+            if (files && files.length > 0) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(files[0]);
+            }
         },
         reset() {
             this.form = Object.assign({}, this.default);
@@ -532,10 +556,15 @@ export default {
     height: 0;
     transition: .5s ease;
     width: 100%;
+    padding: 5px 10px 0;
+}
+
+.image_area {
+    position: relative;
 }
 
 .image_area:hover .overlay {
-    height: 50%;
+    height: 30%;
     cursor: pointer;
 }
 </style>
