@@ -16,9 +16,17 @@
         <form @submit.prevent="send">
             <div class="row">
                 <div class="col-md-2">
-                    <b-img :blank="true" fluid width="300" height="400" blank-color="#CCC"
-                           alt="HEX shorthand color image (#777)"></b-img>
-                    <b-button size="sm" v-b-modal.modal-1 for="foto" block>Adicionar</b-button>
+                    <label for="upload_image">
+                        <div class="image_area">
+                            <b-img :blank="true" fluid width="300" height="400" blank-color="#CCC"
+                                   alt="HEX shorthand color image (#777)">
+                            </b-img>
+                            <div class="overlay">
+                                <div class="text">Click to Change Profile Image</div>
+                            </div>
+                        </div>
+                        <input type="file" name="image" class="image" id="upload_image" style="display:none"/>
+                    </label>
                 </div>
                 <div class="col-md-10">
 
@@ -468,7 +476,7 @@ export default {
         },
         changeData(data) {
             Object.entries(data).forEach(([key, value]) => {
-                if(key === 'habilidades') {
+                if (key === 'habilidades') {
                     this.form[key] = value.map((p) => p.id);
                 } else if (key === 'estado_id') {
                     this.form[key] = value;
@@ -512,5 +520,22 @@ export default {
 <style>
 .custom-file-label::after {
     content: 'Adicionar' !important;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    height: 0;
+    transition: .5s ease;
+    width: 100%;
+}
+
+.image_area:hover .overlay {
+    height: 50%;
+    cursor: pointer;
 }
 </style>
