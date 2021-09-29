@@ -490,14 +490,27 @@ export default {
                 document.body.classList.add('loaded');
             });
         },
+        createFormData(formData, key, data) {
+            if (data === Object(data) || Array.isArray(data)) {
+                for (let i in data) {
+                    this.createFormData(formData, key + '[' + i + ']', data[i]);
+                }
+            } else {
+                formData.append(key, data);
+            }
+        },
         send() {
+            const form = new FormData();
             if (this.uuid) {
                 if (this.canvas) {
-                    const form = new FormData();
                     this.canvas.toBlob((blob) => {
                         form.append('_method', 'PUT');
-                        Object.entries(this.form).forEach(([key, value]) => {
-                            if (key === 'foto') {
+                        Object.keys(this.form).map((key) => {
+                            if (key === 'habilidades') {
+                                this.createFormData(form, key, this.form[key]);
+                            } else if (key === 'experiencias') {
+                                this.createFormData(form, key, this.form[key]);
+                            } else if (key === 'foto') {
                                 form.append(key, blob);
                             } else {
                                 form.append(key, this.form[key]);
@@ -514,10 +527,13 @@ export default {
                 }
             } else {
                 if (this.canvas) {
-                    const form = new FormData();
                     this.canvas.toBlob((blob) => {
-                        Object.entries(this.form).forEach(([key, value]) => {
-                            if (key === 'foto') {
+                        Object.keys(this.form).map((key) => {
+                            if (key === 'habilidades') {
+                                this.createFormData(form, key, this.form[key]);
+                            } else if (key === 'experiencias') {
+                                this.createFormData(form, key, this.form[key]);
+                            } else if (key === 'foto') {
                                 form.append(key, blob);
                             } else {
                                 form.append(key, this.form[key]);
