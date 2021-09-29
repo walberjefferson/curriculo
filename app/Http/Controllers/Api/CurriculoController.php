@@ -33,4 +33,16 @@ class CurriculoController extends Controller
     {
         return $this->repository->with(['experiencias', 'habilidades'])->findWhere(['uuid' => $uuid])->first();
     }
+
+    public function update(CurriculoRequest $request, $id)
+    {
+        try {
+            \DB::beginTransaction();
+            $dados = $this->repository->update($request->validated(), $id);
+            \DB::commit();
+            return response()->json(['data' => $dados, 'message' => 'Currículo atualizado com sucesso', 'error' => false]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Erro ao tentar atualizar currículo. - ' . $e->getMessage(), 'error' => true], 500);
+        }
+    }
 }

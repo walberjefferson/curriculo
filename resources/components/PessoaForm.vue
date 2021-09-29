@@ -12,7 +12,7 @@
 
             <template #modal-footer>
                 <div class="w-100">
-                    <b-button variant="primary" class="float-right" @click="modalShow=false">
+                    <b-button variant="primary" class="float-right" @click="cortaFoto">
                         Cortar
                     </b-button>
                     <b-button variant="secondary" class="mr-2 float-right" @click="modalShow=false">
@@ -27,14 +27,17 @@
                 <div class="col-md-2">
                     <label for="upload_image">
                         <div class="image_area">
-                            <b-img :blank="true" fluid width="300" height="400" blank-color="#CCC"
+                            <b-img v-if="imagem" :src="imagem" fluid width="300" height="400" blank-color="#CCC"
+                                   alt="HEX shorthand color image (#777)" ref="image_avatar">
+                            </b-img>
+                            <b-img v-else :blank="true" fluid width="300" height="400" blank-color="#CCC"
                                    alt="HEX shorthand color image (#777)" ref="image_avatar">
                             </b-img>
                             <div class="overlay">
                                 <div class="text">Clique para carregar a foto</div>
                             </div>
                         </div>
-                        <b-form-file @change="getFoto" v-model="imagem" id="upload_image" style="display: none"
+                        <b-form-file @change="getFoto" id="upload_image" style="display: none"
                                      accept=".jpg, .jpeg, .png"></b-form-file>
                     </label>
                 </div>
@@ -360,6 +363,7 @@ export default {
         modalShow: false,
         imagem: null,
         imagem_cropper: null,
+        canvas: null,
         form: {},
         sexos: [],
         estados: [],
@@ -415,6 +419,12 @@ export default {
                 };
                 reader.readAsDataURL(files[0]);
             }
+        },
+        cortaFoto() {
+            const {canvas} = this.$refs.cropper.getResult();
+            this.canvas = canvas;
+            this.imagem = canvas.toDataURL('image/jpeg');
+            this.modalShow = false;
         },
         reset() {
             this.form = Object.assign({}, this.default);
@@ -482,13 +492,46 @@ export default {
         },
         send() {
             if (this.uuid) {
-                axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
-                    console.log(data);
-                });
+                if (this.canvas) {
+                    const form = new FormData();
+                    this.canvas.toBlob((blob) => {
+                        form.append('_method', 'PUT');
+                        Object.entries(this.form).forEach(([key, value]) => {
+                            if (key === 'foto') {
+                                form.append(key, blob);
+                            } else {
+                                form.append(key, this.form[key]);
+                            }
+                        });
+                        axios.post(`/api/curriculo/${this.uuid}`, form).then(({data}) => {
+                            console.log(data);
+                        });
+                    }, 'image/jpeg');
+                } else {
+                    axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
+                        console.log(data);
+                    });
+                }
             } else {
-                axios.post('/api/curriculo', this.form).then(({data}) => {
-                    console.log(data);
-                });
+                if (this.canvas) {
+                    const form = new FormData();
+                    this.canvas.toBlob((blob) => {
+                        Object.entries(this.form).forEach(([key, value]) => {
+                            if (key === 'foto') {
+                                form.append(key, blob);
+                            } else {
+                                form.append(key, this.form[key]);
+                            }
+                        });
+                        axios.post('/api/curriculo', form).then(({data}) => {
+                            console.log(data);
+                        });
+                    }, 'image/jpeg');
+                } else {
+                    axios.post('/api/curriculo', this.form).then(({data}) => {
+                        console.log(data);
+                    });
+                }
             }
         },
         getCurriculo() {
@@ -521,22 +564,6 @@ export default {
         this.getEstadoCivil();
         this.getHabilidades();
         this.getCurriculo();
-    },
-    mounted() {
-    },
-    watch: {
-        // imagem: (file) => {
-        //     if(file) {
-        //         console.log(file);
-        //
-        //         let reader  = new FileReader();
-        //
-        //         reader.onloadend = function () {
-        //             console.log(reader.result); //this is an ArrayBuffer
-        //         }
-        //         this.imagem_cropper = reader.readAsArrayBuffer(file);
-        //     }
-        // }
     }
 }
 </script>
