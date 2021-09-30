@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Contracts\Repositories\PessoaRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CurriculoRequest;
+use App\Http\Resources\CurriculoResource;
 use App\Models\Cidade;
 use Illuminate\Http\Request;
 
@@ -31,14 +32,16 @@ class CurriculoController extends Controller
 
     public function show($uuid)
     {
-        return $this->repository->with(['experiencias', 'habilidades'])->findWhere(['uuid' => $uuid])->first();
+        $dados = $this->repository->with(['experiencias', 'habilidades'])->findWhere(['uuid' => $uuid])->first();
+        return CurriculoResource::make($dados);
     }
 
-    public function update(CurriculoRequest $request, $id)
+    public function update(CurriculoRequest $request, $uuid)
     {
         try {
             \DB::beginTransaction();
-            $dados = $this->repository->update($request->validated(), $id);
+            $info = $this->repository->findByField('uuid', $uuid)->first();
+            $dados = $this->repository->update($request->validated(), $info->id);
             \DB::commit();
             return response()->json(['data' => $dados, 'message' => 'Currículo atualizado com sucesso', 'error' => false]);
         } catch (\Exception $e) {

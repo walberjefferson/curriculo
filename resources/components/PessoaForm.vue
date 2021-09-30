@@ -27,11 +27,11 @@
                 <div class="col-md-2">
                     <label for="upload_image">
                         <div class="image_area">
-                            <b-img v-if="imagem" :src="imagem" fluid width="300" height="400" blank-color="#CCC"
-                                   alt="HEX shorthand color image (#777)" ref="image_avatar">
+                            <b-img v-if="fotoBase64" :src="fotoBase64" fluid width="300" height="400" blank-color="#CCC"
+                                   :alt="form.nome">
                             </b-img>
                             <b-img v-else :blank="true" fluid width="300" height="400" blank-color="#CCC"
-                                   alt="HEX shorthand color image (#777)" ref="image_avatar">
+                                   alt="HEX shorthand color image (#777)">
                             </b-img>
                             <div class="overlay">
                                 <div class="text">Clique para carregar a foto</div>
@@ -345,6 +345,7 @@
 
 <script>
 import axios from 'axios';
+import {ERROR_422} from "../js/services/error";
 import {Cropper} from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
@@ -500,59 +501,86 @@ export default {
             }
         },
         send() {
-            const form = new FormData();
             if (this.uuid) {
                 if (this.canvas) {
                     this.canvas.toBlob((blob) => {
-                        form.append('_method', 'PUT');
-                        Object.keys(this.form).map((key) => {
-                            if (key === 'habilidades') {
-                                this.createFormData(form, key, this.form[key]);
-                            } else if (key === 'experiencias') {
-                                this.createFormData(form, key, this.form[key]);
-                            } else if (key === 'foto') {
-                                form.append(key, blob);
-                            } else {
-                                form.append(key, this.form[key]);
-                            }
-                        });
+                        let form = this.prepareForm(blob);
                         axios.post(`/api/curriculo/${this.uuid}`, form).then(({data}) => {
-                            console.log(data);
+                            this.$swal("Sucesso", data.message, "success");
+                        }).catch(({response}) => {
+                            console.log(1, response)
+                            if (response.status === 422) {
+                                let errors = ERROR_422(response);
+                                console.log(errors);
+                            }
                         });
                     }, 'image/jpeg');
                 } else {
                     axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
-                        console.log(data);
+                        this.$swal("Sucesso", data.message, "success");
+                    }).catch(({response}) => {
+                        console.log(2, response)
+                        if (response.status === 422) {
+                            let errors = ERROR_422(response);
+                            console.log(errors);
+                        }
                     });
                 }
             } else {
                 if (this.canvas) {
                     this.canvas.toBlob((blob) => {
-                        Object.keys(this.form).map((key) => {
-                            if (key === 'habilidades') {
-                                this.createFormData(form, key, this.form[key]);
-                            } else if (key === 'experiencias') {
-                                this.createFormData(form, key, this.form[key]);
-                            } else if (key === 'foto') {
-                                form.append(key, blob);
-                            } else {
-                                form.append(key, this.form[key]);
-                            }
-                        });
+                        let form = this.prepareForm(blob);
                         axios.post('/api/curriculo', form).then(({data}) => {
-                            console.log(data);
+                            this.$swal("Sucesso", data.message, "success");
+                        }).catch(({response}) => {
+                            console.log(3, response)
+                            if (response.status === 422) {
+                                let errors = ERROR_422(response);
+                                console.log(errors);
+                            }
                         });
                     }, 'image/jpeg');
                 } else {
                     axios.post('/api/curriculo', this.form).then(({data}) => {
-                        console.log(data);
+                        this.$swal("Sucesso", data.message, "success");
+                    }).catch(({response}) => {
+                        console.log(4, response)
+                        if (response.status === 422) {
+                            let errors = ERROR_422(response);
+                            console.log(errors);
+                        }
                     });
                 }
             }
         },
+        prepareForm(blob = null) {
+            const form = new FormData();
+            if (typeof blob === 'object') {
+                form.append('_method', 'PUT');
+            }
+            Object.keys(this.form).map((key) => {
+                if (key === 'habilidades') {
+                    this.createFormData(form, key, this.form[key]);
+                } else if (key === 'experiencias') {
+                    this.createFormData(form, key, this.form[key]);
+                } else if (key === 'pcd' || key === 'cnh' || key === 'filhos') {
+                    form.append(key, this.form[key]);
+                } else if (key === 'foto' && typeof blob === 'object') {
+                    form.append(key, blob);
+                } else {
+                    // if (this.form[key] !== null) {
+                    //
+                    // }
+                    form.append(key, this.form[key]);
+                }
+            });
+
+            return form;
+        },
         getCurriculo() {
             if (this.uuid) {
-                axios.get(`/api/curriculo/${this.uuid}`).then(({data}) => {
+                axios.get(`/api/curriculo/${this.uuid}`).then(({data: { data }}) => {
+                    console.log(data);
                     this.changeData(data);
                 })
             }
@@ -561,6 +589,12 @@ export default {
             Object.entries(data).forEach(([key, value]) => {
                 if (key === 'habilidades') {
                     this.form[key] = value.map((p) => p.id);
+                } else if (key === 'experiencias') {
+                    let arrayObj = [];
+                    this.form[key].map((item, index) => {
+                        (value[index]) ? arrayObj.push(value[index]) : arrayObj.push(item);
+                    });
+                    this.form[key] = arrayObj;
                 } else if (key === 'estado_id') {
                     this.form[key] = value;
                     this.getCidades().finally(() => {
@@ -571,6 +605,17 @@ export default {
                 }
             });
         }
+    },
+    computed: {
+        fotoBase64() {
+          if(this.form.foto) {
+              return this.form.foto;
+          } else if (this.imagem) {
+              return this.imagem;
+          } else {
+              return null;
+          }
+      },
     },
     created() {
         this.reset();
