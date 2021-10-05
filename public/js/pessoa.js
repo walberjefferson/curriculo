@@ -2614,6 +2614,732 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _js_services_error__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/services/error */ "./resources/js/services/error.js");
+/* harmony import */ var vue_advanced_cropper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-advanced-cropper */ "./node_modules/vue-advanced-cropper/dist/index.es.js");
+/* harmony import */ var vue_advanced_cropper_dist_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-advanced-cropper/dist/style.css */ "./node_modules/vue-advanced-cropper/dist/style.css");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "PessoaFormUpdate",
+  components: {
+    Cropper: vue_advanced_cropper__WEBPACK_IMPORTED_MODULE_3__.Cropper
+  },
+  props: {
+    uuid: {
+      required: false,
+      type: String
+    }
+  },
+  data: function data() {
+    return {
+      modalShow: false,
+      imagem: null,
+      imagem_cropper: null,
+      canvas: null,
+      form: {},
+      sexos: [],
+      estados: [],
+      estados_civis: [],
+      escolaidades: [],
+      cidades: [],
+      habilidades: [],
+      foto: null,
+      "default": {
+        id: undefined,
+        nome: null,
+        data_nascimento: null,
+        sexo_id: null,
+        pcd: null,
+        cpf: null,
+        instagram: null,
+        telefone: null,
+        whatsapp: null,
+        escolaridade_id: null,
+        estado_civil_id: null,
+        estado_id: null,
+        cidade_id: null,
+        cnh: null,
+        categoria_cnh: null,
+        filhos: null,
+        filhos_quantidade: null,
+        endereco: null,
+        endereco_numero: null,
+        ponto_referrencia: null,
+        complemento: null,
+        outras_informacoes: null,
+        habilidades: [],
+        experiencias: [{
+          cargo: null,
+          empresa: null,
+          tempo_servico: null,
+          saida: null,
+          pessoa_id: null
+        }, {
+          cargo: null,
+          empresa: null,
+          tempo_servico: null,
+          saida: null,
+          pessoa_id: null
+        }]
+      }
+    };
+  },
+  methods: {
+    getFoto: function getFoto(event) {
+      var _self = this;
+
+      var files = event.target.files;
+
+      var done = function done(url) {
+        _self.modalShow = true;
+        _self.imagem_cropper = url;
+      };
+
+      if (files && files.length > 0) {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          done(reader.result);
+        };
+
+        reader.readAsDataURL(files[0]);
+      }
+    },
+    cortaFoto: function cortaFoto() {
+      var _this$$refs$cropper$g = this.$refs.cropper.getResult(),
+          canvas = _this$$refs$cropper$g.canvas;
+
+      this.canvas = canvas;
+      this.imagem = canvas.toDataURL('image/jpeg');
+      this.modalShow = false;
+    },
+    reset: function reset() {
+      this.form = Object.assign({}, this["default"]);
+    },
+    getEstados: function getEstados() {
+      var _this = this;
+
+      document.body.classList.remove('loaded');
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/estado').then(function (_ref) {
+        var data = _ref.data;
+        _this.estados = data;
+      })["catch"](function (_ref2) {
+        var response = _ref2.response;
+
+        _this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
+      });
+    },
+    getHabilidades: function getHabilidades() {
+      var _this2 = this;
+
+      document.body.classList.remove('loaded');
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/habilidade').then(function (_ref3) {
+        var data = _ref3.data;
+        _this2.habilidades = data;
+      })["catch"](function (_ref4) {
+        var response = _ref4.response;
+
+        _this2.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
+      });
+    },
+    getSexo: function getSexo() {
+      var _this3 = this;
+
+      document.body.classList.remove('loaded');
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/sexo').then(function (_ref5) {
+        var data = _ref5.data;
+        _this3.sexos = data;
+      })["catch"](function (_ref6) {
+        var response = _ref6.response;
+
+        _this3.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
+      });
+    },
+    getEscolaridades: function getEscolaridades() {
+      var _this4 = this;
+
+      document.body.classList.remove('loaded');
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/escolaridade').then(function (_ref7) {
+        var data = _ref7.data;
+        _this4.escolaidades = data;
+      })["catch"](function (_ref8) {
+        var response = _ref8.response;
+
+        _this4.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
+      });
+    },
+    getEstadoCivil: function getEstadoCivil() {
+      var _this5 = this;
+
+      document.body.classList.remove('loaded');
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/estado_civil').then(function (_ref9) {
+        var data = _ref9.data;
+        _this5.estados_civis = data;
+      })["catch"](function (_ref10) {
+        var response = _ref10.response;
+
+        _this5.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
+      })["finally"](function () {
+        document.body.classList.add('loaded');
+      });
+    },
+    getCidades: function getCidades() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                document.body.classList.remove('loaded');
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/cidade', {
+                  estado_id: _this6.form.estado_id
+                }).then(function (_ref11) {
+                  var data = _ref11.data;
+                  _this6.form.cidade_id = null;
+                  _this6.cidades = data;
+                })["catch"](function (_ref12) {
+                  var response = _ref12.response;
+
+                  _this6.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+                })["finally"](function () {
+                  document.body.classList.add('loaded');
+                });
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    createFormData: function createFormData(formData, key, data) {
+      if (data === Object(data) || Array.isArray(data)) {
+        for (var i in data) {
+          this.createFormData(formData, key + '[' + i + ']', data[i]);
+        }
+      } else {
+        formData.append(key, data);
+      }
+    },
+    send: function send() {
+      var _this7 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/curriculo/".concat(this.uuid), this.form).then(function (_ref13) {
+        var data = _ref13.data;
+
+        _this7.$swal("Sucesso", data.message, "success");
+      })["catch"](function (_ref14) {
+        var response = _ref14.response;
+        console.log(2, response);
+
+        if (response.status === 422) {
+          var errors = (0,_js_services_error__WEBPACK_IMPORTED_MODULE_2__.ERROR_422)(response);
+          console.log(errors);
+        }
+      });
+    },
+    sendFoto: function sendFoto() {
+      var _this8 = this;
+
+      if (this.canvas) {
+        this.canvas.toBlob(function (blob) {
+          var form = _this8.prepareForm(blob);
+
+          axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/curriculo/".concat(_this8.uuid), form).then(function (_ref15) {
+            var data = _ref15.data;
+
+            _this8.$swal("Sucesso", data.message, "success");
+          })["catch"](function (_ref16) {
+            var response = _ref16.response;
+
+            if (response.status === 422) {
+              var errors = (0,_js_services_error__WEBPACK_IMPORTED_MODULE_2__.ERROR_422)(response);
+              console.log(errors);
+            }
+          });
+        }, 'image/jpeg');
+      }
+    },
+    prepareForm: function prepareForm() {
+      var blob = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var form = new FormData();
+      Object.keys(this.form).map(function (key) {
+        if (key === 'foto' && _typeof(blob) === 'object') {
+          form.append(key, blob);
+        }
+      });
+      return form;
+    },
+    getCurriculo: function getCurriculo() {
+      var _this9 = this;
+
+      if (this.uuid) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/curriculo/".concat(this.uuid)).then(function (_ref17) {
+          var data = _ref17.data.data;
+          console.log(data);
+
+          _this9.changeData(data);
+        });
+      }
+    },
+    changeData: function changeData(data) {
+      var _this10 = this;
+
+      Object.entries(data).forEach(function (_ref18) {
+        var _ref19 = _slicedToArray(_ref18, 2),
+            key = _ref19[0],
+            value = _ref19[1];
+
+        if (key === 'habilidades') {
+          _this10.form[key] = value.map(function (p) {
+            return p.id;
+          });
+        } else if (key === 'experiencias') {
+          var arrayObj = [];
+
+          _this10.form[key].map(function (item, index) {
+            value[index] ? arrayObj.push(value[index]) : arrayObj.push(item);
+          });
+
+          _this10.form[key] = arrayObj;
+        } else if (key === 'foto') {
+          _this10.foto = value;
+        } else if (key === 'estado_id') {
+          _this10.form[key] = value;
+
+          _this10.getCidades()["finally"](function () {
+            _this10.form['cidade_id'] = data.cidade_id;
+          });
+        } else {
+          _this10.form[key] = value;
+        }
+      });
+    }
+  },
+  computed: {
+    fotoBase64: function fotoBase64() {
+      if (this.foto) {
+        return this.foto;
+      } else if (this.imagem) {
+        return this.imagem;
+      } else {
+        return null;
+      }
+    }
+  },
+  created: function created() {
+    this.reset();
+    this.getEstados();
+    this.getSexo();
+    this.getEscolaridades();
+    this.getEstadoCivil();
+    this.getHabilidades();
+    this.getCurriculo();
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/pessoa.js":
 /*!********************************!*\
   !*** ./resources/js/pessoa.js ***!
@@ -2630,6 +3356,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
 /* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 /* harmony import */ var _components_PessoaForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PessoaForm */ "./resources/components/PessoaForm.vue");
+/* harmony import */ var _components_PessoaFormUpdate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/PessoaFormUpdate */ "./resources/components/PessoaFormUpdate.vue");
 
 
 
@@ -2644,10 +3371,12 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(bootstrap_vue__WEBPACK_IMPORTED_MOD
 vue__WEBPACK_IMPORTED_MODULE_3__.default.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0___default()), options); // Components
 
 
+
 new vue__WEBPACK_IMPORTED_MODULE_3__.default({
   el: "#form_pessoa",
   components: {
-    PessoaForm: _components_PessoaForm__WEBPACK_IMPORTED_MODULE_6__.default
+    PessoaForm: _components_PessoaForm__WEBPACK_IMPORTED_MODULE_6__.default,
+    PessoaFormUpdate: _components_PessoaFormUpdate__WEBPACK_IMPORTED_MODULE_7__.default
   }
 });
 
@@ -45061,6 +45790,33 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-file-label::after {\n    con
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n.overlay {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background-color: rgba(255, 255, 255, 0.5);\n    overflow: hidden;\n    height: 0;\n    transition: .5s ease;\n    width: 100%;\n    padding: 5px 10px 0;\n}\n.image_area {\n    position: relative;\n}\n.image_area:hover .overlay {\n    height: 30%;\n    cursor: pointer;\n}\n", "",{"version":3,"sources":["webpack://./resources/components/PessoaFormUpdate.vue"],"names":[],"mappings":";AAulBA;IACA,+BAAA;AACA;AAEA;IACA,kBAAA;IACA,SAAA;IACA,OAAA;IACA,QAAA;IACA,0CAAA;IACA,gBAAA;IACA,SAAA;IACA,oBAAA;IACA,WAAA;IACA,mBAAA;AACA;AAEA;IACA,kBAAA;AACA;AAEA;IACA,WAAA;IACA,eAAA;AACA","sourcesContent":["<template>\n    <div>\n        <b-modal v-model=\"modalShow\" id=\"modal-1\" title=\"Cortar Foto\" size=\"lg\">\n            <Cropper\n                ref=\"cropper\"\n                class=\"cropper\"\n                :src=\"imagem_cropper\"\n                :stencil-props=\"{\n                    aspectRatio: 3/4\n                }\"\n            />\n\n            <template #modal-footer>\n                <div class=\"w-100\">\n                    <b-button variant=\"primary\" class=\"float-right\" @click=\"cortaFoto\">\n                        Cortar\n                    </b-button>\n                    <b-button variant=\"secondary\" class=\"mr-2 float-right\" @click=\"modalShow=false\">\n                        Fechar\n                    </b-button>\n                </div>\n            </template>\n        </b-modal>\n\n        <form @submit.prevent=\"send\">\n            <div class=\"row\">\n                <div class=\"col-md-2\">\n                    <div v-if=\"fotoBase64\">\n                        <b-img :src=\"fotoBase64\" fluid width=\"300\" height=\"400\" blank-color=\"#CCC\"\n                               :alt=\"form.nome\">\n                        </b-img>\n                        <b-button squared size=\"sm\" block variant=\"danger\" class=\"mt-1\">\n                            <i class=\"link-icon\" data-feather=\"trash\"></i> Remover Foto\n                        </b-button>\n                    </div>\n                    <div v-else>\n                        <label for=\"upload_image\">\n                            <div class=\"image_area\">\n                                <b-img :blank=\"true\" fluid width=\"300\" height=\"400\" blank-color=\"#CCC\"\n                                       alt=\"HEX shorthand color image (#777)\">\n                                </b-img>\n                                <div class=\"overlay\">\n                                    <div class=\"text\">Clique para carregar a foto</div>\n                                </div>\n                            </div>\n                            <b-form-file @change=\"getFoto\" id=\"upload_image\" style=\"display: none\"\n                                         accept=\".jpg, .jpeg, .png\"></b-form-file>\n                        </label>\n                    </div>\n                </div>\n                <div class=\"col-md-10\">\n\n                    <h6 class=\"card-title text-primary\">Dados Pessoais</h6>\n\n                    <div class=\"row\">\n                        <div class=\"col-md-6\">\n                            <b-form-group label=\"Nome\" label-for=\"nome\" label-class=\"text-muted\">\n                                <b-form-input id=\"nome\" v-model=\"form.nome\" type=\"text\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Data Nascimento\" label-for=\"data_nascimento\" label-class=\"text-muted\">\n                                <b-form-datepicker\n                                    :date-format-options=\"{ year: 'numeric', month: 'numeric', day: 'numeric' }\"\n                                    placeholder=\"Data Nascimento\" id=\"data_nascimento\" v-model=\"form.data_nascimento\"\n                                    locale=\"pt-br\"></b-form-datepicker>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Sexo\" label-for=\"sexo\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"sexo\"\n                                    v-model=\"form.sexo_id\"\n                                    :options=\"sexos\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o sexo</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"CPF\" label-for=\"cpf\" label-class=\"text-muted\">\n                                <b-form-input id=\"cpf\" v-model=\"form.cpf\" type=\"text\" ref=\"cpf\" required/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Perfil do Instagam (@)\" label-for=\"instagram\" label-class=\"text-muted\">\n                                <b-form-input id=\"instagram\" v-model=\"form.instagram\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Telefone\" label-for=\"telefone\" label-class=\"text-muted\">\n                                <b-form-input id=\"telefone\" v-model=\"form.telefone\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"WhatsApp\" label-for=\"whatsapp\" label-class=\"text-muted\">\n                                <b-form-input id=\"whatsapp\" v-model=\"form.whatsapp\" class=\"telefone\" type=\"text\"/>\n                            </b-form-group>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Escolaridade\" label-for=\"escolaridade\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"escolaridade\"\n                                    v-model=\"form.escolaridade_id\"\n                                    :options=\"escolaidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a escolaridade\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-3\">\n                            <b-form-group label=\"Estado Cívil\" label-for=\"estado_civil_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_civil_id\"\n                                    v-model=\"form.estado_civil_id\"\n                                    :options=\"estados_civis\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado cívil\n                                        </b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-2\">\n                            <b-form-group label=\"Estado\" label-for=\"estado_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"estado_id\"\n                                    v-model=\"form.estado_id\"\n                                    :options=\"estados\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                    @change=\"getCidades\"\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione o estado</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n\n                        <div class=\"col-md-4\">\n                            <b-form-group label=\"Cidade\" label-for=\"cidade_id\" label-class=\"text-muted\">\n                                <b-form-select\n                                    id=\"cidade_id\"\n                                    v-model=\"form.cidade_id\"\n                                    :options=\"cidades\"\n                                    value-field=\"id\"\n                                    text-field=\"nome\"\n                                    required\n                                >\n                                    <template #first>\n                                        <b-form-select-option :value=\"null\">Selecione a cidade</b-form-select-option>\n                                    </template>\n                                </b-form-select>\n                            </b-form-group>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row mt-2\">\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">\n                        <abbr title=\"Portador de Deficiência Física\" class=\"initialism\">PCD</abbr>\n                        - (Portador de Deficiência Física)\n                    </label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.pcd\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\"><abbr title=\"Carrteira Nacional de Habilitação\"\n                                                    class=\"initialism\">CNH</abbr>\n                        - (Carrteira Nacional de\n                        Habilitação)</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.cnh\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-4 form-group\">\n                    <label class=\"text-muted\">Tem filhos?</label>\n                    <div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"true\">\n                                Sim\n                            </label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <label class=\"form-check-label\">\n                                <input class=\"form-check-input\" v-model=\"form.filhos\" type=\"radio\" :value=\"false\">\n                                Não\n                            </label>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n\n            <div v-if=\"form.cnh || form.filhos\" class=\"row\">\n                <div class=\"col-md-4\"></div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.cnh\">\n                        <b-form-group label=\"Categoria CNH\" label-for=\"categoria_cnh\" label-class=\"text-muted\">\n                            <b-form-input id=\"categoria_cnh\" v-model=\"form.categoria_cnh\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n                <div class=\"col-md-4\">\n                    <div v-if=\"form.filhos\">\n                        <b-form-group label=\"Quantidade de Filhos\" label-for=\"filhos_quantidade\"\n                                      label-class=\"text-muted\">\n                            <b-form-input id=\"filhos_quantidade\" v-model=\"form.filhos_quantidade\" type=\"text\"/>\n                        </b-form-group>\n                    </div>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Habilidades</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-4\" v-for=\"habilidade in habilidades\" :key=\"habilidade.id\">\n                    <b-form-checkbox\n                        v-model=\"form.habilidades\"\n                        :value=\"habilidade.id\"\n                    >\n                        {{ habilidade.nome }}\n                    </b-form-checkbox>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Experiências</h6>\n\n            <div v-for=\"(experiencia, index) in form.experiencias\" :key=\"index\" class=\"row\">\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Cargo\" label-for=\"cargo\" label-class=\"text-muted\">\n                        <b-form-input id=\"cargo\" v-model=\"form.experiencias[index].cargo\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-4\">\n                    <b-form-group label=\"Empresa\" label-for=\"empresa\" label-class=\"text-muted\">\n                        <b-form-input id=\"empresa\" v-model=\"form.experiencias[index].empresa\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Tempo de Seviço\" label-for=\"tempo_servico\" label-class=\"text-muted\">\n                        <b-form-input id=\"tempo_servico\" v-model=\"form.experiencias[index].tempo_servico\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n                <div class=\"col-md-2\">\n                    <b-form-group label=\"Saída\" label-for=\"saida\" label-class=\"text-muted\">\n                        <b-form-input id=\"saida\" v-model=\"form.experiencias[index].saida\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Dados Postais</h6>\n\n            <div class=\"row\">\n                <div class=\"col-md-5\">\n                    <b-form-group label=\"Endereço\" label-for=\"endereco\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco\" v-model=\"form.endereco\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-1\">\n                    <b-form-group label=\"Nº\" label-for=\"endereco_numero\" label-class=\"text-muted\">\n                        <b-form-input id=\"endereco_numero\" v-model=\"form.endereco_numero\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Ponto de Referência\" label-for=\"ponto_referrencia\" label-class=\"text-muted\">\n                        <b-form-input id=\"ponto_referrencia\" v-model=\"form.ponto_referrencia\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n\n                <div class=\"col-md-3\">\n                    <b-form-group label=\"Complemento\" label-for=\"complemento\" label-class=\"text-muted\">\n                        <b-form-input id=\"complemento\" v-model=\"form.complemento\" type=\"text\"/>\n                    </b-form-group>\n                </div>\n            </div>\n\n            <h6 class=\"card-title text-primary mt-3\">Outras Informações</h6>\n\n            <b-form-group label=\"Outras Informações\" label-for=\"outras_informacoes\" label-class=\"text-muted\">\n                <b-form-textarea id=\"outras_informacoes\" v-model=\"form.outras_informacoes\" rows=\"4\"></b-form-textarea>\n            </b-form-group>\n\n            <div class=\"hr-line-dashed\"></div>\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary\" type=\"submit\"><i class=\"mdi mdi-send\"></i> Salvar</button>\n                <a href=\"#\" class=\"btn btn-secondary\"><i class=\"mdi mdi-backup-restore\"></i> Voltar</a>\n            </div>\n        </form>\n    </div>\n\n</template>\n\n<script>\nimport axios from 'axios';\nimport {ERROR_422} from \"../js/services/error\";\nimport {Cropper} from 'vue-advanced-cropper';\nimport 'vue-advanced-cropper/dist/style.css';\n\nexport default {\n    name: \"PessoaFormUpdate\",\n    components: {\n        Cropper,\n    },\n    props: {\n        uuid: {\n            required: false,\n            type: String,\n        }\n    },\n    data: () => ({\n        modalShow: false,\n        imagem: null,\n        imagem_cropper: null,\n        canvas: null,\n        form: {},\n        sexos: [],\n        estados: [],\n        estados_civis: [],\n        escolaidades: [],\n        cidades: [],\n        habilidades: [],\n        foto: null,\n        default: {\n            id: undefined,\n            nome: null,\n            data_nascimento: null,\n            sexo_id: null,\n            pcd: null,\n            cpf: null,\n            instagram: null,\n            telefone: null,\n            whatsapp: null,\n            escolaridade_id: null,\n            estado_civil_id: null,\n            estado_id: null,\n            cidade_id: null,\n            cnh: null,\n            categoria_cnh: null,\n            filhos: null,\n            filhos_quantidade: null,\n            endereco: null,\n            endereco_numero: null,\n            ponto_referrencia: null,\n            complemento: null,\n            outras_informacoes: null,\n            habilidades: [],\n            experiencias: [\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null},\n                {cargo: null, empresa: null, tempo_servico: null, saida: null, pessoa_id: null}\n            ]\n        }\n    }),\n    methods: {\n        getFoto(event) {\n            const _self = this;\n            let files = event.target.files;\n\n            let done = (url) => {\n                _self.modalShow = true;\n                _self.imagem_cropper = url;\n            };\n\n            if (files && files.length > 0) {\n                let reader = new FileReader();\n                reader.onload = function (event) {\n                    done(reader.result);\n                };\n                reader.readAsDataURL(files[0]);\n            }\n        },\n        cortaFoto() {\n            const {canvas} = this.$refs.cropper.getResult();\n            this.canvas = canvas;\n            this.imagem = canvas.toDataURL('image/jpeg');\n            this.modalShow = false;\n        },\n        reset() {\n            this.form = Object.assign({}, this.default);\n        },\n        getEstados() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado').then(({data}) => {\n                this.estados = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getHabilidades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/habilidade').then(({data}) => {\n                this.habilidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getSexo() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/sexo').then(({data}) => {\n                this.sexos = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            })\n        },\n        getEscolaridades() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/escolaridade').then(({data}) => {\n                this.escolaidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        getEstadoCivil() {\n            document.body.classList.remove('loaded');\n            axios.get('/api/estado_civil').then(({data}) => {\n                this.estados_civis = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        async getCidades() {\n            document.body.classList.remove('loaded');\n            await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {\n                this.form.cidade_id = null;\n                this.cidades = data;\n            }).catch(({response}) => {\n                this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');\n            }).finally(() => {\n                document.body.classList.add('loaded');\n            });\n        },\n        createFormData(formData, key, data) {\n            if (data === Object(data) || Array.isArray(data)) {\n                for (let i in data) {\n                    this.createFormData(formData, key + '[' + i + ']', data[i]);\n                }\n            } else {\n                formData.append(key, data);\n            }\n        },\n        send() {\n            axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {\n                this.$swal(\"Sucesso\", data.message, \"success\");\n            }).catch(({response}) => {\n                console.log(2, response)\n                if (response.status === 422) {\n                    let errors = ERROR_422(response);\n                    console.log(errors);\n                }\n            });\n        },\n        sendFoto() {\n            if (this.canvas) {\n                this.canvas.toBlob((blob) => {\n                    let form = this.prepareForm(blob);\n                    axios.post(`/api/curriculo/${this.uuid}`, form).then(({data}) => {\n                        this.$swal(\"Sucesso\", data.message, \"success\");\n                    }).catch(({response}) => {\n                        if (response.status === 422) {\n                            let errors = ERROR_422(response);\n                            console.log(errors);\n                        }\n                    });\n                }, 'image/jpeg');\n            }\n        },\n        prepareForm(blob = null) {\n            const form = new FormData();\n            Object.keys(this.form).map((key) => {\n                if (key === 'foto' && typeof blob === 'object') {\n                    form.append(key, blob);\n                }\n            });\n            return form;\n        },\n        getCurriculo() {\n            if (this.uuid) {\n                axios.get(`/api/curriculo/${this.uuid}`).then(({data: {data}}) => {\n                    console.log(data);\n                    this.changeData(data);\n                })\n            }\n        },\n        changeData(data) {\n            Object.entries(data).forEach(([key, value]) => {\n                if (key === 'habilidades') {\n                    this.form[key] = value.map((p) => p.id);\n                } else if (key === 'experiencias') {\n                    let arrayObj = [];\n                    this.form[key].map((item, index) => {\n                        (value[index]) ? arrayObj.push(value[index]) : arrayObj.push(item);\n                    });\n                    this.form[key] = arrayObj;\n                } else if (key === 'foto') {\n                    this.foto = value;\n                } else if (key === 'estado_id') {\n                    this.form[key] = value;\n                    this.getCidades().finally(() => {\n                        this.form['cidade_id'] = data.cidade_id;\n                    });\n                } else {\n                    this.form[key] = value;\n                }\n            });\n        }\n    },\n    computed: {\n        fotoBase64() {\n            if (this.foto) {\n                return this.foto;\n            } else if (this.imagem) {\n                return this.imagem;\n            } else {\n                return null;\n            }\n        },\n    },\n    created() {\n        this.reset();\n        this.getEstados();\n        this.getSexo();\n        this.getEscolaridades();\n        this.getEstadoCivil();\n        this.getHabilidades();\n        this.getCurriculo();\n    }\n}\n</script>\n\n<style>\n.custom-file-label::after {\n    content: 'Adicionar' !important;\n}\n\n.overlay {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background-color: rgba(255, 255, 255, 0.5);\n    overflow: hidden;\n    height: 0;\n    transition: .5s ease;\n    width: 100%;\n    padding: 5px 10px 0;\n}\n\n.image_area {\n    position: relative;\n}\n\n.image_area:hover .overlay {\n    height: 30%;\n    cursor: pointer;\n}\n</style>\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
@@ -49532,6 +50288,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaFormUpdate.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -49921,6 +50707,47 @@ component.options.__file = "resources/components/PessoaForm.vue"
 
 /***/ }),
 
+/***/ "./resources/components/PessoaFormUpdate.vue":
+/*!***************************************************!*\
+  !*** ./resources/components/PessoaFormUpdate.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PessoaFormUpdate_vue_vue_type_template_id_38397eb6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PessoaFormUpdate.vue?vue&type=template&id=38397eb6& */ "./resources/components/PessoaFormUpdate.vue?vue&type=template&id=38397eb6&");
+/* harmony import */ var _PessoaFormUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PessoaFormUpdate.vue?vue&type=script&lang=js& */ "./resources/components/PessoaFormUpdate.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PessoaFormUpdate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PessoaFormUpdate.vue?vue&type=style&index=0&lang=css& */ "./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _PessoaFormUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _PessoaFormUpdate_vue_vue_type_template_id_38397eb6___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PessoaFormUpdate_vue_vue_type_template_id_38397eb6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/components/PessoaFormUpdate.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/components/PessoaForm.vue?vue&type=script&lang=js&":
 /*!**********************************************************************!*\
   !*** ./resources/components/PessoaForm.vue?vue&type=script&lang=js& ***!
@@ -49937,6 +50764,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/components/PessoaFormUpdate.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/components/PessoaFormUpdate.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaFormUpdate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&":
 /*!******************************************************************************!*\
   !*** ./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css& ***!
@@ -49946,6 +50789,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaForm.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************!*\
+  !*** ./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaFormUpdate.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -49963,6 +50819,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_template_id_76aac33c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaForm_vue_vue_type_template_id_76aac33c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaForm.vue?vue&type=template&id=76aac33c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaForm.vue?vue&type=template&id=76aac33c&");
+
+
+/***/ }),
+
+/***/ "./resources/components/PessoaFormUpdate.vue?vue&type=template&id=38397eb6&":
+/*!**********************************************************************************!*\
+  !*** ./resources/components/PessoaFormUpdate.vue?vue&type=template&id=38397eb6& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_template_id_38397eb6___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_template_id_38397eb6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PessoaFormUpdate_vue_vue_type_template_id_38397eb6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PessoaFormUpdate.vue?vue&type=template&id=38397eb6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=template&id=38397eb6&");
 
 
 /***/ }),
@@ -50117,6 +50990,1360 @@ var render = function() {
                 ],
                 1
               )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-10" }, [
+              _c("h6", { staticClass: "card-title text-primary" }, [
+                _vm._v("Dados Pessoais")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-6" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Nome",
+                          "label-for": "nome",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          attrs: { id: "nome", type: "text", required: "" },
+                          model: {
+                            value: _vm.form.nome,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "nome", $$v)
+                            },
+                            expression: "form.nome"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Data Nascimento",
+                          "label-for": "data_nascimento",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-datepicker", {
+                          attrs: {
+                            "date-format-options": {
+                              year: "numeric",
+                              month: "numeric",
+                              day: "numeric"
+                            },
+                            placeholder: "Data Nascimento",
+                            id: "data_nascimento",
+                            locale: "pt-br"
+                          },
+                          model: {
+                            value: _vm.form.data_nascimento,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "data_nascimento", $$v)
+                            },
+                            expression: "form.data_nascimento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Sexo",
+                          "label-for": "sexo",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "sexo",
+                            options: _vm.sexos,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [_vm._v("Selecione o sexo")]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.sexo_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "sexo_id", $$v)
+                            },
+                            expression: "form.sexo_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "CPF",
+                          "label-for": "cpf",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          ref: "cpf",
+                          attrs: { id: "cpf", type: "text", required: "" },
+                          model: {
+                            value: _vm.form.cpf,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "cpf", $$v)
+                            },
+                            expression: "form.cpf"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Perfil do Instagam (@)",
+                          "label-for": "instagram",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          attrs: { id: "instagram", type: "text" },
+                          model: {
+                            value: _vm.form.instagram,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "instagram", $$v)
+                            },
+                            expression: "form.instagram"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Telefone",
+                          "label-for": "telefone",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          staticClass: "telefone",
+                          attrs: { id: "telefone", type: "text" },
+                          model: {
+                            value: _vm.form.telefone,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "telefone", $$v)
+                            },
+                            expression: "form.telefone"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "WhatsApp",
+                          "label-for": "whatsapp",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          staticClass: "telefone",
+                          attrs: { id: "whatsapp", type: "text" },
+                          model: {
+                            value: _vm.form.whatsapp,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "whatsapp", $$v)
+                            },
+                            expression: "form.whatsapp"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Escolaridade",
+                          "label-for": "escolaridade",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "escolaridade",
+                            options: _vm.escolaidades,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [
+                                      _vm._v(
+                                        "Selecione a escolaridade\n                                    "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.escolaridade_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "escolaridade_id", $$v)
+                            },
+                            expression: "form.escolaridade_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Estado Cívil",
+                          "label-for": "estado_civil_id",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "estado_civil_id",
+                            options: _vm.estados_civis,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [
+                                      _vm._v(
+                                        "Selecione o estado cívil\n                                    "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.estado_civil_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "estado_civil_id", $$v)
+                            },
+                            expression: "form.estado_civil_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-2" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Estado",
+                          "label-for": "estado_id",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "estado_id",
+                            options: _vm.estados,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          on: { change: _vm.getCidades },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [_vm._v("Selecione o estado")]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.estado_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "estado_id", $$v)
+                            },
+                            expression: "form.estado_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4" },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Cidade",
+                          "label-for": "cidade_id",
+                          "label-class": "text-muted"
+                        }
+                      },
+                      [
+                        _c("b-form-select", {
+                          attrs: {
+                            id: "cidade_id",
+                            options: _vm.cidades,
+                            "value-field": "id",
+                            "text-field": "nome",
+                            required: ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "first",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "b-form-select-option",
+                                    { attrs: { value: null } },
+                                    [_vm._v("Selecione a cidade")]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ]),
+                          model: {
+                            value: _vm.form.cidade_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "cidade_id", $$v)
+                            },
+                            expression: "form.cidade_id"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mt-2" }, [
+            _c("div", { staticClass: "col-md-4 form-group" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", [
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.pcd,
+                          expression: "form.pcd"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: true,
+                        checked: _vm._q(_vm.form.pcd, true)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "pcd", true)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                            Sim\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.pcd,
+                          expression: "form.pcd"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: false,
+                        checked: _vm._q(_vm.form.pcd, false)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "pcd", false)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                            Não\n                        "
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 form-group" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", [
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.cnh,
+                          expression: "form.cnh"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: true,
+                        checked: _vm._q(_vm.form.cnh, true)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "cnh", true)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                            Sim\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.cnh,
+                          expression: "form.cnh"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: false,
+                        checked: _vm._q(_vm.form.cnh, false)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "cnh", false)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                            Não\n                        "
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 form-group" }, [
+              _c("label", { staticClass: "text-muted" }, [
+                _vm._v("Tem filhos?")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.filhos,
+                          expression: "form.filhos"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: true,
+                        checked: _vm._q(_vm.form.filhos, true)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "filhos", true)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                            Sim\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check form-check-inline" }, [
+                  _c("label", { staticClass: "form-check-label" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.filhos,
+                          expression: "form.filhos"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "radio" },
+                      domProps: {
+                        value: false,
+                        checked: _vm._q(_vm.form.filhos, false)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "filhos", false)
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                            Não\n                        "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.form.cnh || _vm.form.filhos
+            ? _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-4" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _vm.form.cnh
+                    ? _c(
+                        "div",
+                        [
+                          _c(
+                            "b-form-group",
+                            {
+                              attrs: {
+                                label: "Categoria CNH",
+                                "label-for": "categoria_cnh",
+                                "label-class": "text-muted"
+                              }
+                            },
+                            [
+                              _c("b-form-input", {
+                                attrs: { id: "categoria_cnh", type: "text" },
+                                model: {
+                                  value: _vm.form.categoria_cnh,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "categoria_cnh", $$v)
+                                  },
+                                  expression: "form.categoria_cnh"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _vm.form.filhos
+                    ? _c(
+                        "div",
+                        [
+                          _c(
+                            "b-form-group",
+                            {
+                              attrs: {
+                                label: "Quantidade de Filhos",
+                                "label-for": "filhos_quantidade",
+                                "label-class": "text-muted"
+                              }
+                            },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "filhos_quantidade",
+                                  type: "text"
+                                },
+                                model: {
+                                  value: _vm.form.filhos_quantidade,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "filhos_quantidade", $$v)
+                                  },
+                                  expression: "form.filhos_quantidade"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Habilidades")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.habilidades, function(habilidade) {
+              return _c(
+                "div",
+                { key: habilidade.id, staticClass: "col-md-4" },
+                [
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      attrs: { value: habilidade.id },
+                      model: {
+                        value: _vm.form.habilidades,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "habilidades", $$v)
+                        },
+                        expression: "form.habilidades"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(habilidade.nome) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Experiências")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.form.experiencias, function(experiencia, index) {
+            return _c("div", { key: index, staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Cargo",
+                        "label-for": "cargo",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "cargo", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].cargo,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form.experiencias[index], "cargo", $$v)
+                          },
+                          expression: "form.experiencias[index].cargo"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-4" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Empresa",
+                        "label-for": "empresa",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "empresa", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].empresa,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.form.experiencias[index],
+                              "empresa",
+                              $$v
+                            )
+                          },
+                          expression: "form.experiencias[index].empresa"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Tempo de Seviço",
+                        "label-for": "tempo_servico",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "tempo_servico", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].tempo_servico,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.form.experiencias[index],
+                              "tempo_servico",
+                              $$v
+                            )
+                          },
+                          expression: "form.experiencias[index].tempo_servico"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-2" },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      attrs: {
+                        label: "Saída",
+                        "label-for": "saida",
+                        "label-class": "text-muted"
+                      }
+                    },
+                    [
+                      _c("b-form-input", {
+                        attrs: { id: "saida", type: "text" },
+                        model: {
+                          value: _vm.form.experiencias[index].saida,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form.experiencias[index], "saida", $$v)
+                          },
+                          expression: "form.experiencias[index].saida"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          }),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Dados Postais")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-5" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: "Endereço",
+                      "label-for": "endereco",
+                      "label-class": "text-muted"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "endereco", type: "text" },
+                      model: {
+                        value: _vm.form.endereco,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "endereco", $$v)
+                        },
+                        expression: "form.endereco"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-1" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: "Nº",
+                      "label-for": "endereco_numero",
+                      "label-class": "text-muted"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "endereco_numero", type: "text" },
+                      model: {
+                        value: _vm.form.endereco_numero,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "endereco_numero", $$v)
+                        },
+                        expression: "form.endereco_numero"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: "Ponto de Referência",
+                      "label-for": "ponto_referrencia",
+                      "label-class": "text-muted"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "ponto_referrencia", type: "text" },
+                      model: {
+                        value: _vm.form.ponto_referrencia,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "ponto_referrencia", $$v)
+                        },
+                        expression: "form.ponto_referrencia"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: "Complemento",
+                      "label-for": "complemento",
+                      "label-class": "text-muted"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "complemento", type: "text" },
+                      model: {
+                        value: _vm.form.complemento,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "complemento", $$v)
+                        },
+                        expression: "form.complemento"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-title text-primary mt-3" }, [
+            _vm._v("Outras Informações")
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                label: "Outras Informações",
+                "label-for": "outras_informacoes",
+                "label-class": "text-muted"
+              }
+            },
+            [
+              _c("b-form-textarea", {
+                attrs: { id: "outras_informacoes", rows: "4" },
+                model: {
+                  value: _vm.form.outras_informacoes,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "outras_informacoes", $$v)
+                  },
+                  expression: "form.outras_informacoes"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "hr-line-dashed" }),
+          _vm._v(" "),
+          _vm._m(3)
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "overlay" }, [
+      _c("div", { staticClass: "text" }, [
+        _vm._v("Clique para carregar a foto")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "text-muted" }, [
+      _c(
+        "abbr",
+        {
+          staticClass: "initialism",
+          attrs: { title: "Portador de Deficiência Física" }
+        },
+        [_vm._v("PCD")]
+      ),
+      _vm._v(
+        "\n                    - (Portador de Deficiência Física)\n                "
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "text-muted" }, [
+      _c(
+        "abbr",
+        {
+          staticClass: "initialism",
+          attrs: { title: "Carrteira Nacional de Habilitação" }
+        },
+        [_vm._v("CNH")]
+      ),
+      _vm._v(
+        "\n                    - (Carrteira Nacional de\n                    Habilitação)"
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_c("i", { staticClass: "mdi mdi-send" }), _vm._v(" Salvar")]
+      ),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-secondary", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "mdi mdi-backup-restore" }),
+        _vm._v(" Voltar")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=template&id=38397eb6&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/components/PessoaFormUpdate.vue?vue&type=template&id=38397eb6& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "b-modal",
+        {
+          attrs: { id: "modal-1", title: "Cortar Foto", size: "lg" },
+          scopedSlots: _vm._u([
+            {
+              key: "modal-footer",
+              fn: function() {
+                return [
+                  _c(
+                    "div",
+                    { staticClass: "w-100" },
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "float-right",
+                          attrs: { variant: "primary" },
+                          on: { click: _vm.cortaFoto }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Cortar\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "mr-2 float-right",
+                          attrs: { variant: "secondary" },
+                          on: {
+                            click: function($event) {
+                              _vm.modalShow = false
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Fechar\n                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ]
+              },
+              proxy: true
+            }
+          ]),
+          model: {
+            value: _vm.modalShow,
+            callback: function($$v) {
+              _vm.modalShow = $$v
+            },
+            expression: "modalShow"
+          }
+        },
+        [
+          _c("Cropper", {
+            ref: "cropper",
+            staticClass: "cropper",
+            attrs: {
+              src: _vm.imagem_cropper,
+              "stencil-props": {
+                aspectRatio: 3 / 4
+              }
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.send.apply(null, arguments)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-2" }, [
+              _vm.fotoBase64
+                ? _c(
+                    "div",
+                    [
+                      _c("b-img", {
+                        attrs: {
+                          src: _vm.fotoBase64,
+                          fluid: "",
+                          width: "300",
+                          height: "400",
+                          "blank-color": "#CCC",
+                          alt: _vm.form.nome
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "mt-1",
+                          attrs: {
+                            squared: "",
+                            size: "sm",
+                            block: "",
+                            variant: "danger"
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "link-icon",
+                            attrs: { "data-feather": "trash" }
+                          }),
+                          _vm._v(" Remover Foto\n                    ")
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _c("div", [
+                    _c(
+                      "label",
+                      { attrs: { for: "upload_image" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "image_area" },
+                          [
+                            _c("b-img", {
+                              attrs: {
+                                blank: true,
+                                fluid: "",
+                                width: "300",
+                                height: "400",
+                                "blank-color": "#CCC",
+                                alt: "HEX shorthand color image (#777)"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._m(0)
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("b-form-file", {
+                          staticStyle: { display: "none" },
+                          attrs: {
+                            id: "upload_image",
+                            accept: ".jpg, .jpeg, .png"
+                          },
+                          on: { change: _vm.getFoto }
+                        })
+                      ],
+                      1
+                    )
+                  ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-10" }, [

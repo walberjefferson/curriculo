@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <div id="form_pessoa">
-                        <pessoa-form uuid="{{ $dados->uuid }}"></pessoa-form>
+                        <pessoa-form-update uuid="{{ $dados->uuid }}"></pessoa-form-update>
                     </div>
                 </div>
             </div>
