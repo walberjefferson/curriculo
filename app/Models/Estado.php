@@ -18,6 +18,11 @@ class Estado extends Model implements Transformable
     protected $fillable = ['nome', 'uf'];
     protected $dates = ['deleted_at'];
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function cidades()
     {
         return $this->hasMany(Cidade::class, 'estado_id');

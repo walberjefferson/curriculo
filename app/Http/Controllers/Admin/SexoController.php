@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\SexoRequest;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\SexoRepository;
+use App\Models\Sexo;
 
 class SexoController extends Controller
 {
@@ -39,18 +40,16 @@ class SexoController extends Controller
         }
     }
 
-    public function edit($uuid)
+    public function edit(Sexo $dados)
     {
-        $dados = $this->repository->findByField('uuid', $uuid)->first();
         return view('admin.sexo.edit', compact('dados'));
     }
 
-    public function update(SexoRequest $request, $uuid)
+    public function update(SexoRequest $request, Sexo $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
             \DB::commit();
             return redirect()->route('admin.sexo.index')->with('message', 'Sexo atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -59,12 +58,11 @@ class SexoController extends Controller
         }
     }
 
-    public function destroy($uuid)
+    public function destroy(Sexo $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->delete($info->id);
+            $this->repository->delete($dados->id);
             \DB::commit();
             return redirect()->back()->with('message-warning', 'Sexo removido com sucesso.');
         } catch (\Exception $e) {

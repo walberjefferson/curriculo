@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EscolaridadeRequest;
 use App\Contracts\Repositories\EscolaridadeRepository;
+use App\Models\Escolaridade;
 
 class EscolaridadeController extends Controller
 {
@@ -39,18 +40,16 @@ class EscolaridadeController extends Controller
         }
     }
 
-    public function edit($uuid)
+    public function edit(Escolaridade $dados)
     {
-        $dados = $this->repository->findByField('uuid', $uuid)->first();
         return view('admin.escolaridade.edit', compact('dados'));
     }
 
-    public function update(EscolaridadeRequest $request, $uuid)
+    public function update(EscolaridadeRequest $request, Escolaridade $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
             \DB::commit();
             return redirect()->route('admin.escolaridade.index')->with('message', 'Escolaridade atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -59,12 +58,11 @@ class EscolaridadeController extends Controller
         }
     }
 
-    public function destroy($uuid)
+    public function destroy(Escolaridade $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->delete($info->id);
+            $this->repository->delete($dados->id);
             \DB::commit();
             return redirect()->back()->with('message-warning', 'Escolaridade removido com sucesso.');
         } catch (\Exception $e) {

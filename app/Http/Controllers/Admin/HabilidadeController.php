@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Contracts\Repositories\HabilidadeRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HabilidadeRequest;
+use App\Models\Habilidade;
 
 class HabilidadeController extends Controller
 {
@@ -39,18 +40,16 @@ class HabilidadeController extends Controller
         }
     }
 
-    public function edit($uuid)
+    public function edit(Habilidade $dados)
     {
-        $dados = $this->repository->findByField('uuid', $uuid)->first();
         return view('admin.habilidade.edit', compact('dados'));
     }
 
-    public function update(HabilidadeRequest $request, $uuid)
+    public function update(HabilidadeRequest $request, Habilidade $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
             \DB::commit();
             return redirect()->route('admin.habilidade.index')->with('message', 'Habilidade atualizada com sucesso.');
         } catch (\Exception $e) {
@@ -59,12 +58,11 @@ class HabilidadeController extends Controller
         }
     }
 
-    public function destroy($uuid)
+    public function destroy(Habilidade $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->delete($info->id);
+            $this->repository->delete($dados->id);
             \DB::commit();
             return redirect()->back()->with('message-warning', 'Habilidade removida com sucesso.');
         } catch (\Exception $e) {

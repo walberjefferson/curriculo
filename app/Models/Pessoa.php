@@ -20,7 +20,7 @@ class Pessoa extends Model implements Transformable
 
     public static $folder = 'pessoa/foto';
     protected $table = 'pessoa';
-    protected $no_upper = ['uuid', 'foto', 'cnh', 'pcd', 'ativo', 'filhos'];
+    protected $no_upper = ['uuid', 'foto', 'cnh', 'pcd', 'ativo', 'filhos', 'instagram'];
     protected $fillable = [
         'nome', 'data_nascimento', 'sexo_id', 'cpf', 'cnh', 'categoria_cnh', 'pcd', 'telefone', 'whatsapp', 'endereco',
         'endereco_numero', 'complemento', 'ponto_referencia', 'instagram', 'outras_informacoes', 'foto', 'ativo',
@@ -34,6 +34,11 @@ class Pessoa extends Model implements Transformable
         'ativo' => 'boolean',
         'filhos' => 'boolean',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 
     public function getFotoBase64Attribute()
     {

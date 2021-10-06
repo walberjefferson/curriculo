@@ -509,7 +509,9 @@ export default {
         },
         send() {
             axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
-                this.$swal("Sucesso", data.message, "success");
+                this.$swal("Sucesso", data.message, "success").then(() => {
+                    // window.location.href = data.redirect;
+                });
             }).catch(({response}) => {
                 console.log(2, response)
                 if (response.status === 422) {

@@ -6,8 +6,7 @@ use App\Contracts\Repositories\PessoaRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CurriculoRequest;
 use App\Http\Resources\CurriculoResource;
-use App\Models\Cidade;
-use Illuminate\Http\Request;
+use App\Models\Pessoa;
 
 class CurriculoController extends Controller
 {
@@ -24,26 +23,26 @@ class CurriculoController extends Controller
             \DB::beginTransaction();
             $dados = $this->repository->create($request->validated());
             \DB::commit();
-            return response()->json(['data' => $dados, 'message' => 'Currículo adicionado com sucesso', 'error' => false]);
+            return response()->json(['data' => $dados, 'message' => 'Currículo adicionado com sucesso', 'redirect' => route('admin.curriculo.index'), 'error' => false]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao tentar cadastrar currículo. - ' . $e->getMessage(), 'error' => true], 500);
         }
     }
 
-    public function show($uuid)
+    public function show(Pessoa $dados)
     {
-        $dados = $this->repository->with(['experiencias', 'habilidades'])->findWhere(['uuid' => $uuid])->first();
+        $dados->load(['experiencias', 'habilidades']);
         return CurriculoResource::make($dados);
     }
 
-    public function update(CurriculoRequest $request, $uuid)
+    public function update(CurriculoRequest $request, Pessoa $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $dados = $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
+            $dados->refresh();
             \DB::commit();
-            return response()->json(['data' => $dados, 'message' => 'Currículo atualizado com sucesso', 'error' => false]);
+            return response()->json(['data' => $dados, 'message' => 'Currículo atualizado com sucesso', 'redirect' => route('admin.curriculo.index'), 'error' => false]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao tentar atualizar currículo. - ' . $e->getMessage(), 'error' => true], 500);
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Contracts\Repositories\EstadoCivilRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EstadoCivilRequest;
+use App\Models\EstadoCivil;
 
 class EstadoCivilController extends Controller
 {
@@ -39,18 +40,16 @@ class EstadoCivilController extends Controller
         }
     }
 
-    public function edit($uuid)
+    public function edit(EstadoCivil $dados)
     {
-        $dados = $this->repository->findByField('uuid', $uuid)->first();
         return view('admin.estado_civil.edit', compact('dados'));
     }
 
-    public function update(EstadoCivilRequest $request, $uuid)
+    public function update(EstadoCivilRequest $request, EstadoCivil $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
             \DB::commit();
             return redirect()->route('admin.estado_civil.index')->with('message', 'Sexo atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -59,12 +58,11 @@ class EstadoCivilController extends Controller
         }
     }
 
-    public function destroy($uuid)
+    public function destroy(EstadoCivil $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->delete($info->id);
+            $this->repository->delete($dados->id);
             \DB::commit();
             return redirect()->back()->with('message-warning', 'Sexo removido com sucesso.');
         } catch (\Exception $e) {

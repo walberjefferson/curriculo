@@ -18,6 +18,11 @@ class EstadoCivil extends Model implements Transformable
     protected $fillable = ['nome', 'codigo'];
     protected $dates = ['deleted_at'];
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function pessoas()
     {
         return $this->hasMany(Pessoa::class, 'estado_civil_id');

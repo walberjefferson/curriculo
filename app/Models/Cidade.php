@@ -18,6 +18,11 @@ class Cidade extends Model implements Transformable
     protected $fillable = ['nome', 'estado_id'];
     protected $dates = ['deleted_at'];
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function estado()
     {
         return $this->belongsTo(Estado::class);
