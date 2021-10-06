@@ -26,7 +26,7 @@ class CurriculoRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('curriculo');
+        $id = $this->route('dados');
         if ($id) {
             $pessoa = Pessoa::query()->firstWhere('uuid', $id);
             $id = $pessoa->id;
@@ -39,7 +39,7 @@ class CurriculoRequest extends FormRequest
             'cpf' => ['required', Rule::unique('pessoa', 'cpf')->ignore($id)],
             'cnh' => 'required|boolean',
             'categoria_cnh' => 'nullable',
-            'pcd' => 'nullable|boolean',
+            'pcd' => 'required|boolean',
             'telefone' => 'required',
             'whatsapp' => 'nullable',
             'endereco' => 'required',
@@ -64,6 +64,11 @@ class CurriculoRequest extends FormRequest
     public function all($keys = null)
     {
         $all = parent::all($keys);
+        foreach ($all as $key => $value) {
+            if(is_null($value) || $value === 'NULL') {
+                $all[$key] = null;
+            }
+        }
         if (isset($all['cpf'])) {
             $all['cpf'] = str_numbers($all['cpf']);
         }
@@ -76,9 +81,6 @@ class CurriculoRequest extends FormRequest
         if (isset($all['filhos'])) {
             $all['filhos'] = (is_bool($all['filhos'])) ? $all['filhos'] : ($all['filhos'] == 'true') ? true : false;
         }
-//        if(isset($all['experiencias']) && !is_array($all['experiencias'])) {
-//            $all['experiencias'] = json_decode($all['experiencias']);
-//        }
         return $all;
     }
 }

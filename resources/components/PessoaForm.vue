@@ -354,12 +354,6 @@ export default {
     components: {
         Cropper,
     },
-    props: {
-        uuid: {
-            required: false,
-            type: String,
-        }
-    },
     data: () => ({
         modalShow: false,
         imagem: null,
@@ -501,63 +495,33 @@ export default {
             }
         },
         send() {
-            if (this.uuid) {
-                if (this.canvas) {
-                    this.canvas.toBlob((blob) => {
-                        let form = this.prepareForm(blob);
-                        axios.post(`/api/curriculo/${this.uuid}`, form).then(({data}) => {
-                            this.$swal("Sucesso", data.message, "success");
-                        }).catch(({response}) => {
-                            console.log(1, response)
-                            if (response.status === 422) {
-                                let errors = ERROR_422(response);
-                                console.log(errors);
-                            }
-                        });
-                    }, 'image/jpeg');
-                } else {
-                    axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
+            if (this.canvas) {
+                this.canvas.toBlob((blob) => {
+                    let form = this.prepareForm(blob);
+                    axios.post('/api/curriculo', form).then(({data}) => {
                         this.$swal("Sucesso", data.message, "success");
                     }).catch(({response}) => {
-                        console.log(2, response)
+                        console.log(3, response)
                         if (response.status === 422) {
                             let errors = ERROR_422(response);
                             console.log(errors);
                         }
                     });
-                }
+                }, 'image/jpeg');
             } else {
-                if (this.canvas) {
-                    this.canvas.toBlob((blob) => {
-                        let form = this.prepareForm(blob);
-                        axios.post('/api/curriculo', form).then(({data}) => {
-                            this.$swal("Sucesso", data.message, "success");
-                        }).catch(({response}) => {
-                            console.log(3, response)
-                            if (response.status === 422) {
-                                let errors = ERROR_422(response);
-                                console.log(errors);
-                            }
-                        });
-                    }, 'image/jpeg');
-                } else {
-                    axios.post('/api/curriculo', this.form).then(({data}) => {
-                        this.$swal("Sucesso", data.message, "success");
-                    }).catch(({response}) => {
-                        console.log(4, response)
-                        if (response.status === 422) {
-                            let errors = ERROR_422(response);
-                            console.log(errors);
-                        }
-                    });
-                }
+                axios.post('/api/curriculo', this.form).then(({data}) => {
+                    this.$swal("Sucesso", data.message, "success");
+                }).catch(({response}) => {
+                    console.log(4, response)
+                    if (response.status === 422) {
+                        let errors = ERROR_422(response);
+                        console.log(errors);
+                    }
+                });
             }
         },
         prepareForm(blob = null) {
             const form = new FormData();
-            if (typeof blob === 'object') {
-                form.append('_method', 'PUT');
-            }
             Object.keys(this.form).map((key) => {
                 if (key === 'habilidades') {
                     this.createFormData(form, key, this.form[key]);
@@ -568,22 +532,11 @@ export default {
                 } else if (key === 'foto' && typeof blob === 'object') {
                     form.append(key, blob);
                 } else {
-                    // if (this.form[key] !== null) {
-                    //
-                    // }
                     form.append(key, this.form[key]);
                 }
             });
 
             return form;
-        },
-        getCurriculo() {
-            if (this.uuid) {
-                axios.get(`/api/curriculo/${this.uuid}`).then(({data: { data }}) => {
-                    console.log(data);
-                    this.changeData(data);
-                })
-            }
         },
         changeData(data) {
             Object.entries(data).forEach(([key, value]) => {
@@ -608,14 +561,14 @@ export default {
     },
     computed: {
         fotoBase64() {
-          if(this.form.foto) {
-              return this.form.foto;
-          } else if (this.imagem) {
-              return this.imagem;
-          } else {
-              return null;
-          }
-      },
+            if (this.form.foto) {
+                return this.form.foto;
+            } else if (this.imagem) {
+                return this.imagem;
+            } else {
+                return null;
+            }
+        },
     },
     created() {
         this.reset();
@@ -624,7 +577,6 @@ export default {
         this.getEscolaridades();
         this.getEstadoCivil();
         this.getHabilidades();
-        this.getCurriculo();
     }
 }
 </script>

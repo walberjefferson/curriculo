@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Api\{
     HabilidadesController,
+    CurriculoFotoController,
     CurriculoController as ApiCurriculoController,
     CidadeController as ApiCidadeController,
     EscolaridadeController as ApiEscolaridadeController,
@@ -41,4 +42,5 @@ Route::prefix('api')->as('api.')->middleware('auth')->group(function () {
     Route::post('cidade', [ApiCidadeController::class, 'index']);
 
     Route::apiResource('curriculo', ApiCurriculoController::class)->only('store', 'show', 'update')->parameters(['curriculo' => 'dados']);
+    Route::apiResource('curriculo_foto', CurriculoFotoController::class)->only('destroy', 'update')->parameters(['curriculo_foto' => 'dados']);
 });

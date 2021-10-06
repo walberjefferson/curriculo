@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Habilidade;
+use App\Models\Escolaridade;
+use App\Models\Pessoa;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class HabilidadeRequest extends FormRequest
+class CurriculoFotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +26,8 @@ class HabilidadeRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('dados');
-        if ($id) {
-            $habilidade = Habilidade::query()->firstWhere('uuid', $id);
-            $id = $habilidade->id;
-
-        }
         return [
-            'nome' => 'required|max:90',
-            'codigo' => "nullable|max:4|unique:habilidade,id,{$id}"
+            'foto' => 'required|image',
         ];
     }
 }

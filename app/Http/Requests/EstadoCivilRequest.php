@@ -25,7 +25,7 @@ class EstadoCivilRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('estado_civil');
+        $id = $this->route('dados');
         if ($id) {
             $estadoCivil = EstadoCivil::query()->firstWhere('uuid', $id);
             $id = $estadoCivil->id;

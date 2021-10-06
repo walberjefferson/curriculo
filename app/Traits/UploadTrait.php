@@ -26,4 +26,14 @@ trait UploadTrait
         \Storage::disk($disk)->putFile($folder, $file);
         return $dadosFile;
     }
+
+    public function deleteFile($fileName, $folder, $disk = 'public')
+    {
+        if(\Storage::disk($disk)->exists("{$folder}/{$fileName}")) {
+            \Storage::disk($disk)->delete("{$folder}/{$fileName}");
+            return;
+        }
+        throw new \Exception('Arquivo inexistente.');
+    }
+
 }

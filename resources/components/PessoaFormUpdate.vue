@@ -12,8 +12,8 @@
 
             <template #modal-footer>
                 <div class="w-100">
-                    <b-button variant="primary" class="float-right" @click="cortaFoto">
-                        Cortar
+                    <b-button variant="primary" class="float-right" @click="sendFoto">
+                        Salvar
                     </b-button>
                     <b-button variant="secondary" class="mr-2 float-right" @click="modalShow=false">
                         Fechar
@@ -29,7 +29,7 @@
                         <b-img :src="fotoBase64" fluid width="300" height="400" blank-color="#CCC"
                                :alt="form.nome">
                         </b-img>
-                        <b-button squared size="sm" block variant="danger" class="mt-1">
+                        <b-button @click.prevent="destroyFile" squared size="sm" block variant="danger" class="mt-1">
                             <i class="link-icon" data-feather="trash"></i> Remover Foto
                         </b-button>
                     </div>
@@ -521,10 +521,18 @@ export default {
             });
         },
         sendFoto() {
+            this.cortaFoto();
             if (this.canvas) {
+                const form = new FormData();
                 this.canvas.toBlob((blob) => {
-                    let form = this.prepareForm(blob);
-                    axios.post(`/api/curriculo/${this.uuid}`, form).then(({data}) => {
+                    form.append('foto', blob);
+                    form.append('_method', 'PUT');
+                    axios.post(`/api/curriculo_foto/${this.uuid}`, form, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }).then(({data: {data}}) => {
+                        console.log(data);
                         this.$swal("Sucesso", data.message, "success");
                     }).catch(({response}) => {
                         if (response.status === 422) {
@@ -535,22 +543,29 @@ export default {
                 }, 'image/jpeg');
             }
         },
-        prepareForm(blob = null) {
-            const form = new FormData();
-            Object.keys(this.form).map((key) => {
-                if (key === 'foto' && typeof blob === 'object') {
-                    form.append(key, blob);
-                }
-            });
-            return form;
-        },
         getCurriculo() {
             if (this.uuid) {
                 axios.get(`/api/curriculo/${this.uuid}`).then(({data: {data}}) => {
-                    console.log(data);
                     this.changeData(data);
                 })
             }
+        },
+        destroyFile() {
+            this.$swal({
+                title: "Exclusão",
+                text: "Deseja realmente excluir esta foto?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: 'Sim',
+                denyButtonText: 'Não',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete(`/api/curriculo_foto/${this.uuid}`).then(({data: {data}}) => {
+                        this.$swal('Sucesso', 'Foto removida com sucesso.', 'success')
+                        this.changeData(data);
+                    })
+                }
+            });
         },
         changeData(data) {
             Object.entries(data).forEach(([key, value]) => {
