@@ -8,6 +8,12 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+Route::prefix('api')->as('api.')->middleware('auth')->group(function (){
+    Route::put('refresh_permissions', function () {
+        return Artisan::call('authentication:make-permission');
+    });
+});
+
 Route::group(['prefix' => 'icons'], function(){
     Route::get('feather-icons', function () {
         View::make('pages.icons.feather-icons');
