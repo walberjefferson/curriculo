@@ -99,8 +99,7 @@
            $(document).on('click', '#refresh', function (e) {
                e.preventDefault();
                document.body.classList.remove('loaded');
-               axios.put('/api/refresh_permissions').then((data) => {
-                   console.log(data);
+               axios.put('/api/refresh_permissions').then(() => {
                }).finally(() => {
                    document.body.classList.add('loaded');
                })
