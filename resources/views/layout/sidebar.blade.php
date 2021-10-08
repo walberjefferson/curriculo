@@ -19,72 +19,98 @@
                 </a>
             </li>
 
-            <li class="nav-item nav-category">Currículos</li>
-            <li class="nav-item {{ active_class(['admin.curriculo.*']) }}">
-                <a href="{{ route('admin.curriculo.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="users"></i>
-                    <span class="link-title">Pessoas</span>
-                </a>
-            </li>
+            @can('admin-curriculo/index')
+                <li class="nav-item nav-category">Currículos</li>
+                <li class="nav-item {{ active_class(['admin.curriculo.*']) }}">
+                    <a href="{{ route('admin.curriculo.index') }}" class="nav-link">
+                        <i class="link-icon" data-feather="users"></i>
+                        <span class="link-title">Pessoas</span>
+                    </a>
+                </li>
+            @endcan
 
-            <li class="nav-item nav-category">Geral</li>
-            <li class="nav-item {{ active_class(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*', 'admin.estado_civil.*', 'admin.estado.*', 'admin.cidade.*']) }}">
-                <a class="nav-link" data-toggle="collapse" href="#cadastros" role="button"
-                   aria-expanded="{{ is_active_route(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*', 'admin.estado_civil.*', 'admin.estado.*', 'admin.cidade.*']) }}" aria-controls="cadastros">
-                    <i class="link-icon" data-feather="layers"></i>
-                    <span class="link-title">Cadastros</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse {{ show_class(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*', 'admin.estado_civil.*', 'admin.estado.*', 'admin.cidade.*']) }}" id="cadastros">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.sexo.index') }}"
-                               class="nav-link {{ active_class(['admin.sexo.*']) }}">Sexo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.escolaridade.index') }}"
-                               class="nav-link {{ active_class(['admin.escolaridade.*']) }}">Escolaridade</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.habilidade.index') }}"
-                               class="nav-link {{ active_class(['admin.habilidade.*']) }}">Habilidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.estado_civil.index') }}"
-                               class="nav-link {{ active_class(['admin.estado_civil.*']) }}">Estado Civil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.estado.index') }}"
-                               class="nav-link {{ active_class(['admin.estado.*']) }}">Estados</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.cidade.index') }}"
-                               class="nav-link {{ active_class(['admin.cidade.*']) }}">Cidades</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item nav-category">Configurações</li>
-            <li class="nav-item {{ active_class(['admin.user.*', 'admin.role.*']) }}">
-                <a class="nav-link" data-toggle="collapse" href="#configuracoes" role="button"
-                   aria-expanded="{{ is_active_route(['admin.user.*', 'admin.role.*']) }}" aria-controls="configuracoes">
-                    <i data-feather="tool" class="link-icon" ></i>
-                    <span class="link-title">Configurações</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse {{ show_class(['admin.user.*', 'admin.role.*']) }}" id="configuracoes">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.user.index') }}"
-                               class="nav-link {{ active_class(['admin.user.*']) }}">Usuários</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.role.index') }}"
-                               class="nav-link {{ active_class(['admin.role.*']) }}">Perfis</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @canany(['admin-sexo/index', 'admin-habilidade/index', 'admin-estado/index', 'admin-estado_civil/index', 'admin-escolaridade/index', 'admin-cidade/index' ])
+                <li class="nav-item nav-category">Geral</li>
+                <li class="nav-item {{ active_class(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*', 'admin.estado_civil.*', 'admin.estado.*', 'admin.cidade.*']) }}">
+                    <a class="nav-link" data-toggle="collapse" href="#cadastros" role="button"
+                       aria-expanded="{{ is_active_route(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*', 'admin.estado_civil.*', 'admin.estado.*', 'admin.cidade.*']) }}"
+                       aria-controls="cadastros">
+                        <i class="link-icon" data-feather="layers"></i>
+                        <span class="link-title">Cadastros</span>
+                        <i class="link-arrow" data-feather="chevron-down"></i>
+                    </a>
+                    <div
+                        class="collapse {{ show_class(['admin.sexo.*', 'admin.escolaridade.*', 'admin.habilidade.*', 'admin.estado_civil.*', 'admin.estado.*', 'admin.cidade.*']) }}"
+                        id="cadastros">
+                        <ul class="nav sub-menu">
+                            @can('admin-sexo/index')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.sexo.index') }}"
+                                       class="nav-link {{ active_class(['admin.sexo.*']) }}">Sexo</a>
+                                </li>
+                            @endcan
+                            @can('admin-escolaridade/index')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.escolaridade.index') }}"
+                                       class="nav-link {{ active_class(['admin.escolaridade.*']) }}">Escolaridade</a>
+                                </li>
+                            @endcan
+                            @can('admin-habilidade/index')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.habilidade.index') }}"
+                                       class="nav-link {{ active_class(['admin.habilidade.*']) }}">Habilidades</a>
+                                </li>
+                            @endcan
+                            @can('admin-estado_civil/index')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.estado_civil.index') }}"
+                                       class="nav-link {{ active_class(['admin.estado_civil.*']) }}">Estado Civil</a>
+                                </li>
+                            @endcan
+                            @can('admin-estado/index')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.estado.index') }}"
+                                       class="nav-link {{ active_class(['admin.estado.*']) }}">Estados</a>
+                                </li>
+                            @endcan
+                            @can('admin-cidade/index')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.cidade.index') }}"
+                                       class="nav-link {{ active_class(['admin.cidade.*']) }}">Cidades</a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </div>
+                </li>
+            @endcanany
+            @canany(['admin-users/list', 'admin-roles/list'])
+                <li class="nav-item nav-category">Configurações</li>
+                <li class="nav-item {{ active_class(['admin.user.*', 'admin.role.*']) }}">
+                    <a class="nav-link" data-toggle="collapse" href="#configuracoes" role="button"
+                       aria-expanded="{{ is_active_route(['admin.user.*', 'admin.role.*']) }}"
+                       aria-controls="configuracoes">
+                        <i data-feather="tool" class="link-icon"></i>
+                        <span class="link-title">Configurações</span>
+                        <i class="link-arrow" data-feather="chevron-down"></i>
+                    </a>
+                    <div class="collapse {{ show_class(['admin.user.*', 'admin.role.*']) }}" id="configuracoes">
+                        <ul class="nav sub-menu">
+                            @can('admin-users/list')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.user.index') }}"
+                                       class="nav-link {{ active_class(['admin.user.*']) }}">Usuários</a>
+                                </li>
+                            @endcan
+                            @can('admin-roles/list')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.role.index') }}"
+                                       class="nav-link {{ active_class(['admin.role.*']) }}">Perfis</a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </div>
+                </li>
+            @endcanany
         </ul>
     </div>
 </nav>

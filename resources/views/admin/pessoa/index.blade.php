@@ -12,7 +12,7 @@
 @endsection
 
 @section('breadcrumbs_button')
-    @can('admin-escolaridade/create')
+    @can('admin-curriculo/store')
         <a href="{{ route('admin.curriculo.create') }}" class="btn btn-primary btn-icon-text">
             <i class="btn-icon-prepend" data-feather="plus"></i>
             Novo
@@ -34,7 +34,7 @@
                                 <th width="5%" class="text-center">Sexo</th>
                                 <th width="5%" class="text-center">Escolaridade</th>
                                 <th width="5%" class="text-center">Estado Cívil</th>
-                                @canany(['admin-escolaridade/edit', 'admin-escolaridade/delete'])
+                                @canany(['admin-curriculo/update', 'admin-curriculo/destroy'])
                                     <th width="8%" nowrap>Ações</th>
                                 @endcanany
                             </tr>
@@ -47,15 +47,15 @@
                                     <td class="text-center" nowrap>{{ $d->sexo ? $d->sexo['nome'] : '---' }}</td>
                                     <td>{{ $d->escolaridade ? $d->escolaridade['nome'] : '---' }}</td>
                                     <td>{{ $d->estado_civil ? $d->estado_civil['nome'] : '---' }}</td>
-                                @canany(['admin-escolaridade/edit', 'admin-escolaridade/delete'])
+                                @canany(['admin-curriculo/update', 'admin-curriculo/destroy'])
                                         <td>
                                             <div class="btn-group btn-group-sm">
-                                                @can('admin-escolaridade/edit')
+                                                @can('admin-curriculo/update')
                                                     <a href="{{ route('admin.curriculo.edit', $d->uuid) }}" class="btn btn-primary">
                                                         <i class="mdi mdi-pencil-outline"></i>
                                                     </a>
                                                 @endcan
-                                                @can('admin-escolaridade/delete')
+                                                @can('admin-curriculo/destroy')
                                                     <?php $deleteForm = "delete-form-{$loop->index}" ?>
                                                     <a href="#" class="btn btn-danger"
                                                        onclick="if(confirm('Deseja realmente excluir?')) {event.preventDefault(); document.getElementById('{{$deleteForm}}').submit(); }else{ return false; }">
@@ -63,7 +63,7 @@
                                                     </a>
                                                 @endcan
                                             </div>
-                                            @can('admin-escolaridade/delete')
+                                            @can('admin-curriculo/destroy')
                                                 {!! Form::open(['url' => route('admin.curriculo.destroy', $d->uuid), 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
                                                 {!! Form::close() !!}
                                             @endcan

@@ -12,7 +12,7 @@
 @endsection
 
 @section('breadcrumbs_button')
-    @can('admin-sexo/create')
+    @can('admin-sexo/store')
         <a href="{{ route('admin.sexo.create') }}" class="btn btn-primary btn-icon-text">
             <i class="btn-icon-prepend" data-feather="plus"></i>
             Novo
@@ -31,7 +31,7 @@
                             <tr>
                                 <th width="3%" class="text-center">#</th>
                                 <th>Nome</th>
-                                @canany(['admin-sexo/edit', 'admin-sexo/delete'])
+                                @canany(['admin-sexo/update', 'admin-sexo/destroy'])
                                     <th width="8%" nowrap>Ações</th>
                                 @endcanany
                             </tr>
@@ -41,15 +41,15 @@
                                 <tr>
                                     <td nowrap class="text-center">{{ $loop->iteration }}</td>
                                     <td nowrap>{{ $d->nome }}</td>
-                                    @canany(['admin-sexo/edit', 'admin-sexo/delete'])
+                                    @canany(['admin-sexo/update', 'admin-sexo/destroy'])
                                         <td>
                                             <div class="btn-group btn-group-sm">
-                                                @can('admin-sexo/edit')
+                                                @can('admin-sexo/update')
                                                     <a href="{{ route('admin.sexo.edit', $d->uuid) }}" class="btn btn-primary">
                                                         <i class="mdi mdi-pencil-outline"></i>
                                                     </a>
                                                 @endcan
-                                                @can('admin-sexo/delete')
+                                                @can('admin-sexo/destroy')
                                                     <?php $deleteForm = "delete-form-{$loop->index}" ?>
                                                     <a href="#" class="btn btn-danger"
                                                        onclick="if(confirm('Deseja realmente excluir?')) {event.preventDefault(); document.getElementById('{{$deleteForm}}').submit(); }else{ return false; }">
@@ -57,7 +57,7 @@
                                                     </a>
                                                 @endcan
                                             </div>
-                                            @can('admin-sexo/delete')
+                                            @can('admin-sexo/destroy')
                                                 {!! Form::open(['url' => route('admin.sexo.destroy', $d->uuid), 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
                                                 {!! Form::close() !!}
                                             @endcan

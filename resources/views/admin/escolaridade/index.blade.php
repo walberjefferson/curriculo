@@ -12,7 +12,7 @@
 @endsection
 
 @section('breadcrumbs_button')
-    @can('admin-escolaridade/create')
+    @can('admin-escolaridade/store')
         <a href="{{ route('admin.escolaridade.create') }}" class="btn btn-primary btn-icon-text">
             <i class="btn-icon-prepend" data-feather="plus"></i>
             Novo
@@ -32,7 +32,7 @@
                                 <th width="3%" class="text-center">#</th>
                                 <th width="5%" class="text-center">Código</th>
                                 <th>Nome</th>
-                                @canany(['admin-escolaridade/edit', 'admin-escolaridade/delete'])
+                                @canany(['admin-escolaridade/update', 'admin-escolaridade/destroy'])
                                     <th width="8%" nowrap>Ações</th>
                                 @endcanany
                             </tr>
@@ -43,15 +43,15 @@
                                     <td nowrap class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center" nowrap>{{ $d->codigo }}</td>
                                     <td nowrap>{{ $d->nome }}</td>
-                                    @canany(['admin-escolaridade/edit', 'admin-escolaridade/delete'])
+                                    @canany(['admin-escolaridade/update', 'admin-escolaridade/destroy'])
                                         <td>
                                             <div class="btn-group btn-group-sm">
-                                                @can('admin-escolaridade/edit')
+                                                @can('admin-escolaridade/update')
                                                     <a href="{{ route('admin.escolaridade.edit', $d->uuid) }}" class="btn btn-primary">
                                                         <i class="mdi mdi-pencil-outline"></i>
                                                     </a>
                                                 @endcan
-                                                @can('admin-escolaridade/delete')
+                                                @can('admin-escolaridade/destroy')
                                                     <?php $deleteForm = "delete-form-{$loop->index}" ?>
                                                     <a href="#" class="btn btn-danger"
                                                        onclick="if(confirm('Deseja realmente excluir?')) {event.preventDefault(); document.getElementById('{{$deleteForm}}').submit(); }else{ return false; }">
@@ -59,7 +59,7 @@
                                                     </a>
                                                 @endcan
                                             </div>
-                                            @can('admin-escolaridade/delete')
+                                            @can('admin-escolaridade/destroy')
                                                 {!! Form::open(['url' => route('admin.escolaridade.destroy', $d->uuid), 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
                                                 {!! Form::close() !!}
                                             @endcan
