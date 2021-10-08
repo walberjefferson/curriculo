@@ -26,13 +26,16 @@ class CurriculoRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('dados');
-        if ($id) {
-            $pessoa = Pessoa::query()->firstWhere('uuid', $id);
-            $id = $pessoa->id;
+        $id = null;
+        if ($uuid = $this->route('dados')) {
+            if(is_object($uuid)) {
+                $id = $uuid->id;
+            } else {
+                $pessoa = Pessoa::query()->firstWhere('uuid', $uuid);
+                $id = $pessoa->id;
+            }
         }
         return [
-//            'codigo' => "nullable|max:4|unique:escolaridade,id,{$id}",
             'nome' => 'required|string|max:180',
             'data_nascimento' => 'required|date',
             'sexo_id' => 'required',
@@ -64,22 +67,17 @@ class CurriculoRequest extends FormRequest
     public function all($keys = null)
     {
         $all = parent::all($keys);
-        foreach ($all as $key => $value) {
-            if(is_null($value) || $value === 'NULL') {
-                $all[$key] = null;
-            }
-        }
         if (isset($all['cpf'])) {
             $all['cpf'] = str_numbers($all['cpf']);
         }
         if (isset($all['cnh'])) {
-            $all['cnh'] = (is_bool($all['cnh'])) ? $all['cnh'] : ($all['cnh'] == 'true') ? true : false;
+            $all['cnh'] = (is_bool($all['cnh'])) ? $all['cnh'] : ($all['cnh'] === 'true') ? true : false;
         }
         if (isset($all['pcd'])) {
-            $all['pcd'] = (is_bool($all['pcd'])) ? $all['pcd'] : ($all['pcd'] == 'true') ? true : false;
+            $all['pcd'] = (is_bool($all['pcd'])) ? $all['pcd'] : ($all['pcd'] === 'true') ? true : false;
         }
         if (isset($all['filhos'])) {
-            $all['filhos'] = (is_bool($all['filhos'])) ? $all['filhos'] : ($all['filhos'] == 'true') ? true : false;
+            $all['filhos'] = (is_bool($all['filhos'])) ? $all['filhos'] : ($all['filhos'] === 'true') ? true : false;
         }
         return $all;
     }

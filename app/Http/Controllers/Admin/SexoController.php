@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\SexoRepository;
 use App\Models\Sexo;
 
+/**
+ * @Authentication\Annotations\Mapping\ControllerAnnotation(name="admin-sexo", description="Administração de Sexos")
+ */
 class SexoController extends Controller
 {
     private $repository;
@@ -16,17 +19,26 @@ class SexoController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="index", description="Lista")
+     */
     public function index()
     {
         $dados = $this->repository->orderBy('nome')->paginate();
         return view('admin.sexo.index', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function create()
     {
         return view('admin.sexo.create');
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function store(SexoRequest $request)
     {
         try {
@@ -40,11 +52,17 @@ class SexoController extends Controller
         }
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
     public function edit(Sexo $dados)
     {
         return view('admin.sexo.edit', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
     public function update(SexoRequest $request, Sexo $dados)
     {
         try {
@@ -58,6 +76,9 @@ class SexoController extends Controller
         }
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="destroy", description="Exclusão")
+     */
     public function destroy(Sexo $dados)
     {
         try {

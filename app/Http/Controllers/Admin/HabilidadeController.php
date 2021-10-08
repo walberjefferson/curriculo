@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HabilidadeRequest;
 use App\Models\Habilidade;
 
+/**
+ * @Authentication\Annotations\Mapping\ControllerAnnotation(name="admin-habilidade", description="Administração de Habilidades")
+ */
 class HabilidadeController extends Controller
 {
     private $repository;
@@ -16,17 +19,26 @@ class HabilidadeController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="index", description="Lista")
+     */
     public function index()
     {
         $dados = $this->repository->orderBy('codigo')->orderBy('nome')->paginate();
         return view('admin.habilidade.index', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function create()
     {
         return view('admin.habilidade.create');
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function store(HabilidadeRequest $request)
     {
         try {
@@ -40,11 +52,17 @@ class HabilidadeController extends Controller
         }
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
     public function edit(Habilidade $dados)
     {
         return view('admin.habilidade.edit', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
     public function update(HabilidadeRequest $request, Habilidade $dados)
     {
         try {
@@ -58,6 +76,9 @@ class HabilidadeController extends Controller
         }
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="destroy", description="Exclusão")
+     */
     public function destroy(Habilidade $dados)
     {
         try {

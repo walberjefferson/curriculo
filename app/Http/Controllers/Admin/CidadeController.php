@@ -7,6 +7,9 @@ use App\Contracts\Repositories\CidadeRepository;
 use App\Criteria\JoinCidadeAndEstadoCriteria;
 use App\Http\Controllers\Controller;
 
+/**
+ * @Authentication\Annotations\Mapping\ControllerAnnotation(name="admin-cidade", description="Administração de Cidades")
+ */
 class CidadeController extends Controller
 {
     private $repository;
@@ -16,6 +19,9 @@ class CidadeController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="index", description="Lista")
+     */
     public function index()
     {
         $this->repository->pushCriteria(JoinCidadeAndEstadoCriteria::class);

@@ -11,6 +11,9 @@ use App\Models\EstadoCivil;
 use App\Models\Pessoa;
 use App\Models\Sexo;
 
+/**
+ * @Authentication\Annotations\Mapping\ControllerAnnotation(name="admin-curriculo", description="Administração de Currículo")
+ */
 class CurriculoController extends Controller
 {
     private $repository;
@@ -20,12 +23,18 @@ class CurriculoController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="index", description="Lista")
+     */
     public function index()
     {
         $dados = $this->repository->orderBy('nome')->paginate();
         return view('admin.pessoa.index', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function create()
     {
         $sexo = Sexo::query()->orderBy('nome')->pluck('nome', 'id');
@@ -35,37 +44,26 @@ class CurriculoController extends Controller
         return view('admin.pessoa.create', compact('sexo', 'estado', 'escolaridade', 'estadoCivil'));
     }
 
-    public function store(CurriculoRequest $request)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="show", description="Visualização")
+     */
+    public function show(Pessoa $dados)
     {
-        try {
-            \DB::beginTransaction();
-            $this->repository->create($request->validated());
-            \DB::commit();
-            return redirect()->route('admin.curriculo.index')->with('message', 'Escolaridade adicionado com sucesso.');
-        } catch (\Exception $e) {
-            \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', 'Erro ao tentar cadastrar pessoa.');
-        }
+        $dados->load(['experiencias', 'habilidades']);
+        return view('', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
     public function edit(Pessoa $dados)
     {
         return view('admin.pessoa.edit', compact('dados'));
     }
 
-    public function update(CurriculoRequest $request, Pessoa $dados)
-    {
-        try {
-            \DB::beginTransaction();
-            $this->repository->update($request->validated(), $dados->id);
-            \DB::commit();
-            return redirect()->route('admin.curriculo.index')->with('message', 'Escolaridade atualizado com sucesso.');
-        } catch (\Exception $e) {
-            \DB::rollBack();
-            return redirect()->back()->withInput()->with('message-danger', 'Erro ao tentar atualizar pessoa.');
-        }
-    }
-
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="destroy", description="Exclusão")
+     */
     public function destroy(Pessoa $dados)
     {
         try {

@@ -17,6 +17,9 @@ class CurriculoController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function store(CurriculoRequest $request)
     {
         try {
@@ -35,6 +38,9 @@ class CurriculoController extends Controller
         return CurriculoResource::make($dados);
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
     public function update(CurriculoRequest $request, Pessoa $dados)
     {
         try {
