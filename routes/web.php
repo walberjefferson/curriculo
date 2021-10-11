@@ -4,7 +4,7 @@ require __DIR__ . '/admin.php';
 
 Auth::routes();
 
-Route::get('/', function () {
+Route::middleware('auth')->get('/', function () {
     return view('dashboard');
 });
 
