@@ -41,6 +41,9 @@ Route::prefix('api')->as('api.')->middleware('auth')->group(function () {
     Route::get('habilidade', [HabilidadesController::class, 'index']);
     Route::post('cidade', [ApiCidadeController::class, 'index']);
 
+    Route::post('curriculo_foto/{dados}', [CurriculoFotoController::class, 'destroy'])->name('curriculo_foto.destroy');
+    Route::put('curriculo_foto/{dados}', [CurriculoFotoController::class, 'update'])->name('curriculo_foto.update');
+
     Route::apiResource('curriculo', ApiCurriculoController::class)->only('store', 'show', 'update')->parameters(['curriculo' => 'dados']);
-    Route::apiResource('curriculo_foto', CurriculoFotoController::class)->only('destroy', 'update')->parameters(['curriculo_foto' => 'dados']);
+//    Route::apiResource('curriculo_foto', CurriculoFotoController::class)->only('destroy', 'update')->parameters(['curriculo_foto' => 'dados']);
 });

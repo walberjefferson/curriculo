@@ -559,7 +559,7 @@ export default {
                 denyButtonText: 'Não',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`/api/curriculo_foto/${this.uuid}`).then(({data: {data, message}}) => {
+                    axios.post(`/api/curriculo_foto/${this.uuid}`).then(({data: {data, message}}) => {
                         this.changeData(data);
                         this.$swal('Sucesso', message, 'success').then(() => {
                             window.location.refresh();

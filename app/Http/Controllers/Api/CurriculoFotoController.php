@@ -23,7 +23,7 @@ class CurriculoFotoController extends Controller
             }
             \DB::commit();
             return response()->json(['data' => CurriculoResource::make($dados), 'message' => 'Foto atualizada com sucesso', 'error' => false]);
-        } catch (\Exception $e) {
+        } catch (\Exception | \Throwable $e) {
             \DB::rollBack();
             return response()->json(['message' => 'Erro ao tentar atualizar currículo. - ' . $e->getMessage(), 'error' => true], 500);
         }
@@ -39,7 +39,7 @@ class CurriculoFotoController extends Controller
             $dados->load(['experiencias', 'habilidades'])->refresh();
             \DB::commit();
             return response()->json(['data' => CurriculoResource::make($dados), 'message' => 'Foto removida com sucesso.', 'error' => false]);
-        } catch (\Exception $e) {
+        } catch (\Exception | \Throwable $e) {
             \DB::rollBack();
             return response()->json(['message' => 'Erro ao tentar excluir foto.', 'error' => true], 500);
         }
