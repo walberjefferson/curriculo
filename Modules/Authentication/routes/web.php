@@ -14,5 +14,5 @@ Route::prefix('admin')->as('admin.')->group(function () {
 });
 
 Route::prefix('api')->as('api.')->group(function (){
-    Route::put('refresh_permissions', [CommandsController::class, 'refresh_permissions']);
+    Route::post('refresh_permissions', [CommandsController::class, 'refresh_permissions']);
 });
