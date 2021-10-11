@@ -498,25 +498,33 @@ export default {
             if (this.canvas) {
                 this.canvas.toBlob((blob) => {
                     let form = this.prepareForm(blob);
+                    document.body.classList.remove('loaded');
                     axios.post('/api/curriculo', form).then(({data}) => {
-                        this.$swal("Sucesso", data.message, "success");
+                        this.$swal("Sucesso", data.message, "success").then(() => {
+                            window.location.href = data.redirect;
+                        });
                     }).catch(({response}) => {
-                        console.log(3, response)
                         if (response.status === 422) {
                             let errors = ERROR_422(response);
                             console.log(errors);
                         }
+                    }).finally(() => {
+                        document.body.classList.add('loaded');
                     });
                 }, 'image/jpeg');
             } else {
+                document.body.classList.remove('loaded');
                 axios.post('/api/curriculo', this.form).then(({data}) => {
-                    this.$swal("Sucesso", data.message, "success");
+                    this.$swal("Sucesso", data.message, "success").then(() => {
+                        window.location.href = data.redirect;
+                    });
                 }).catch(({response}) => {
-                    console.log(4, response)
                     if (response.status === 422) {
                         let errors = ERROR_422(response);
                         console.log(errors);
                     }
+                }).finally(() => {
+                    document.body.classList.add('loaded');
                 });
             }
         },

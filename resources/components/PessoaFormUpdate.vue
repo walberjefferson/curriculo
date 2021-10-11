@@ -508,6 +508,7 @@ export default {
             }
         },
         send() {
+            document.body.classList.remove('loaded');
             axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
                 this.$swal("Sucesso", data.message, "success").then(() => {
                     window.location.href = data.redirect;
@@ -517,6 +518,8 @@ export default {
                     let errors = ERROR_422(response);
                     console.log(errors);
                 }
+            }).finally(() => {
+                document.body.classList.add('loaded');
             });
         },
         sendFoto() {
@@ -526,6 +529,7 @@ export default {
                 this.canvas.toBlob((blob) => {
                     form.append('foto', blob);
                     form.append('_method', 'PUT');
+                    document.body.classList.remove('loaded');
                     axios.post(`/api/curriculo_foto/${this.uuid}`, form, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
@@ -538,6 +542,8 @@ export default {
                             let errors = ERROR_422(response);
                             console.log(errors);
                         }
+                    }).finally(() => {
+                        document.body.classList.add('loaded');
                     });
                 }, 'image/jpeg');
             }
@@ -559,12 +565,15 @@ export default {
                 denyButtonText: 'Não',
             }).then((result) => {
                 if (result.isConfirmed) {
+                    document.body.classList.remove('loaded');
                     axios.post(`/api/curriculo_foto/${this.uuid}`).then(({data: {data, message}}) => {
                         this.changeData(data);
                         this.$swal('Sucesso', message, 'success').then(() => {
                             window.location.refresh();
                         });
-                    })
+                    }).finally(() => {
+                        document.body.classList.add('loaded');
+                    });
                 }
             });
         },
