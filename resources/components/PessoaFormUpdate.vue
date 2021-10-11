@@ -30,7 +30,7 @@
                                :alt="form.nome">
                         </b-img>
                         <b-button @click.prevent="destroyFile" squared size="sm" block variant="danger" class="mt-1">
-                            <i class="link-icon" data-feather="trash"></i> Remover Foto
+                            <i class="link-icon fa fa-trash-o"></i> Remover Foto
                         </b-button>
                     </div>
                     <div v-else>
@@ -471,7 +471,7 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/api/escolaridade').then(({data}) => {
                 this.escolaidades = data;
-            }).catch(({response}) => {
+            }).catch(() => {
                 this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
             }).finally(() => {
                 document.body.classList.add('loaded');
@@ -481,7 +481,7 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/api/estado_civil').then(({data}) => {
                 this.estados_civis = data;
-            }).catch(({response}) => {
+            }).catch(() => {
                 this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
             }).finally(() => {
                 document.body.classList.add('loaded');
@@ -492,7 +492,7 @@ export default {
             await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
                 this.form.cidade_id = null;
                 this.cidades = data;
-            }).catch(({response}) => {
+            }).catch(() => {
                 this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
             }).finally(() => {
                 document.body.classList.add('loaded');
@@ -510,10 +510,9 @@ export default {
         send() {
             axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
                 this.$swal("Sucesso", data.message, "success").then(() => {
-                    // window.location.href = data.redirect;
+                    window.location.href = data.redirect;
                 });
             }).catch(({response}) => {
-                console.log(2, response)
                 if (response.status === 422) {
                     let errors = ERROR_422(response);
                     console.log(errors);
@@ -531,9 +530,9 @@ export default {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
-                    }).then(({data: {data}}) => {
-                        console.log(data);
-                        this.$swal("Sucesso", data.message, "success");
+                    }).then(({data: {data, message}}) => {
+                        this.changeData(data);
+                        this.$swal("Sucesso", message, "success");
                     }).catch(({response}) => {
                         if (response.status === 422) {
                             let errors = ERROR_422(response);
@@ -560,9 +559,11 @@ export default {
                 denyButtonText: 'Não',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`/api/curriculo_foto/${this.uuid}`).then(({data: {data}}) => {
-                        this.$swal('Sucesso', 'Foto removida com sucesso.', 'success')
+                    axios.delete(`/api/curriculo_foto/${this.uuid}`).then(({data: {data, message}}) => {
                         this.changeData(data);
+                        this.$swal('Sucesso', message, 'success').then(() => {
+                            window.location.refresh();
+                        });
                     })
                 }
             });
@@ -588,6 +589,10 @@ export default {
                     this.form[key] = value;
                 }
             });
+        },
+        clearFoto() {
+            this.foto = null;
+            this.imagem = null;
         }
     },
     computed: {

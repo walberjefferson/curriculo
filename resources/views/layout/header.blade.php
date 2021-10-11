@@ -44,10 +44,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="javascript:;" class="nav-link">
-                                    <i data-feather="log-out"></i>
-                                    <span>Sair</span>
-                                </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+                                        <i data-feather="log-out"></i>
+                                        <span>Sair</span>
+                                    </a>
+                                </form>
+
                             </li>
                         </ul>
                     </div>
