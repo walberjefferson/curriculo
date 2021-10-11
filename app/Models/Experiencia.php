@@ -18,6 +18,11 @@ class Experiencia extends Model implements Transformable
     protected $fillable = ['cargo', 'empresa', 'tempo_servico', 'saida', 'pessoa_id'];
     protected $dates = ['deleted_at'];
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function pessoa()
     {
         return $this->belongsTo(Pessoa::class, 'pessoa_id');

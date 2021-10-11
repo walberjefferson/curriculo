@@ -14,10 +14,14 @@ trait SaveToUpper
         'email',
         'remember_token',
         'slug',
+        'uuid',
     ];
 
     public function setAttribute($key, $value)
     {
+        if ($value === 'null') {
+            $value = null;
+        }
         parent::setAttribute($key, $value);
         if (is_string($value)) {
             if ($this->no_upper !== null) {

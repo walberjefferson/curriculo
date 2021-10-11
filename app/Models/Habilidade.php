@@ -18,6 +18,11 @@ class Habilidade extends Model implements Transformable
     protected $fillable = ['nome', 'codigo'];
     protected $dates = ['deleted_at'];
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function pessoas()
     {
         return $this->belongsToMany(Pessoa::class, 'habilidaded_pessoa');

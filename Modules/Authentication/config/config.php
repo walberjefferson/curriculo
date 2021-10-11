@@ -12,7 +12,7 @@ return [
         'role_admin' => env('ROLE_ADMIN', 'Admin'),
         'controller_annotations' => [
             __DIR__ . '/../Http/Controllers',
-//            base_path('app/Http/Controllers/Solicitacao'),
+            base_path('app/Http/Controllers/Admin'),
         ]
     ]
 ];

@@ -14,6 +14,10 @@
 
 @section('breadcrumbs_button')
     @can('admin-roles/create')
+        <a href="#" id="refresh" class="btn btn-warning text-white btn-icon-text mr-2">
+            <i class="btn-icon-prepend" data-feather="refresh-cw"></i>
+            Carregar Permissões
+        </a>
         <a href="{{ route('admin.role.create') }}" class="btn btn-primary btn-icon-text">
             <i class="btn-icon-prepend" data-feather="plus"></i>
             Novo
@@ -88,3 +92,18 @@
         </div>
     </div>
 @endsection
+
+@push('custom-scripts')
+    <script>
+        $(function () {
+           $(document).on('click', '#refresh', function (e) {
+               e.preventDefault();
+               document.body.classList.remove('loaded');
+               axios.put('/api/refresh_permissions').then(() => {
+               }).finally(() => {
+                   document.body.classList.add('loaded');
+               })
+           })
+        });
+    </script>
+@endpush

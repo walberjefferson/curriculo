@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Contracts\Repositories\EstadoCivilRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EstadoCivilRequest;
+use App\Models\EstadoCivil;
 
+/**
+ * @Authentication\Annotations\Mapping\ControllerAnnotation(name="admin-estado_civil", description="Administração de Estado Civil")
+ */
 class EstadoCivilController extends Controller
 {
     private $repository;
@@ -15,17 +19,26 @@ class EstadoCivilController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="index", description="Lista")
+     */
     public function index()
     {
         $dados = $this->repository->orderBy('codigo')->paginate();
         return view('admin.estado_civil.index', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function create()
     {
         return view('admin.estado_civil.create');
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function store(EstadoCivilRequest $request)
     {
         try {
@@ -39,18 +52,22 @@ class EstadoCivilController extends Controller
         }
     }
 
-    public function edit($uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
+    public function edit(EstadoCivil $dados)
     {
-        $dados = $this->repository->findByField('uuid', $uuid)->first();
         return view('admin.estado_civil.edit', compact('dados'));
     }
 
-    public function update(EstadoCivilRequest $request, $uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
+    public function update(EstadoCivilRequest $request, EstadoCivil $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
             \DB::commit();
             return redirect()->route('admin.estado_civil.index')->with('message', 'Sexo atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -59,12 +76,14 @@ class EstadoCivilController extends Controller
         }
     }
 
-    public function destroy($uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="destroy", description="Exclusão")
+     */
+    public function destroy(EstadoCivil $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->delete($info->id);
+            $this->repository->delete($dados->id);
             \DB::commit();
             return redirect()->back()->with('message-warning', 'Sexo removido com sucesso.');
         } catch (\Exception $e) {

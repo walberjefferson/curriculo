@@ -24,7 +24,7 @@ class HabilidadeRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('habilidade');
+        $id = $this->route('dados');
         if ($id) {
             $habilidade = Habilidade::query()->firstWhere('uuid', $id);
             $id = $habilidade->id;

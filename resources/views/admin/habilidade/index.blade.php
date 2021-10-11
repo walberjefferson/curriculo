@@ -12,7 +12,7 @@
 @endsection
 
 @section('breadcrumbs_button')
-    @can('admin-habilidade/create')
+    @can('admin-habilidade/store')
         <a href="{{ route('admin.habilidade.create') }}" class="btn btn-primary btn-icon-text">
             <i class="btn-icon-prepend" data-feather="plus"></i>
             Novo
@@ -32,7 +32,7 @@
                                 <th width="3%" class="text-center">#</th>
                                 <th width="5%" class="text-center">Código</th>
                                 <th>Nome</th>
-                                @canany(['admin-habilidade/edit', 'admin-habilidade/delete'])
+                                @canany(['admin-habilidade/update', 'admin-habilidade/destroy'])
                                     <th width="8%" nowrap>Ações</th>
                                 @endcanany
                             </tr>
@@ -43,15 +43,15 @@
                                     <td nowrap class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center" nowrap>{{ $d->codigo }}</td>
                                     <td nowrap>{{ $d->nome }}</td>
-                                    @canany(['admin-habilidade/edit', 'admin-habilidade/delete'])
+                                    @canany(['admin-habilidade/update', 'admin-habilidade/destroy'])
                                         <td>
                                             <div class="btn-group btn-group-sm">
-                                                @can('admin-habilidade/edit')
+                                                @can('admin-habilidade/update')
                                                     <a href="{{ route('admin.habilidade.edit', $d->uuid) }}" class="btn btn-primary">
                                                         <i class="mdi mdi-pencil-outline"></i>
                                                     </a>
                                                 @endcan
-                                                @can('admin-habilidade/delete')
+                                                @can('admin-habilidade/destroy')
                                                     <?php $deleteForm = "delete-form-{$loop->index}" ?>
                                                     <a href="#" class="btn btn-danger"
                                                        onclick="if(confirm('Deseja realmente excluir?')) {event.preventDefault(); document.getElementById('{{$deleteForm}}').submit(); }else{ return false; }">
@@ -59,7 +59,7 @@
                                                     </a>
                                                 @endcan
                                             </div>
-                                            @can('admin-habilidade/delete')
+                                            @can('admin-habilidade/destroy')
                                                 {!! Form::open(['url' => route('admin.habilidade.destroy', $d->uuid), 'id' => $deleteForm, 'style' => 'display:none;', 'method' => 'DELETE']) !!}
                                                 {!! Form::close() !!}
                                             @endcan

@@ -16,10 +16,12 @@ Vue.use(VueSweetalert2, options);
 
 // Components
 import PessoaForm from "../components/PessoaForm";
+import PessoaFormUpdate from "../components/PessoaFormUpdate";
 
 new Vue({
     el: "#form_pessoa",
     components: {
-        PessoaForm
+        PessoaForm,
+        PessoaFormUpdate
     }
 });

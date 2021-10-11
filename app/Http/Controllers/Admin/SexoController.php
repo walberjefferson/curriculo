@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\SexoRequest;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\SexoRepository;
+use App\Models\Sexo;
 
+/**
+ * @Authentication\Annotations\Mapping\ControllerAnnotation(name="admin-sexo", description="Administração de Sexos")
+ */
 class SexoController extends Controller
 {
     private $repository;
@@ -15,17 +19,26 @@ class SexoController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="index", description="Lista")
+     */
     public function index()
     {
         $dados = $this->repository->orderBy('nome')->paginate();
         return view('admin.sexo.index', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function create()
     {
         return view('admin.sexo.create');
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function store(SexoRequest $request)
     {
         try {
@@ -39,18 +52,22 @@ class SexoController extends Controller
         }
     }
 
-    public function edit($uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
+    public function edit(Sexo $dados)
     {
-        $dados = $this->repository->findByField('uuid', $uuid)->first();
         return view('admin.sexo.edit', compact('dados'));
     }
 
-    public function update(SexoRequest $request, $uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
+    public function update(SexoRequest $request, Sexo $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
             \DB::commit();
             return redirect()->route('admin.sexo.index')->with('message', 'Sexo atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -59,12 +76,14 @@ class SexoController extends Controller
         }
     }
 
-    public function destroy($uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="destroy", description="Exclusão")
+     */
+    public function destroy(Sexo $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->delete($info->id);
+            $this->repository->delete($dados->id);
             \DB::commit();
             return redirect()->back()->with('message-warning', 'Sexo removido com sucesso.');
         } catch (\Exception $e) {

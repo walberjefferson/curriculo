@@ -24,7 +24,7 @@ class EscolaridadeRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('escolaridade');
+        $id = $this->route('dados');
         if ($id) {
             $escolaridade = Escolaridade::query()->firstWhere('uuid', $id);
             $id = $escolaridade->id;

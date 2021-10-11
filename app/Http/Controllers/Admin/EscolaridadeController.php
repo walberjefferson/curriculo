@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EscolaridadeRequest;
 use App\Contracts\Repositories\EscolaridadeRepository;
+use App\Models\Escolaridade;
 
+/**
+ * @Authentication\Annotations\Mapping\ControllerAnnotation(name="admin-escolaridade", description="Administração de Escolaridades")
+ */
 class EscolaridadeController extends Controller
 {
     private $repository;
@@ -15,17 +19,26 @@ class EscolaridadeController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="index", description="Lista")
+     */
     public function index()
     {
         $dados = $this->repository->orderBy('codigo')->orderBy('nome')->paginate();
         return view('admin.escolaridade.index', compact('dados'));
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function create()
     {
         return view('admin.escolaridade.create');
     }
 
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="store", description="Criação")
+     */
     public function store(EscolaridadeRequest $request)
     {
         try {
@@ -39,18 +52,22 @@ class EscolaridadeController extends Controller
         }
     }
 
-    public function edit($uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
+    public function edit(Escolaridade $dados)
     {
-        $dados = $this->repository->findByField('uuid', $uuid)->first();
         return view('admin.escolaridade.edit', compact('dados'));
     }
 
-    public function update(EscolaridadeRequest $request, $uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="update", description="Atualização")
+     */
+    public function update(EscolaridadeRequest $request, Escolaridade $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->update($request->validated(), $info->id);
+            $this->repository->update($request->validated(), $dados->id);
             \DB::commit();
             return redirect()->route('admin.escolaridade.index')->with('message', 'Escolaridade atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -59,12 +76,14 @@ class EscolaridadeController extends Controller
         }
     }
 
-    public function destroy($uuid)
+    /**
+     * @Authentication\Annotations\Mapping\ActionAnnotation(name="destroy", description="Exclusão")
+     */
+    public function destroy(Escolaridade $dados)
     {
         try {
             \DB::beginTransaction();
-            $info = $this->repository->findByField('uuid', $uuid)->first();
-            $this->repository->delete($info->id);
+            $this->repository->delete($dados->id);
             \DB::commit();
             return redirect()->back()->with('message-warning', 'Escolaridade removido com sucesso.');
         } catch (\Exception $e) {
