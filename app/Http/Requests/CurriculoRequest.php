@@ -71,13 +71,13 @@ class CurriculoRequest extends FormRequest
             $all['cpf'] = str_numbers($all['cpf']);
         }
         if (isset($all['cnh'])) {
-            $all['cnh'] = (is_bool($all['cnh'])) ? $all['cnh'] : ($all['cnh'] === 'true') ? true : false;
+            $all['cnh'] = is_bool($all['cnh']) ? $all['cnh'] : $all['cnh'] === 'true';
         }
         if (isset($all['pcd'])) {
-            $all['pcd'] = (is_bool($all['pcd'])) ? $all['pcd'] : ($all['pcd'] === 'true') ? true : false;
+            $all['pcd'] = is_bool($all['pcd']) ? $all['pcd'] : $all['pcd'] === 'true';
         }
         if (isset($all['filhos'])) {
-            $all['filhos'] = (is_bool($all['filhos'])) ? $all['filhos'] : ($all['filhos'] === 'true') ? true : false;
+            $all['filhos'] = is_bool($all['filhos']) ? $all['filhos'] : $all['filhos'] === 'true';
         }
         return $all;
     }
