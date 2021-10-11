@@ -509,7 +509,8 @@ export default {
         },
         send() {
             document.body.classList.remove('loaded');
-            axios.put(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
+            this.form._method = 'PUT';
+            axios.post(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
                 this.$swal("Sucesso", data.message, "success").then(() => {
                     window.location.href = data.redirect;
                 });
