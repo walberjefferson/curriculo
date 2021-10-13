@@ -55,33 +55,45 @@
                     <div class="row">
                         <div class="col-md-6">
                             <b-form-group label="Nome" label-for="nome" label-class="text-muted">
-                                <b-form-input id="nome" v-model="form.nome" type="text" required/>
+                                <b-form-input :state="!erros.nome ? null : !erros.nome" id="nome" v-model="form.nome" type="text" required/>
+                                <b-form-invalid-feedback :state="!erros.nome ? null : !erros.nome">
+                                    {{ erros.nome }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-3">
                             <b-form-group label="Data Nascimento" label-for="data_nascimento" label-class="text-muted">
                                 <b-form-datepicker
+                                    required
+                                    :state="!erros.data_nascimento ? null : !erros.data_nascimento"
                                     :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
                                     placeholder="Data Nascimento" id="data_nascimento" v-model="form.data_nascimento"
                                     locale="pt-br"></b-form-datepicker>
+                                <b-form-invalid-feedback :state="!erros.data_nascimento ? null : !erros.data_nascimento">
+                                    {{ erros.data_nascimento }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-3">
                             <b-form-group label="Sexo" label-for="sexo" label-class="text-muted">
                                 <b-form-select
+                                    required
                                     id="sexo"
                                     v-model="form.sexo_id"
                                     :options="sexos"
                                     value-field="id"
                                     text-field="nome"
-                                    required
+                                    :state="!erros.sexo_id ? null : !erros.sexo_id"
                                 >
                                     <template #first>
                                         <b-form-select-option :value="null">Selecione o sexo</b-form-select-option>
                                     </template>
                                 </b-form-select>
+                                <b-form-invalid-feedback :state="!erros.sexo_id ? null : !erros.sexo_id">
+                                    {{ erros.sexo_id }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
@@ -89,25 +101,37 @@
                     <div class="row">
                         <div class="col-md-3">
                             <b-form-group label="CPF" label-for="cpf" label-class="text-muted">
-                                <b-form-input id="cpf" v-model="form.cpf" type="text" ref="cpf" required/>
+                                <b-form-input required :state="!erros.cpf ? null : !erros.cpf" id="cpf" v-model="form.cpf" type="text" ref="cpf"/>
+                                <b-form-invalid-feedback :state="!erros.cpf ? null : !erros.cpf">
+                                    {{ erros.cpf }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-3">
                             <b-form-group label="Perfil do Instagam (@)" label-for="instagram" label-class="text-muted">
-                                <b-form-input id="instagram" v-model="form.instagram" type="text"/>
+                                <b-form-input :state="!erros.instagram ? null : !erros.instagram" id="instagram" v-model="form.instagram" type="text"/>
+                                <b-form-invalid-feedback :state="!erros.instagram ? null : !erros.instagram">
+                                    {{ erros.instagram }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-3">
                             <b-form-group label="Telefone" label-for="telefone" label-class="text-muted">
-                                <b-form-input id="telefone" v-model="form.telefone" class="telefone" type="text"/>
+                                <b-form-input :state="!erros.telefone ? null : !erros.telefone" id="telefone" v-model="form.telefone" class="telefone" type="text"/>
+                                <b-form-invalid-feedback :state="!erros.telefone ? null : !erros.telefone">
+                                    {{ erros.telefone }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-3">
                             <b-form-group label="WhatsApp" label-for="whatsapp" label-class="text-muted">
-                                <b-form-input id="whatsapp" v-model="form.whatsapp" class="telefone" type="text"/>
+                                <b-form-input :state="!erros.whatsapp ? null : !erros.whatsapp" id="whatsapp" v-model="form.whatsapp" class="telefone" type="text"/>
+                                <b-form-invalid-feedback :state="!erros.whatsapp ? null : !erros.whatsapp">
+                                    {{ erros.whatsapp }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
                     </div>
@@ -115,71 +139,85 @@
                         <div class="col-md-3">
                             <b-form-group label="Escolaridade" label-for="escolaridade" label-class="text-muted">
                                 <b-form-select
+                                    required
                                     id="escolaridade"
                                     v-model="form.escolaridade_id"
                                     :options="escolaidades"
                                     value-field="id"
                                     text-field="nome"
-                                    required
+                                    :state="!erros.escolaridade_id ? null : !erros.escolaridade_id"
                                 >
                                     <template #first>
                                         <b-form-select-option :value="null">Selecione a escolaridade
                                         </b-form-select-option>
                                     </template>
                                 </b-form-select>
+                                <b-form-invalid-feedback :state="!erros.escolaridade_id ? null : !erros.escolaridade_id">
+                                    {{ erros.escolaridade_id }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-3">
                             <b-form-group label="Estado Cívil" label-for="estado_civil_id" label-class="text-muted">
                                 <b-form-select
+                                    required
                                     id="estado_civil_id"
                                     v-model="form.estado_civil_id"
                                     :options="estados_civis"
                                     value-field="id"
                                     text-field="nome"
-                                    required
+                                    :state="!erros.estado_civil_id ? null : !erros.estado_civil_id"
                                 >
                                     <template #first>
-                                        <b-form-select-option :value="null">Selecione o estado cívil
-                                        </b-form-select-option>
+                                        <b-form-select-option :value="null">Selecione o estado cívil</b-form-select-option>
                                     </template>
                                 </b-form-select>
+                                <b-form-invalid-feedback :state="!erros.estado_civil_id ? null : !erros.estado_civil_id">
+                                    {{ erros.estado_civil_id }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-2">
                             <b-form-group label="Estado" label-for="estado_id" label-class="text-muted">
                                 <b-form-select
+                                    required
                                     id="estado_id"
                                     v-model="form.estado_id"
                                     :options="estados"
                                     value-field="id"
-                                    text-field="nome"
-                                    required
+                                    text-field="nome" :state="!erros.estado_id ? null : !erros.estado_id"
                                     @change="getCidades"
                                 >
                                     <template #first>
                                         <b-form-select-option :value="null">Selecione o estado</b-form-select-option>
                                     </template>
                                 </b-form-select>
+                                <b-form-invalid-feedback :state="!erros.estado_id ? null : !erros.estado_id">
+                                    {{ erros.estado_id }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-4">
                             <b-form-group label="Cidade" label-for="cidade_id" label-class="text-muted">
                                 <b-form-select
+                                    required
                                     id="cidade_id"
                                     v-model="form.cidade_id"
                                     :options="cidades"
                                     value-field="id"
                                     text-field="nome"
-                                    required
+                                    :state="!erros.cidade_id ? null : !erros.cidade_id"
                                 >
                                     <template #first>
                                         <b-form-select-option :value="null">Selecione a cidade</b-form-select-option>
                                     </template>
                                 </b-form-select>
+                                <b-form-invalid-feedback :state="!erros.cidade_id ? null : !erros.cidade_id">
+                                    {{ erros.cidade_id }}
+                                </b-form-invalid-feedback>
                             </b-form-group>
                         </div>
                     </div>
@@ -206,11 +244,15 @@
                             </label>
                         </div>
                     </div>
+                    <b-form-invalid-feedback :state="!erros.pcd ? null : !erros.pcd">
+                        {{ erros.pcd }}
+                    </b-form-invalid-feedback>
                 </div>
 
                 <div class="col-md-4 form-group">
-                    <label class="text-muted"><abbr title="Carrteira Nacional de Habilitação"
-                                                    class="initialism">CNH</abbr>
+                    <label class="text-muted">
+                        <abbr title="Carrteira Nacional de Habilitação"
+                              class="initialism">CNH</abbr>
                         - (Carrteira Nacional de
                         Habilitação)</label>
                     <div>
@@ -227,6 +269,9 @@
                             </label>
                         </div>
                     </div>
+                    <b-form-invalid-feedback :state="!erros.cnh ? null : !erros.cnh">
+                        {{ erros.cnh }}
+                    </b-form-invalid-feedback>
                 </div>
 
                 <div class="col-md-4 form-group">
@@ -245,6 +290,9 @@
                             </label>
                         </div>
                     </div>
+                    <b-form-invalid-feedback :state="!erros.filhos ? null : !erros.filhos">
+                        {{ erros.filhos }}
+                    </b-form-invalid-feedback>
                 </div>
 
             </div>
@@ -254,15 +302,20 @@
                 <div class="col-md-4">
                     <div v-if="form.cnh">
                         <b-form-group label="Categoria CNH" label-for="categoria_cnh" label-class="text-muted">
-                            <b-form-input id="categoria_cnh" v-model="form.categoria_cnh" type="text"/>
+                            <b-form-input :state="!erros.categoria_cnh ? null : !erros.categoria_cnh" id="categoria_cnh" v-model="form.categoria_cnh" type="text"/>
+                            <b-form-invalid-feedback :state="!erros.categoria_cnh ? null : !erros.categoria_cnh">
+                                {{ erros.categoria_cnh }}
+                            </b-form-invalid-feedback>
                         </b-form-group>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div v-if="form.filhos">
-                        <b-form-group label="Quantidade de Filhos" label-for="filhos_quantidade"
-                                      label-class="text-muted">
-                            <b-form-input id="filhos_quantidade" v-model="form.filhos_quantidade" type="text"/>
+                        <b-form-group label="Quantidade de Filhos" label-for="filhos_quantidade" label-class="text-muted">
+                            <b-form-input :state="!erros.filhos_quantidade ? null : !erros.filhos_quantidade" id="filhos_quantidade" v-model="form.filhos_quantidade" type="text"/>
+                            <b-form-invalid-feedback :state="!erros.filhos_quantidade ? null : !erros.filhos_quantidade">
+                                {{ erros.filhos_quantidade }}
+                            </b-form-invalid-feedback>
                         </b-form-group>
                     </div>
                 </div>
@@ -311,25 +364,37 @@
             <div class="row">
                 <div class="col-md-5">
                     <b-form-group label="Endereço" label-for="endereco" label-class="text-muted">
-                        <b-form-input id="endereco" v-model="form.endereco" type="text"/>
+                        <b-form-input required :state="!erros.endereco ? null : !erros.endereco" id="endereco" v-model="form.endereco" type="text"/>
+                        <b-form-invalid-feedback :state="!erros.endereco ? null : !erros.endereco">
+                            {{ erros.endereco }}
+                        </b-form-invalid-feedback>
                     </b-form-group>
                 </div>
 
                 <div class="col-md-1">
                     <b-form-group label="Nº" label-for="endereco_numero" label-class="text-muted">
-                        <b-form-input id="endereco_numero" v-model="form.endereco_numero" type="text"/>
+                        <b-form-input :state="!erros.endereco_numero ? null : !erros.endereco_numero" id="endereco_numero" v-model="form.endereco_numero" type="text"/>
+                        <b-form-invalid-feedback :state="!erros.endereco_numero ? null : !erros.endereco_numero">
+                            {{ erros.endereco_numero }}
+                        </b-form-invalid-feedback>
                     </b-form-group>
                 </div>
 
                 <div class="col-md-3">
                     <b-form-group label="Ponto de Referência" label-for="ponto_referrencia" label-class="text-muted">
-                        <b-form-input id="ponto_referrencia" v-model="form.ponto_referrencia" type="text"/>
+                        <b-form-input :state="!erros.ponto_referrencia ? null : !erros.ponto_referrencia" id="ponto_referrencia" v-model="form.ponto_referrencia" type="text"/>
+                        <b-form-invalid-feedback :state="!erros.ponto_referrencia ? null : !erros.ponto_referrencia">
+                            {{ erros.ponto_referrencia }}
+                        </b-form-invalid-feedback>
                     </b-form-group>
                 </div>
 
                 <div class="col-md-3">
                     <b-form-group label="Complemento" label-for="complemento" label-class="text-muted">
-                        <b-form-input id="complemento" v-model="form.complemento" type="text"/>
+                        <b-form-input :state="!erros.complemento ? null : !erros.complemento" id="complemento" v-model="form.complemento" type="text"/>
+                        <b-form-invalid-feedback :state="!erros.complemento ? null : !erros.complemento">
+                            {{ erros.complemento }}
+                        </b-form-invalid-feedback>
                     </b-form-group>
                 </div>
             </div>
@@ -337,7 +402,10 @@
             <h6 class="card-title text-primary mt-3">Outras Informações</h6>
 
             <b-form-group label="Outras Informações" label-for="outras_informacoes" label-class="text-muted">
-                <b-form-textarea id="outras_informacoes" v-model="form.outras_informacoes" rows="4"></b-form-textarea>
+                <b-form-textarea :state="!erros.outras_informacoes ? null : !erros.outras_informacoes" id="outras_informacoes" v-model="form.outras_informacoes" rows="4"></b-form-textarea>
+                <b-form-invalid-feedback :state="!erros.outras_informacoes ? null : !erros.outras_informacoes">
+                    {{ erros.outras_informacoes }}
+                </b-form-invalid-feedback>
             </b-form-group>
 
             <div class="hr-line-dashed"></div>
@@ -380,6 +448,7 @@ export default {
         cidades: [],
         habilidades: [],
         foto: null,
+        erros: {},
         default: {
             id: undefined,
             nome: null,
@@ -488,15 +557,19 @@ export default {
             });
         },
         async getCidades() {
-            document.body.classList.remove('loaded');
-            await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
-                this.form.cidade_id = null;
-                this.cidades = data;
-            }).catch(() => {
-                this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
-            }).finally(() => {
-                document.body.classList.add('loaded');
-            });
+            if (this.form.estado_id) {
+                document.body.classList.remove('loaded');
+                await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
+                    this.form.cidade_id = null;
+                    this.cidades = data;
+                }).catch(() => {
+                    this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+                }).finally(() => {
+                    document.body.classList.add('loaded');
+                });
+            } else {
+                this.cidades = [];
+            }
         },
         createFormData(formData, key, data) {
             if (data === Object(data) || Array.isArray(data)) {
@@ -516,8 +589,7 @@ export default {
                 });
             }).catch(({response}) => {
                 if (response.status === 422) {
-                    let errors = ERROR_422(response);
-                    console.log(errors);
+                    this.erros = ERROR_422(response);
                 }
             }).finally(() => {
                 document.body.classList.add('loaded');
@@ -540,8 +612,7 @@ export default {
                         this.$swal("Sucesso", message, "success");
                     }).catch(({response}) => {
                         if (response.status === 422) {
-                            let errors = ERROR_422(response);
-                            console.log(errors);
+                            this.erros = ERROR_422(response);
                         }
                     }).finally(() => {
                         document.body.classList.add('loaded');

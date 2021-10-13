@@ -1,9 +1,9 @@
 const ERROR_422 = (response) => {
     let {data, status} = response;
     let {errors} = data;
-    const allErrors = [];
+    const allErrors = {};
     Object.keys(errors).map((key) => {
-        allErrors.push({key: key, value: errors[key][0]})
+        allErrors[key] = errors[key][0];
     })
     return allErrors;
 }
