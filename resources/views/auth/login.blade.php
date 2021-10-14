@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-md-8 pl-md-0">
                             <div class="auth-form-wrapper px-4 py-5">
-                                <a href="#" class="noble-ui-logo d-block mb-2">Currículo <span>SYS</span></a>
+                                <a href="#" class="noble-ui-logo d-block mb-2">Currículo <span>360º</span></a>
                                 <h5 class="text-muted font-weight-normal mb-4">Bem vindo! Faça o login com suas
                                     credenciais.</h5>
 

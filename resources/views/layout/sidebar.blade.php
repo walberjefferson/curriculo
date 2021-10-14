@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            Currículo <span>SIS</span>
+            Currículo <span>360º</span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
