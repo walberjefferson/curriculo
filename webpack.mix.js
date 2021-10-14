@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,18 +11,25 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/pessoa.js', 'public/js').vue();
+mix.js("resources/js/pessoa.js", "public/js").vue();
 
-mix.js('resources/js/app.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css')
-  .sourceMaps(true, 'source-map')
-  // .webpackConfig({ devtool: 'source-map' })
-  .browserSync({
-    proxy: 'curriculo.test',
-    port: 3100,
-    ghostMode: false,
-    notify: false
-  });
+mix.js("resources/js/app.js", "public/js")
+    .sass("resources/sass/app.scss", "public/css")
+    .options({
+        terser: {
+            extractComments: false // Desativar criação de LICENSE.txt
+        }
+    })
+    .webpackConfig({
+        devtool: "inline-source-map"
+    })
+    // .webpackConfig({ devtool: 'source-map' })
+    .browserSync({
+        proxy: "curriculo.test",
+        port: 3100,
+        ghostMode: false,
+        notify: false
+    });
 //
 //
 // // Copy plugin files to public folder
@@ -93,11 +100,3 @@ mix.js('resources/js/app.js', 'public/js')
 //   .copyDirectory('node_modules/moment/min/moment.min.js', 'public/assets/plugins/moment/moment.min.js')
 //
 //
-
-
-
-
-
-
-
-
