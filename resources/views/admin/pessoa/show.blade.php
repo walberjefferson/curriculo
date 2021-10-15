@@ -148,7 +148,7 @@
                                     </small>
                                     <br>
                                     {{ $dados->filhos ? 'Sim' : 'Não' }}
-                                    {{ $dados->filhos ? ' Quantos? ' . $dados->filhos_quantidade : null }}
+                                    {{ $dados->filhos ? ' - Quantos? ' . $dados->filhos_quantidade : null }}
                                 </div>
                             </div>
                         </div>
