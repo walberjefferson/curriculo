@@ -24,6 +24,12 @@ use App\Http\Controllers\Admin\{
 
 Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function () {
     Route::view('/', 'dashboard')->name('dashboard');
+
+    Route::get('storage_link', function () {
+       Artisan::call('storage:link');
+       return redirect()->route('admin.dashboard');
+    });
+
     Route::resource('sexo', SexoController::class)->except('show')->parameters(['sexo' => 'dados']);
     Route::resource('escolaridade', EscolaridadeController::class)->except('show')->parameters(['escolaridade' => 'dados']);
     Route::resource('habilidade', HabilidadeController::class)->except('show')->parameters(['habilidade' => 'dados']);
