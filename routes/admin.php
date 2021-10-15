@@ -30,7 +30,7 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function () {
     Route::resource('estado_civil', EstadoCivilController::class)->except('show')->parameters(['estado_civil' => 'dados']);
     Route::resource('estado', EstadoController::class)->only('index')->parameters(['estado' => 'dados']);
     Route::resource('cidade', CidadeController::class)->only('index')->parameters(['cidade' => 'dados']);
-    Route::resource('curriculo', CurriculoController::class)->only('index', 'create', 'edit', 'destroy')->parameters(['curriculo' => 'dados']);
+    Route::resource('curriculo', CurriculoController::class)->only('index', 'create', 'edit', 'show', 'destroy')->parameters(['curriculo' => 'dados']);
 });
 
 Route::prefix('api')->as('api.')->middleware('auth')->group(function () {

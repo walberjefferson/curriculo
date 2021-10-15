@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CurriculoRequest;
 use App\Contracts\Repositories\PessoaRepository;
+use App\Http\Controllers\Controller;
 use App\Models\Escolaridade;
 use App\Models\Estado;
 use App\Models\EstadoCivil;
@@ -49,8 +48,9 @@ class CurriculoController extends Controller
      */
     public function show(Pessoa $dados)
     {
-        $dados->load(['experiencias', 'habilidades']);
-        return view('', compact('dados'));
+        $dados->load(['experiencias', 'habilidades', 'escolaridade', 'estado_civil', 'sexo', 'estado', 'cidade'])
+            ->loadCount(['habilidades', 'experiencias']);
+        return view('admin.pessoa.show', compact('dados'));
     }
 
     /**

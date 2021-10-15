@@ -34,7 +34,7 @@
                                 <th width="5%" class="text-center">Sexo</th>
                                 <th width="5%" class="text-center">Escolaridade</th>
                                 <th width="5%" class="text-center">Estado Cívil</th>
-                                @canany(['admin-curriculo/update', 'admin-curriculo/destroy'])
+                                @canany(['admin-curriculo/update', 'admin-curriculo/destroy', 'admin-curriculo/show'])
                                     <th width="8%" nowrap>Ações</th>
                                 @endcanany
                             </tr>
@@ -47,9 +47,14 @@
                                     <td class="text-center" nowrap>{{ $d->sexo ? $d->sexo['nome'] : '---' }}</td>
                                     <td>{{ $d->escolaridade ? $d->escolaridade['nome'] : '---' }}</td>
                                     <td>{{ $d->estado_civil ? $d->estado_civil['nome'] : '---' }}</td>
-                                @canany(['admin-curriculo/update', 'admin-curriculo/destroy'])
+                                @canany(['admin-curriculo/update', 'admin-curriculo/destroy', 'admin-curriculo/show'])
                                         <td>
                                             <div class="btn-group btn-group-sm">
+                                                @can('admin-curriculo/show')
+                                                    <a href="{{ route('admin.curriculo.show', $d->uuid) }}" class="btn btn-success">
+                                                        <i class="mdi mdi-eye-outline"></i>
+                                                    </a>
+                                                @endcan
                                                 @can('admin-curriculo/update')
                                                     <a href="{{ route('admin.curriculo.edit', $d->uuid) }}" class="btn btn-primary">
                                                         <i class="mdi mdi-pencil-outline"></i>
