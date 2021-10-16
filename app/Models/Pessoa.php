@@ -26,7 +26,7 @@ class Pessoa extends Model implements Transformable
         'endereco_numero', 'complemento', 'ponto_referencia', 'instagram', 'outras_informacoes', 'foto', 'ativo',
         'outra_habilidade', 'filhos', 'filhos_quantidade', 'escolaridade_id', 'estado_id', 'cidade_id', 'estado_civil_id'
     ];
-    protected $appends = ['foto_base64', 'foto_url'];
+    protected $appends = ['foto_base64', 'foto_url', 'foto_disk'];
     protected $dates = ['deleted_at'];
     protected $casts = [
         'cnh' => 'boolean',
@@ -44,6 +44,14 @@ class Pessoa extends Model implements Transformable
     {
         if(\Storage::disk('public')->exists(self::$folder . "/" . $this->foto)) {
             return \Storage::disk('public')->url(self::$folder . "/" . $this->foto);
+        }
+        return null;
+    }
+
+    public function getFotoDiskAttribute()
+    {
+        if(\Storage::disk('public')->exists(self::$folder . "/" . $this->foto)) {
+            return \Storage::disk('public')->path(self::$folder . "/" . $this->foto);
         }
         return null;
     }

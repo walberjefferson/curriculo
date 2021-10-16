@@ -18,7 +18,7 @@
         Voltar
     </a>
 
-    <a href="#" class="btn btn-primary">
+    <a href="{{ route('admin.curriculo.imprimir', $dados->uuid) }}" target="_blank" class="btn btn-primary">
         <i class="mdi mdi-printer"></i>
         Imprimir
     </a>
@@ -154,7 +154,7 @@
                         </div>
                     </div>
 
-                    <h6 class="card-title text-primary mt-3 mb-2">EXPERIÊNCIAS</h6>
+                    <h6 class="card-title text-primary mt-3 mb-2">Habilidades</h6>
                     <div class="row">
                         <div class="col-md-12 border py-2">
                             <small class="text-gray">
@@ -165,7 +165,7 @@
                         </div>
                     </div>
 
-                    <h6 class="card-title text-primary mt-3 mb-2">Habilidades</h6>
+                    <h6 class="card-title text-primary mt-3 mb-2">EXPERIÊNCIAS</h6>
                     <div class="row">
                         <div class="col-md-12">
 

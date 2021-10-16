@@ -19,7 +19,8 @@ use App\Http\Controllers\Admin\{
     EstadoCivilController,
     EstadoController,
     CidadeController,
-    CurriculoController
+    CurriculoController,
+    ImprimeCurriculoController,
 };
 
 Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function () {
@@ -29,6 +30,8 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function () {
        Artisan::call('storage:link');
        return redirect()->route('admin.dashboard');
     });
+
+    Route::get('curriculo/{dados}/imprimir', [ImprimeCurriculoController::class, 'imprime'])->name('curriculo.imprimir');
 
     Route::resource('sexo', SexoController::class)->except('show')->parameters(['sexo' => 'dados']);
     Route::resource('escolaridade', EscolaridadeController::class)->except('show')->parameters(['escolaridade' => 'dados']);
