@@ -82,8 +82,8 @@ class Curriculo extends AbstractPdf
 
         // Foto
         if ($this->foto && is_file($this->foto)) {
-            $this->Rect(10, $this->GetY(), 30, 40, 'FD');
             $this->Image($this->foto, null, $this->GetY(), 30, 40);
+            $this->Rect(10, $this->GetY(), 30, 40, 'D');
         } else {
             $this->Cell(30, 40, 'FOTO', 1, 0, 'C', 1);
         }
