@@ -25,7 +25,7 @@
     @stack('style')
 </head>
 <body class="bg-light">
-
+<script src="{{ asset('assets/js/spinner.js') }}"></script>
 <nav class="navbar navbar-expand-md navbar-dark shadow-sm text-white" style="background-color: #202676;">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
