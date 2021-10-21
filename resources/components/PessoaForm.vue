@@ -495,7 +495,7 @@ export default {
         },
         getEstados() {
             document.body.classList.remove('loaded');
-            axios.get('/api/estado').then(({data}) => {
+            axios.get('/admin/api/estado').then(({data}) => {
                 this.estados = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
@@ -505,7 +505,7 @@ export default {
         },
         getHabilidades() {
             document.body.classList.remove('loaded');
-            axios.get('/api/habilidade').then(({data}) => {
+            axios.get('/admin/api/habilidade').then(({data}) => {
                 this.habilidades = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
@@ -515,7 +515,7 @@ export default {
         },
         getSexo() {
             document.body.classList.remove('loaded');
-            axios.get('/api/sexo').then(({data}) => {
+            axios.get('/admin/api/sexo').then(({data}) => {
                 this.sexos = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
@@ -525,7 +525,7 @@ export default {
         },
         getEscolaridades() {
             document.body.classList.remove('loaded');
-            axios.get('/api/escolaridade').then(({data}) => {
+            axios.get('/admin/api/escolaridade').then(({data}) => {
                 this.escolaidades = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
@@ -535,7 +535,7 @@ export default {
         },
         getEstadoCivil() {
             document.body.classList.remove('loaded');
-            axios.get('/api/estado_civil').then(({data}) => {
+            axios.get('/admin/api/estado_civil').then(({data}) => {
                 this.estados_civis = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
@@ -546,7 +546,7 @@ export default {
         async getCidades() {
             if(this.form.estado_id) {
                 document.body.classList.remove('loaded');
-                await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
+                await axios.post('/admin/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
                     this.form.cidade_id = null;
                     this.cidades = data;
                 }).catch(({response}) => {
@@ -572,7 +572,7 @@ export default {
                 this.canvas.toBlob((blob) => {
                     let form = this.prepareForm(blob);
                     document.body.classList.remove('loaded');
-                    axios.post('/api/curriculo', form).then(({data}) => {
+                    axios.post('/admin/api/curriculo', form).then(({data}) => {
                         this.$swal("Sucesso", data.message, "success").then(() => {
                             window.location.href = data.redirect;
                         });
@@ -586,7 +586,7 @@ export default {
                 }, 'image/jpeg');
             } else {
                 document.body.classList.remove('loaded');
-                axios.post('/api/curriculo', this.form).then(({data}) => {
+                axios.post('/admin/api/curriculo', this.form).then(({data}) => {
                     this.$swal("Sucesso", data.message, "success").then(() => {
                         window.location.href = data.redirect;
                     });

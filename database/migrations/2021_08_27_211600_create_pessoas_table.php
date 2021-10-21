@@ -1,21 +1,21 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 /**
  * Class CreatePessoasTable.
  */
 class CreatePessoasTable extends Migration
 {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('pessoa', function(Blueprint $table) {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('pessoa', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
             $table->string('nome', 180);
@@ -42,18 +42,19 @@ class CreatePessoasTable extends Migration
             $table->boolean('ativo')->default(true);
             $table->boolean('filhos')->default(false);
             $table->integer('filhos_quantidade')->nullable();
+            $table->boolean('lei_lgpd')->default(false);
             $table->timestamps();
             $table->softDeletes();
-		});
-	}
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('pessoa');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('pessoa');
+    }
 }

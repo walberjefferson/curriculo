@@ -27,6 +27,7 @@
   --gray-lighter: #e8eff4;
   --gray-lightest: #e6e9ed;
   --black: #000000;
+  --facebook: #3b579d;
   --primary: #2870e8;
   --secondary: #7987a1;
   --success: #10b759;
@@ -25037,5 +25038,3 @@ div.tagsinput span.tag {
 .rtl .wizard > .actions > ul > li {
   float: right;
 }
-
-/*# sourceMappingURL=app.css.map*/

@@ -1,5 +1,7 @@
 {
     "/js/pessoa.js": "/js/pessoa.js",
+    "/js/pessoa_web.js": "/js/pessoa_web.js",
     "/js/app.js": "/js/app.js",
+    "/css/app-web.css": "/css/app-web.css",
     "/css/app.css": "/css/app.css"
 }

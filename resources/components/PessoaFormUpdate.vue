@@ -508,7 +508,7 @@ export default {
         },
         getEstados() {
             document.body.classList.remove('loaded');
-            axios.get('/api/estado').then(({data}) => {
+            axios.get('/admin/api/estado').then(({data}) => {
                 this.estados = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
@@ -518,7 +518,7 @@ export default {
         },
         getHabilidades() {
             document.body.classList.remove('loaded');
-            axios.get('/api/habilidade').then(({data}) => {
+            axios.get('/admin/api/habilidade').then(({data}) => {
                 this.habilidades = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
@@ -528,7 +528,7 @@ export default {
         },
         getSexo() {
             document.body.classList.remove('loaded');
-            axios.get('/api/sexo').then(({data}) => {
+            axios.get('/admin/api/sexo').then(({data}) => {
                 this.sexos = data;
             }).catch(({response}) => {
                 this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
@@ -538,7 +538,7 @@ export default {
         },
         getEscolaridades() {
             document.body.classList.remove('loaded');
-            axios.get('/api/escolaridade').then(({data}) => {
+            axios.get('/admin/api/escolaridade').then(({data}) => {
                 this.escolaidades = data;
             }).catch(() => {
                 this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
@@ -548,7 +548,7 @@ export default {
         },
         getEstadoCivil() {
             document.body.classList.remove('loaded');
-            axios.get('/api/estado_civil').then(({data}) => {
+            axios.get('/admin/api/estado_civil').then(({data}) => {
                 this.estados_civis = data;
             }).catch(() => {
                 this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
@@ -559,7 +559,7 @@ export default {
         async getCidades() {
             if (this.form.estado_id) {
                 document.body.classList.remove('loaded');
-                await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
+                await axios.post('/admin/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
                     this.form.cidade_id = null;
                     this.cidades = data;
                 }).catch(() => {
@@ -583,7 +583,7 @@ export default {
         send() {
             document.body.classList.remove('loaded');
             this.form._method = 'PUT';
-            axios.post(`/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
+            axios.post(`/admin/api/curriculo/${this.uuid}`, this.form).then(({data}) => {
                 this.$swal("Sucesso", data.message, "success").then(() => {
                     window.location.href = data.redirect;
                 });
@@ -603,7 +603,7 @@ export default {
                     form.append('foto', blob);
                     form.append('_method', 'PUT');
                     document.body.classList.remove('loaded');
-                    axios.post(`/api/curriculo_foto/${this.uuid}`, form, {
+                    axios.post(`/admin/api/curriculo_foto/${this.uuid}`, form, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -622,7 +622,7 @@ export default {
         },
         getCurriculo() {
             if (this.uuid) {
-                axios.get(`/api/curriculo/${this.uuid}`).then(({data: {data}}) => {
+                axios.get(`/admin/api/curriculo/${this.uuid}`).then(({data: {data}}) => {
                     this.changeData(data);
                 })
             }
@@ -638,7 +638,7 @@ export default {
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.body.classList.remove('loaded');
-                    axios.post(`/api/curriculo_foto/${this.uuid}`).then(({data: {data, message}}) => {
+                    axios.post(`/admin/api/curriculo_foto/${this.uuid}`).then(({data: {data, message}}) => {
                         this.changeData(data);
                         this.$swal('Sucesso', message, 'success').then(() => {
                             window.location.refresh();

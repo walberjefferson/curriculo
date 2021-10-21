@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Route;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->formularios();
         Paginator::defaultView('pagination::bootstrap-4');
+        Route::resourceVerbs([
+            'create' => 'criar',
+            'edit' => 'editar'
+        ]);
     }
 
     protected function formularios()

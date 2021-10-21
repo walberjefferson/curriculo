@@ -2,12 +2,11 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Experiencia;
-use App\Traits\UploadTrait;
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
 use App\Contracts\Repositories\PessoaRepository;
 use App\Models\Pessoa;
+use App\Traits\UploadTrait;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class PessoaRepositoryEloquent.
@@ -38,8 +37,12 @@ class PessoaRepositoryEloquent extends BaseRepository implements PessoaRepositor
         }
         $model = parent::create($attributes);
         if (isset($attributes['experiencias']) && is_array($attributes['experiencias'])) {
+            $attributes['experiencias'] = array_filter($attributes['experiencias']);
             foreach ($attributes['experiencias'] as $experiencia) {
-                $model->experiencias()->create($experiencia);
+                $experiencia = array_filter($experiencia);
+                if (!empty($experiencia)) {
+                    $model->experiencias()->create($experiencia);
+                }
             }
         }
         if (isset($attributes['habilidades']) && is_array($attributes['habilidades'])) {
@@ -59,11 +62,15 @@ class PessoaRepositoryEloquent extends BaseRepository implements PessoaRepositor
         }
         $model = parent::update($attributes, $id);
         if (isset($attributes['experiencias']) && is_array($attributes['experiencias'])) {
+            $attributes['experiencias'] = array_filter($attributes['experiencias']);
             foreach ($attributes['experiencias'] as $experiencia) {
-                if (isset($experiencia['id'])) {
-                    $model->experiencias()->updateOrCreate(['id' => $experiencia['id']], $experiencia);
-                } else {
-                    $model->experiencias()->create($experiencia);
+                $experiencia = array_filter($experiencia);
+                if (!empty($experiencia)) {
+                    if (isset($experiencia['id'])) {
+                        $model->experiencias()->updateOrCreate(['id' => $experiencia['id']], $experiencia);
+                    } else {
+                        $model->experiencias()->create($experiencia);
+                    }
                 }
             }
         }
