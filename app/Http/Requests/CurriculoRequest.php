@@ -39,7 +39,7 @@ class CurriculoRequest extends FormRequest
             'nome' => 'required|string|max:180',
             'data_nascimento' => 'required|date',
             'sexo_id' => 'required',
-            'cpf' => ['required', Rule::unique('pessoa', 'cpf')->ignore($id)],
+            'cpf' => ['required', 'cpf', Rule::unique('pessoa', 'cpf')->ignore($id)],
             'cnh' => 'required|boolean',
             'categoria_cnh' => 'nullable',
             'pcd' => 'required|boolean',
