@@ -29,7 +29,7 @@
 <nav class="navbar navbar-expand-md navbar-dark shadow-sm text-white" style="background-color: #202676;">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('assets/images/logo-site.png') }}" alt="{{ config('app.name') }}">
+            <img src="{{ asset('assets/images/logo-h-80.png') }}" alt="{{ config('app.name') }}">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -43,7 +43,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Início</a>
+                    <a class="nav-link" href="{{ url('/') }}">Início</a>
                 </li>
 
                 <li class="nav-item">

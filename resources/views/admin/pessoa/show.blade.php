@@ -39,6 +39,8 @@
                                         <img src="{{ $dados->foto_url }}" class="img-fluid w-100"
                                              alt="{{ $dados->nome }}">
                                     @else
+                                        <img src="{{ asset('assets/images/default-avatar.jpg') }}" class="img-fluid w-100"
+                                             alt="{{ $dados->nome }}">
                                     @endif
                                 </div>
                             </div>

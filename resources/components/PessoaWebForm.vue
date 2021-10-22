@@ -24,15 +24,12 @@
 
         <form @submit.prevent="send">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-4 col-lg-2">
                     <label for="upload_image">
                         <div class="image_area">
-                            <b-img v-if="fotoBase64" :src="fotoBase64" fluid width="300" height="400" blank-color="#CCC"
-                                   :alt="form.nome">
-                            </b-img>
-                            <b-img v-else src="/assets/images/default-avatar.jpg" fluid width="300" height="400"
-                                   alt="Foto">
-                            </b-img>
+                            <b-img v-if="fotoBase64" :src="fotoBase64" fluid blank-color="#CCC"
+                                   :alt="form.nome"></b-img>
+                            <b-img v-else src="/assets/images/default-avatar.jpg" fluid alt="Foto"></b-img>
                             <div class="overlay">
                                 <div class="text">Clique para escolher a foto</div>
                             </div>
@@ -41,12 +38,12 @@
                                      accept=".jpg, .jpeg, .png"></b-form-file>
                     </label>
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-8 col-lg-10">
 
                     <h6 class="card-title text-primary">Dados Pessoais</h6>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <b-form-group label="Nome" label-for="nome" label-class="text-muted">
                                 <b-form-input :state="!erros.nome ? null : !erros.nome" id="nome" v-model="form.nome"
                                               type="text" required/>
@@ -56,14 +53,12 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="Data Nascimento" label-for="data_nascimento" label-class="text-muted">
-                                <b-form-datepicker
-                                    required
-                                    :state="!erros.data_nascimento ? null : !erros.data_nascimento"
-                                    :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                                    placeholder="Data Nascimento" id="data_nascimento" v-model="form.data_nascimento"
-                                    locale="pt-br"></b-form-datepicker>
+                                <b-form-input :state="!erros.data_nascimento ? null : !erros.data_nascimento"
+                                              id="data_nascimento" v-model="form.data_nascimento"
+                                              placeholder="Data Nascimento"
+                                              type="date" required/>
                                 <b-form-invalid-feedback
                                     :state="!erros.data_nascimento ? null : !erros.data_nascimento">
                                     {{ erros.data_nascimento }}
@@ -71,7 +66,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="Sexo" label-for="sexo" label-class="text-muted">
                                 <b-form-select
                                     required
@@ -94,7 +89,7 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="CPF" label-for="cpf" label-class="text-muted">
                                 <b-form-input required :state="!erros.cpf ? null : !erros.cpf" id="cpf"
                                               v-model="form.cpf" type="text" ref="cpf"/>
@@ -104,7 +99,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="Perfil do Instagam (@)" label-for="instagram" label-class="text-muted">
                                 <b-form-input :state="!erros.instagram ? null : !erros.instagram" id="instagram"
                                               v-model="form.instagram" type="text"/>
@@ -114,7 +109,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="Telefone" label-for="telefone" label-class="text-muted">
                                 <b-form-input :state="!erros.telefone ? null : !erros.telefone" id="telefone"
                                               v-model="form.telefone" class="telefone" type="text"/>
@@ -124,7 +119,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="WhatsApp" label-for="whatsapp" label-class="text-muted">
                                 <b-form-input :state="!erros.whatsapp ? null : !erros.whatsapp" id="whatsapp"
                                               v-model="form.whatsapp" class="telefone" type="text"/>
@@ -135,7 +130,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="Escolaridade" label-for="escolaridade" label-class="text-muted">
                                 <b-form-select
                                     required
@@ -158,7 +153,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-lg-3">
                             <b-form-group label="Estado Cívil" label-for="estado_civil_id" label-class="text-muted">
                                 <b-form-select
                                     required
@@ -181,7 +176,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-4 col-lg-2">
                             <b-form-group label="Estado" label-for="estado_id" label-class="text-muted">
                                 <b-form-select
                                     required
@@ -202,7 +197,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-8 col-lg-4">
                             <b-form-group label="Cidade" label-for="cidade_id" label-class="text-muted">
                                 <b-form-select
                                     required
@@ -437,11 +432,12 @@
 
             <div class="hr-line-dashed"></div>
             <div class="form-group">
-                <button class="btn btn-primary" :disabled="!form.lei_lgpd" type="submit"><i class="mdi mdi-send"></i> Salvar</button>
+                <button class="btn btn-primary" :disabled="!form.lei_lgpd" type="submit"><i class="mdi mdi-send"></i>
+                    Salvar
+                </button>
             </div>
         </form>
     </div>
-
 </template>
 
 <script>
@@ -531,8 +527,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/api/estado').then(({data}) => {
                 this.estados = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar estados.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -541,8 +540,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/api/habilidade').then(({data}) => {
                 this.habilidades = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar habilidades.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -551,8 +553,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/api/sexo').then(({data}) => {
                 this.sexos = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar sexos.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -561,8 +566,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/api/escolaridade').then(({data}) => {
                 this.escolaidades = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar escolaridades.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             });
@@ -571,8 +579,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/api/estado_civil').then(({data}) => {
                 this.estados_civis = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar estados civis.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             });
@@ -583,8 +594,11 @@ export default {
                 await axios.post('/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
                     this.form.cidade_id = null;
                     this.cidades = data;
-                }).catch(({response}) => {
-                    this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+                }).catch(() => {
+                    this.$toast.open({
+                        message: 'Erro ao tentar carregar cidades.',
+                        type: 'error',
+                    });
                 }).finally(() => {
                     document.body.classList.add('loaded');
                 });
@@ -602,18 +616,21 @@ export default {
             }
         },
         send() {
-            if(this.form.lei_lgpd) {
+            if (this.form.lei_lgpd) {
                 if (this.canvas) {
                     this.canvas.toBlob((blob) => {
                         let form = this.prepareForm(blob);
                         document.body.classList.remove('loaded');
                         axios.post('/api/curriculo', form).then(({data}) => {
                             this.$swal("Sucesso", data.message, "success").then(() => {
-                                window.location.refresh();
+                                window.location.reload(true);
                             });
                         }).catch(({response}) => {
                             if (response.status === 422) {
                                 this.erros = ERROR_422(response);
+                                this.$swal("Erro", 'Algum campo não está válido', "warning");
+                            } else {
+                                this.$swal("Erro", 'Algo de errado aconteceu.', "error");
                             }
                         }).finally(() => {
                             document.body.classList.add('loaded');
@@ -623,11 +640,14 @@ export default {
                     document.body.classList.remove('loaded');
                     axios.post('/api/curriculo', this.form).then(({data}) => {
                         this.$swal("Sucesso", data.message, "success").then(() => {
-                            window.location.refresh();
+                            window.location.reload(true);
                         });
                     }).catch(({response}) => {
                         if (response.status === 422) {
                             this.erros = ERROR_422(response);
+                            this.$swal("Erro", 'Algum campo não está válido', "warning");
+                        } else {
+                            this.$swal("Erro", 'Algo de errado aconteceu.', "error");
                         }
                     }).finally(() => {
                         document.body.classList.add('loaded');

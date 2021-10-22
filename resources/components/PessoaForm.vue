@@ -27,12 +27,9 @@
                 <div class="col-md-2">
                     <label for="upload_image">
                         <div class="image_area">
-                            <b-img v-if="fotoBase64" :src="fotoBase64" fluid width="300" height="400" blank-color="#CCC"
-                                   :alt="form.nome">
-                            </b-img>
-                            <b-img v-else :blank="true" fluid width="300" height="400" blank-color="#CCC"
-                                   alt="HEX shorthand color image (#777)">
-                            </b-img>
+                            <b-img v-if="fotoBase64" :src="fotoBase64" fluid blank-color="#CCC" center
+                                   :alt="form.nome"></b-img>
+                            <b-img v-else src="/assets/images/default-avatar.jpg" center fluid alt="Foto"></b-img>
                             <div class="overlay">
                                 <div class="text">Clique para carregar a foto</div>
                             </div>
@@ -48,7 +45,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <b-form-group label="Nome" label-for="nome" label-class="text-muted">
-                                <b-form-input :state="!erros.nome ? null : !erros.nome" id="nome" v-model="form.nome" type="text" required/>
+                                <b-form-input :state="!erros.nome ? null : !erros.nome" id="nome" v-model="form.nome"
+                                              type="text" required/>
                                 <b-form-invalid-feedback :state="!erros.nome ? null : !erros.nome">
                                     {{ erros.nome }}
                                 </b-form-invalid-feedback>
@@ -57,13 +55,12 @@
 
                         <div class="col-md-3">
                             <b-form-group label="Data Nascimento" label-for="data_nascimento" label-class="text-muted">
-                                <b-form-datepicker
-                                    required
-                                    :state="!erros.data_nascimento ? null : !erros.data_nascimento"
-                                    :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                                    placeholder="Data Nascimento" id="data_nascimento" v-model="form.data_nascimento"
-                                    locale="pt-br"></b-form-datepicker>
-                                <b-form-invalid-feedback :state="!erros.data_nascimento ? null : !erros.data_nascimento">
+                                <b-form-input :state="!erros.data_nascimento ? null : !erros.data_nascimento"
+                                              id="data_nascimento" v-model="form.data_nascimento"
+                                              placeholder="Data Nascimento"
+                                              type="date" required/>
+                                <b-form-invalid-feedback
+                                    :state="!erros.data_nascimento ? null : !erros.data_nascimento">
                                     {{ erros.data_nascimento }}
                                 </b-form-invalid-feedback>
                             </b-form-group>
@@ -94,7 +91,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <b-form-group label="CPF" label-for="cpf" label-class="text-muted">
-                                <b-form-input required :state="!erros.cpf ? null : !erros.cpf" id="cpf" v-model="form.cpf" type="text" ref="cpf"/>
+                                <b-form-input required :state="!erros.cpf ? null : !erros.cpf" id="cpf"
+                                              v-model="form.cpf" type="text" ref="cpf"/>
                                 <b-form-invalid-feedback :state="!erros.cpf ? null : !erros.cpf">
                                     {{ erros.cpf }}
                                 </b-form-invalid-feedback>
@@ -103,7 +101,8 @@
 
                         <div class="col-md-3">
                             <b-form-group label="Perfil do Instagam (@)" label-for="instagram" label-class="text-muted">
-                                <b-form-input :state="!erros.instagram ? null : !erros.instagram" id="instagram" v-model="form.instagram" type="text"/>
+                                <b-form-input :state="!erros.instagram ? null : !erros.instagram" id="instagram"
+                                              v-model="form.instagram" type="text"/>
                                 <b-form-invalid-feedback :state="!erros.instagram ? null : !erros.instagram">
                                     {{ erros.instagram }}
                                 </b-form-invalid-feedback>
@@ -112,7 +111,8 @@
 
                         <div class="col-md-3">
                             <b-form-group label="Telefone" label-for="telefone" label-class="text-muted">
-                                <b-form-input :state="!erros.telefone ? null : !erros.telefone" id="telefone" v-model="form.telefone" class="telefone" type="text"/>
+                                <b-form-input :state="!erros.telefone ? null : !erros.telefone" id="telefone"
+                                              v-model="form.telefone" class="telefone" type="text"/>
                                 <b-form-invalid-feedback :state="!erros.telefone ? null : !erros.telefone">
                                     {{ erros.telefone }}
                                 </b-form-invalid-feedback>
@@ -121,7 +121,8 @@
 
                         <div class="col-md-3">
                             <b-form-group label="WhatsApp" label-for="whatsapp" label-class="text-muted">
-                                <b-form-input :state="!erros.whatsapp ? null : !erros.whatsapp" id="whatsapp" v-model="form.whatsapp" class="telefone" type="text"/>
+                                <b-form-input :state="!erros.whatsapp ? null : !erros.whatsapp" id="whatsapp"
+                                              v-model="form.whatsapp" class="telefone" type="text"/>
                                 <b-form-invalid-feedback :state="!erros.whatsapp ? null : !erros.whatsapp">
                                     {{ erros.whatsapp }}
                                 </b-form-invalid-feedback>
@@ -145,7 +146,8 @@
                                         </b-form-select-option>
                                     </template>
                                 </b-form-select>
-                                <b-form-invalid-feedback :state="!erros.escolaridade_id ? null : !erros.escolaridade_id">
+                                <b-form-invalid-feedback
+                                    :state="!erros.escolaridade_id ? null : !erros.escolaridade_id">
                                     {{ erros.escolaridade_id }}
                                 </b-form-invalid-feedback>
                             </b-form-group>
@@ -163,10 +165,12 @@
                                     :state="!erros.estado_civil_id ? null : !erros.estado_civil_id"
                                 >
                                     <template #first>
-                                        <b-form-select-option :value="null">Selecione o estado cívil</b-form-select-option>
+                                        <b-form-select-option :value="null">Selecione o estado cívil
+                                        </b-form-select-option>
                                     </template>
                                 </b-form-select>
-                                <b-form-invalid-feedback :state="!erros.estado_civil_id ? null : !erros.estado_civil_id">
+                                <b-form-invalid-feedback
+                                    :state="!erros.estado_civil_id ? null : !erros.estado_civil_id">
                                     {{ erros.estado_civil_id }}
                                 </b-form-invalid-feedback>
                             </b-form-group>
@@ -295,7 +299,8 @@
                 <div class="col-md-4">
                     <div v-if="form.cnh">
                         <b-form-group label="Categoria CNH" label-for="categoria_cnh" label-class="text-muted">
-                            <b-form-input :state="!erros.categoria_cnh ? null : !erros.categoria_cnh" id="categoria_cnh" v-model="form.categoria_cnh" type="text"/>
+                            <b-form-input :state="!erros.categoria_cnh ? null : !erros.categoria_cnh" id="categoria_cnh"
+                                          v-model="form.categoria_cnh" type="text"/>
                             <b-form-invalid-feedback :state="!erros.categoria_cnh ? null : !erros.categoria_cnh">
                                 {{ erros.categoria_cnh }}
                             </b-form-invalid-feedback>
@@ -304,9 +309,12 @@
                 </div>
                 <div class="col-md-4">
                     <div v-if="form.filhos">
-                        <b-form-group label="Quantidade de Filhos" label-for="filhos_quantidade" label-class="text-muted">
-                            <b-form-input :state="!erros.filhos_quantidade ? null : !erros.filhos_quantidade" id="filhos_quantidade" v-model="form.filhos_quantidade" type="text"/>
-                            <b-form-invalid-feedback :state="!erros.filhos_quantidade ? null : !erros.filhos_quantidade">
+                        <b-form-group label="Quantidade de Filhos" label-for="filhos_quantidade"
+                                      label-class="text-muted">
+                            <b-form-input :state="!erros.filhos_quantidade ? null : !erros.filhos_quantidade"
+                                          id="filhos_quantidade" v-model="form.filhos_quantidade" type="text"/>
+                            <b-form-invalid-feedback
+                                :state="!erros.filhos_quantidade ? null : !erros.filhos_quantidade">
                                 {{ erros.filhos_quantidade }}
                             </b-form-invalid-feedback>
                         </b-form-group>
@@ -357,7 +365,8 @@
             <div class="row">
                 <div class="col-md-5">
                     <b-form-group label="Endereço" label-for="endereco" label-class="text-muted">
-                        <b-form-input required :state="!erros.endereco ? null : !erros.endereco" id="endereco" v-model="form.endereco" type="text"/>
+                        <b-form-input required :state="!erros.endereco ? null : !erros.endereco" id="endereco"
+                                      v-model="form.endereco" type="text"/>
                         <b-form-invalid-feedback :state="!erros.endereco ? null : !erros.endereco">
                             {{ erros.endereco }}
                         </b-form-invalid-feedback>
@@ -366,7 +375,8 @@
 
                 <div class="col-md-1">
                     <b-form-group label="Nº" label-for="endereco_numero" label-class="text-muted">
-                        <b-form-input :state="!erros.endereco_numero ? null : !erros.endereco_numero" id="endereco_numero" v-model="form.endereco_numero" type="text"/>
+                        <b-form-input :state="!erros.endereco_numero ? null : !erros.endereco_numero"
+                                      id="endereco_numero" v-model="form.endereco_numero" type="text"/>
                         <b-form-invalid-feedback :state="!erros.endereco_numero ? null : !erros.endereco_numero">
                             {{ erros.endereco_numero }}
                         </b-form-invalid-feedback>
@@ -375,7 +385,8 @@
 
                 <div class="col-md-3">
                     <b-form-group label="Ponto de Referência" label-for="ponto_referrencia" label-class="text-muted">
-                        <b-form-input :state="!erros.ponto_referrencia ? null : !erros.ponto_referrencia" id="ponto_referrencia" v-model="form.ponto_referrencia" type="text"/>
+                        <b-form-input :state="!erros.ponto_referrencia ? null : !erros.ponto_referrencia"
+                                      id="ponto_referrencia" v-model="form.ponto_referrencia" type="text"/>
                         <b-form-invalid-feedback :state="!erros.ponto_referrencia ? null : !erros.ponto_referrencia">
                             {{ erros.ponto_referrencia }}
                         </b-form-invalid-feedback>
@@ -384,7 +395,8 @@
 
                 <div class="col-md-3">
                     <b-form-group label="Complemento" label-for="complemento" label-class="text-muted">
-                        <b-form-input :state="!erros.complemento ? null : !erros.complemento" id="complemento" v-model="form.complemento" type="text"/>
+                        <b-form-input :state="!erros.complemento ? null : !erros.complemento" id="complemento"
+                                      v-model="form.complemento" type="text"/>
                         <b-form-invalid-feedback :state="!erros.complemento ? null : !erros.complemento">
                             {{ erros.complemento }}
                         </b-form-invalid-feedback>
@@ -395,7 +407,8 @@
             <h6 class="card-title text-primary mt-3">Outras Informações</h6>
 
             <b-form-group label="Outras Informações" label-for="outras_informacoes" label-class="text-muted">
-                <b-form-textarea :state="!erros.outras_informacoes ? null : !erros.outras_informacoes" id="outras_informacoes" v-model="form.outras_informacoes" rows="4"></b-form-textarea>
+                <b-form-textarea :state="!erros.outras_informacoes ? null : !erros.outras_informacoes"
+                                 id="outras_informacoes" v-model="form.outras_informacoes" rows="4"></b-form-textarea>
                 <b-form-invalid-feedback :state="!erros.outras_informacoes ? null : !erros.outras_informacoes">
                     {{ erros.outras_informacoes }}
                 </b-form-invalid-feedback>
@@ -404,11 +417,11 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-send"></i> Salvar</button>
-                <a href="#" class="btn btn-secondary"><i class="mdi mdi-backup-restore"></i> Voltar</a>
+                <a @click.prevent="prev" href="#" class="btn btn-secondary"><i class="mdi mdi-backup-restore"></i>
+                    Voltar</a>
             </div>
         </form>
     </div>
-
 </template>
 
 <script>
@@ -421,6 +434,12 @@ export default {
     name: "PessoaForm",
     components: {
         Cropper,
+    },
+    props: {
+        voltar: {
+            required: true,
+            type: String,
+        }
     },
     data: () => ({
         modalShow: false,
@@ -467,6 +486,13 @@ export default {
         }
     }),
     methods: {
+        prev() {
+            this.$swal("Pergunta", 'Deseja realmente voltar?', "question").then((res) => {
+                if (res.isConfirmed) {
+                    window.location.href = this.voltar;
+                }
+            });
+        },
         getFoto(event) {
             const _self = this;
             let files = event.target.files;
@@ -497,8 +523,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/admin/api/estado').then(({data}) => {
                 this.estados = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar estados.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -507,8 +536,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/admin/api/habilidade').then(({data}) => {
                 this.habilidades = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar habilidades.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -517,8 +549,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/admin/api/sexo').then(({data}) => {
                 this.sexos = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar sexos.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -527,8 +562,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/admin/api/escolaridade').then(({data}) => {
                 this.escolaidades = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar escolaridades.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             });
@@ -537,20 +575,26 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/admin/api/estado_civil').then(({data}) => {
                 this.estados_civis = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar estados civis.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             });
         },
         async getCidades() {
-            if(this.form.estado_id) {
+            if (this.form.estado_id) {
                 document.body.classList.remove('loaded');
                 await axios.post('/admin/api/cidade', {estado_id: this.form.estado_id}).then(({data}) => {
                     this.form.cidade_id = null;
                     this.cidades = data;
-                }).catch(({response}) => {
-                    this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+                }).catch(() => {
+                    this.$toast.open({
+                        message: 'Erro ao tentar carregar cidades.',
+                        type: 'error',
+                    });
                 }).finally(() => {
                     document.body.classList.add('loaded');
                 });
@@ -579,6 +623,9 @@ export default {
                     }).catch(({response}) => {
                         if (response.status === 422) {
                             this.erros = ERROR_422(response);
+                            this.$swal("Erro", 'Algum campo não está válido', "warning");
+                        } else {
+                            this.$swal("Erro", 'Algo de errado aconteceu.', "error");
                         }
                     }).finally(() => {
                         document.body.classList.add('loaded');
@@ -593,6 +640,9 @@ export default {
                 }).catch(({response}) => {
                     if (response.status === 422) {
                         this.erros = ERROR_422(response);
+                        this.$swal("Erro", 'Algum campo não está válido', "warning");
+                    } else {
+                        this.$swal("Erro", 'Algo de errado aconteceu.', "error");
                     }
                 }).finally(() => {
                     document.body.classList.add('loaded');

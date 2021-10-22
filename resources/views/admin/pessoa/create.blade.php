@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <div id="form_pessoa">
-                        <pessoa-form></pessoa-form>
+                        <pessoa-form voltar="{{ route('admin.curriculo.index') }}"></pessoa-form>
                     </div>
                 </div>
             </div>

@@ -32,6 +32,8 @@ mix.js("resources/js/app.js", "public/js")
         ghostMode: false,
         notify: false
     });
+
+mix.version();
 //
 //
 // // Copy plugin files to public folder

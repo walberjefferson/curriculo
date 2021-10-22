@@ -26,9 +26,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div v-if="fotoBase64">
-                        <b-img :src="fotoBase64" fluid width="300" height="400" blank-color="#CCC"
-                               :alt="form.nome">
-                        </b-img>
+                        <b-img :src="fotoBase64" fluid center blank-color="#CCC" :alt="form.nome"></b-img>
                         <b-button @click.prevent="destroyFile" squared size="sm" block variant="danger" class="mt-1">
                             <i class="link-icon fa fa-trash-o"></i> Remover Foto
                         </b-button>
@@ -36,15 +34,12 @@
                     <div v-else>
                         <label for="upload_image">
                             <div class="image_area">
-                                <b-img :blank="true" fluid width="300" height="400" blank-color="#CCC"
-                                       alt="HEX shorthand color image (#777)">
-                                </b-img>
+                                <b-img src="/assets/images/default-avatar.jpg" center fluid alt="Foto"></b-img>
                                 <div class="overlay">
                                     <div class="text">Clique para carregar a foto</div>
                                 </div>
                             </div>
-                            <b-form-file @change="getFoto" id="upload_image" style="display: none"
-                                         accept=".jpg, .jpeg, .png"></b-form-file>
+                            <b-form-file @change="getFoto" id="upload_image" style="display: none" accept=".jpg, .jpeg, .png"></b-form-file>
                         </label>
                     </div>
                 </div>
@@ -64,12 +59,9 @@
 
                         <div class="col-md-3">
                             <b-form-group label="Data Nascimento" label-for="data_nascimento" label-class="text-muted">
-                                <b-form-datepicker
-                                    required
-                                    :state="!erros.data_nascimento ? null : !erros.data_nascimento"
-                                    :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                                    placeholder="Data Nascimento" id="data_nascimento" v-model="form.data_nascimento"
-                                    locale="pt-br"></b-form-datepicker>
+                                <b-form-input :state="!erros.data_nascimento ? null : !erros.data_nascimento"
+                                              id="data_nascimento" v-model="form.data_nascimento" placeholder="Data Nascimento"
+                                              type="date" required/>
                                 <b-form-invalid-feedback :state="!erros.data_nascimento ? null : !erros.data_nascimento">
                                     {{ erros.data_nascimento }}
                                 </b-form-invalid-feedback>
@@ -411,11 +403,10 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-send"></i> Salvar</button>
-                <a href="#" class="btn btn-secondary"><i class="mdi mdi-backup-restore"></i> Voltar</a>
+                <a @click.prevent="prev" href="#" class="btn btn-secondary"><i class="mdi mdi-backup-restore"></i> Voltar</a>
             </div>
         </form>
     </div>
-
 </template>
 
 <script>
@@ -432,6 +423,10 @@ export default {
     props: {
         uuid: {
             required: false,
+            type: String,
+        },
+        voltar: {
+            required: true,
             type: String,
         }
     },
@@ -480,6 +475,13 @@ export default {
         }
     }),
     methods: {
+        prev() {
+            this.$swal("Pergunta", 'Deseja realmente voltar?', "question").then((res) => {
+                if (res.isConfirmed) {
+                    window.location.href = this.voltar;
+                }
+            });
+        },
         getFoto(event) {
             const _self = this;
             let files = event.target.files;
@@ -510,8 +512,11 @@ export default {
             document.body.classList.remove('loaded');
             axios.get('/admin/api/estado').then(({data}) => {
                 this.estados = data;
-            }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar estadoss', 'error');
+            }).catch(() => {
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar estados.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -521,7 +526,10 @@ export default {
             axios.get('/admin/api/habilidade').then(({data}) => {
                 this.habilidades = data;
             }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar habilidades', 'error');
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar habilidades.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -531,7 +539,10 @@ export default {
             axios.get('/admin/api/sexo').then(({data}) => {
                 this.sexos = data;
             }).catch(({response}) => {
-                this.$swal('Erro', 'Erro ao tentar carregar sexos.', 'error');
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar sexos.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             })
@@ -541,7 +552,10 @@ export default {
             axios.get('/admin/api/escolaridade').then(({data}) => {
                 this.escolaidades = data;
             }).catch(() => {
-                this.$swal('Erro', 'Erro ao tentar carregar escolaridades.', 'error');
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar escolaridades.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             });
@@ -551,7 +565,10 @@ export default {
             axios.get('/admin/api/estado_civil').then(({data}) => {
                 this.estados_civis = data;
             }).catch(() => {
-                this.$swal('Erro', 'Erro ao tentar carregar estados civis.', 'error');
+                this.$toast.open({
+                    message: 'Erro ao tentar carregar estados civis.',
+                    type: 'error',
+                });
             }).finally(() => {
                 document.body.classList.add('loaded');
             });
@@ -563,7 +580,10 @@ export default {
                     this.form.cidade_id = null;
                     this.cidades = data;
                 }).catch(() => {
-                    this.$swal('Erro', 'Erro ao tentar carregar cidades', 'error');
+                    this.$toast.open({
+                        message: 'Erro ao tentar carregar cidades.',
+                        type: 'error',
+                    });
                 }).finally(() => {
                     document.body.classList.add('loaded');
                 });
@@ -590,6 +610,9 @@ export default {
             }).catch(({response}) => {
                 if (response.status === 422) {
                     this.erros = ERROR_422(response);
+                    this.$swal("Erro", 'Algum campo não está válido', "warning");
+                } else {
+                    this.$swal("Erro", 'Algo de errado aconteceu.', "error");
                 }
             }).finally(() => {
                 document.body.classList.add('loaded');
@@ -613,6 +636,9 @@ export default {
                     }).catch(({response}) => {
                         if (response.status === 422) {
                             this.erros = ERROR_422(response);
+                            this.$swal("Erro", 'Algum campo não está válido', "warning");
+                        } else {
+                            this.$swal("Erro", 'Algo de errado aconteceu.', "error");
                         }
                     }).finally(() => {
                         document.body.classList.add('loaded');

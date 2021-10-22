@@ -176,26 +176,31 @@ class Curriculo extends AbstractPdf
 
         $this->Ln(1);
 
-        $this->SetFont('Arial', 'B', 8);
-        $this->Cell(60, 6, fpdf_utf8_uppercase('Cargo'), 'LRT', 0, 'L', 0);
-        $this->Cell(60, 6, fpdf_utf8_uppercase('Empresa'), 'LRT', 0, 'L', 0);
-        $this->Cell(40, 6, fpdf_utf8_uppercase('Tempo de Serviço'), 'LRT', 0, 'L', 0);
-        $this->Cell(30, 6, fpdf_utf8_uppercase('Saída'), 'LRT', 1, 'L', 0);
-        $this->SetFont('Arial', 'B', 8);
+        if($experiencias->count()) {
+            $this->SetFont('Arial', 'B', 8);
+            $this->Cell(60, 6, fpdf_utf8_uppercase('Cargo'), 'LRT', 0, 'L', 0);
+            $this->Cell(60, 6, fpdf_utf8_uppercase('Empresa'), 'LRT', 0, 'L', 0);
+            $this->Cell(40, 6, fpdf_utf8_uppercase('Tempo de Serviço'), 'LRT', 0, 'L', 0);
+            $this->Cell(30, 6, fpdf_utf8_uppercase('Saída'), 'LRT', 1, 'L', 0);
+            $this->SetFont('Arial', 'B', 8);
 
-        $this->SetFont('Arial', '', 8);
-        $this->SetWidths([60, 60, 40, 30]);
-        $this->SetAligns(['L', 'L', 'L', 'L']);
-        $fill = false;
-        foreach ($experiencias as $e) {
-            $d = [
-                fpdf_utf8($e->cargo ?? '---'),
-                fpdf_utf8($e->empresa ?? '---'),
-                fpdf_utf8($e->tempo_servico ?? '---'),
-                fpdf_utf8($e->saida ?? '---'),
-            ];
-            $this->Row($d, $fill);
-            $fill = !$fill;
+            $this->SetFont('Arial', '', 8);
+            $this->SetWidths([60, 60, 40, 30]);
+            $this->SetAligns(['L', 'L', 'L', 'L']);
+            $fill = false;
+            foreach ($experiencias as $e) {
+                $d = [
+                    fpdf_utf8($e->cargo ?? '---'),
+                    fpdf_utf8($e->empresa ?? '---'),
+                    fpdf_utf8($e->tempo_servico ?? '---'),
+                    fpdf_utf8($e->saida ?? '---'),
+                ];
+                $this->Row($d, $fill);
+                $fill = !$fill;
+            }
+        } else {
+            $this->SetFont('Arial', '', 9);
+            $this->Cell(0, 8, fpdf_utf8_uppercase('Sem experiências'), '1', 1, 'L', 0);
         }
     }
 

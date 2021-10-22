@@ -62,6 +62,9 @@ class CurriculoWebRequest extends FormRequest
         if (isset($all['cpf'])) {
             $all['cpf'] = str_numbers($all['cpf']);
         }
+        if (isset($all['lei_lgpd'])) {
+            $all['lei_lgpd'] = is_bool($all['lei_lgpd']) ? $all['lei_lgpd'] : $all['lei_lgpd'] === 'true';
+        }
         if (isset($all['cnh'])) {
             $all['cnh'] = is_bool($all['cnh']) ? $all['cnh'] : $all['cnh'] === 'true';
         }

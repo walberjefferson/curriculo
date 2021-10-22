@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <div id="form_pessoa">
-                        <pessoa-form-update uuid="{{ $dados->uuid }}"></pessoa-form-update>
+                        <pessoa-form-update voltar="{{ route('admin.curriculo.index') }}" uuid="{{ $dados->uuid }}"></pessoa-form-update>
                     </div>
                 </div>
             </div>
