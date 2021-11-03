@@ -3,6 +3,7 @@
 namespace Authentication\Http\Controllers;
 
 use Authentication\Criteria\FindRolesIsAdminCriteria;
+use Authentication\Criteria\FindUsersIsNotAdminCriteria;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Authentication\Http\Requests\UserRequest;
@@ -24,6 +25,7 @@ class UsersController extends Controller
     {
         $this->repository = $repository;
         $this->roleRepository = $roleRepository;
+        $this->repository->pushCriteria(FindUsersIsNotAdminCriteria::class);
     }
 
     /**
