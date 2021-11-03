@@ -60,11 +60,11 @@ class Curriculo extends AbstractPdf
 
     public function Footer()
     {
-        $this->AliasNbPages();
-        $this->SetY(-15);
-        $this->SetDrawColor(217, 217, 217);
-        $this->SetFont('Arial', 'I', 9);
-        $this->Cell(0, 10, fpdf_utf8('Currículo gerado pelo portal Santana 360 Graus'), 'T', 1, 'C');
+//        $this->AliasNbPages();
+//        $this->SetY(-15);
+//        $this->SetDrawColor(217, 217, 217);
+//        $this->SetFont('Arial', 'I', 9);
+//        $this->Cell(0, 10, fpdf_utf8('Currículo gerado pelo portal Santana 360 Graus'), 'T', 1, 'C');
     }
 
     public function create()
@@ -73,12 +73,19 @@ class Curriculo extends AbstractPdf
         $this->SetAutoPageBreak(true, 15);
         $this->SetFont('Arial', 'B', 8);
 
+        $folderBgCurriculo = public_path('assets/images/bg_curriculo.jpg');
+        if(is_file($folderBgCurriculo)) {
+            $this->Image($folderBgCurriculo, 0, 0, 210);
+        }
+
         $dados = $this->dados;
 
         // W - 190
         $this->SetFillColor(242, 242, 242);
-        $this->SetDrawColor(217, 217, 217);
-        $this->SetTextColor(140, 140, 140);
+        $this->SetDrawColor(190, 190, 190);
+        $this->SetTextColor(100, 100, 100);
+
+        $this->SetY($this->GetY() + 8);
 
         // Foto
         if ($this->foto && is_file($this->foto)) {
