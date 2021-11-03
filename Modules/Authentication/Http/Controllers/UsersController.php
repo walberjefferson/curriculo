@@ -2,6 +2,7 @@
 
 namespace Authentication\Http\Controllers;
 
+use Authentication\Criteria\FindRolesIsAdminCriteria;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Authentication\Http\Requests\UserRequest;
@@ -39,6 +40,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $this->roleRepository->pushCriteria(FindRolesIsAdminCriteria::class);
         $roles = $this->roleRepository->pluck('name', 'id');
         return view('authentication::users.create', compact('roles'));
     }
@@ -64,6 +66,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $dados = $this->repository->find($id);
+        $this->roleRepository->pushCriteria(FindRolesIsAdminCriteria::class);
         $roles = $this->roleRepository->pluck('name', 'id');
         return view('authentication::users.edit', compact('dados', 'roles'));
     }
